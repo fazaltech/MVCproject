@@ -138,10 +138,45 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>mvc_pos.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\mvc_pos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>mvc_pos.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\mvc_pos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>mvc_pos.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblcustomer.cs">
+      <DependentUpon>mvc_pos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblinvoice.cs">
+      <DependentUpon>mvc_pos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblproduct.cs">
+      <DependentUpon>mvc_pos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblproductcategory.cs">
+      <DependentUpon>mvc_pos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblproductunit.cs">
+      <DependentUpon>mvc_pos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblpurchaseorder.cs">
+      <DependentUpon>mvc_pos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblreceiveproduct.cs">
+      <DependentUpon>mvc_pos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblsale.cs">
+      <DependentUpon>mvc_pos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblsupplier.cs">
+      <DependentUpon>mvc_pos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbluser.cs">
+      <DependentUpon>mvc_pos.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1857,6 +1892,12 @@
     <Content Include="Models\mvc_pos.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>mvc_pos.Context.cs</LastGenOutput>
+      <DependentUpon>mvc_pos.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\mvc_pos.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>mvc_pos.edmx</DependentUpon>
+      <LastGenOutput>mvc_pos.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -2042,9 +2083,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>mvc_pos.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\mvc_pos.edmx.diagram">
+    <Content Include="Models\mvc_pos.edmx.diagram">
       <DependentUpon>mvc_pos.edmx</DependentUpon>
-    </None>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
