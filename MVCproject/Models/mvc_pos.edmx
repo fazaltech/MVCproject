@@ -4,29 +4,25 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="mvc_posModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'mvc_pos.dbo.tblcustomer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+    <Schema Namespace="mvc_posModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblcustomer">
           <Key>
             <PropertyRef Name="int" />
           </Key>
           <Property Name="int" Type="int" Nullable="false" />
-          <Property Name="customer_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="customer_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="customer_code" Type="varchar" MaxLength="50" />
           <Property Name="customer_name" Type="varchar" MaxLength="50" />
           <Property Name="contact" Type="varchar" MaxLength="50" />
           <Property Name="address" Type="varchar" MaxLength="50" />
           <Property Name="flag" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'mvc_pos.dbo.tblinvoice' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblinvoice">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="invoice_id" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="invoice_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="customer_id" Type="numeric" Precision="18" Scale="0" />
           <Property Name="payment_type" Type="numeric" Precision="18" Scale="0" />
           <Property Name="total_amount" Type="numeric" Precision="18" Scale="0" />
@@ -37,13 +33,11 @@ warning 6002: The table/view 'mvc_pos.dbo.tblinvoice' does not have a primary ke
           <Property Name="user_id" Type="numeric" Precision="18" Scale="0" />
           <Property Name="flag" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'mvc_pos.dbo.tblproduct' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblproduct">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="product_id" Type="numeric" Precision="18" Scale="0" />
           <Property Name="product_code" Type="varchar" MaxLength="50" />
           <Property Name="product_name" Type="varchar" MaxLength="50" />
@@ -55,34 +49,27 @@ warning 6002: The table/view 'mvc_pos.dbo.tblproduct' does not have a primary ke
           <Property Name="recorder_level" Type="numeric" Precision="18" Scale="0" />
           <Property Name="user_id" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'mvc_pos.dbo.tblproductcategory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblproductcategory">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="category_id" Type="numeric" Precision="18" Scale="0" />
           <Property Name="category_name" Type="varchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'mvc_pos.dbo.tblproductunit' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblproductunit">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="unit_id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="unit_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="unit_name" Type="varchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'mvc_pos.dbo.tblpurchaseorder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblpurchaseorder">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="purchase_order_id" Type="numeric" Precision="18" Scale="0" />
           <Property Name="product_id" Type="numeric" Precision="18" Scale="0" />
           <Property Name="quantity" Type="numeric" Precision="18" Scale="0" />
@@ -94,13 +81,11 @@ warning 6002: The table/view 'mvc_pos.dbo.tblpurchaseorder' does not have a prim
           <Property Name="order_status" Type="int" />
           <Property Name="flag" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'mvc_pos.dbo.tblreceiveproduct' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblreceiveproduct">
           <Key>
             <PropertyRef Name="int" />
           </Key>
-          <Property Name="int" Type="int" Nullable="false" />
+          <Property Name="int" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="receive_product_id" Type="numeric" Precision="18" Scale="0" />
           <Property Name="product_id" Type="numeric" Precision="18" Scale="0" />
           <Property Name="quantity" Type="numeric" Precision="18" Scale="0" />
@@ -111,13 +96,11 @@ warning 6002: The table/view 'mvc_pos.dbo.tblreceiveproduct' does not have a pri
           <Property Name="user_id" Type="numeric" Precision="18" Scale="0" />
           <Property Name="flag" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'mvc_pos.dbo.tblsales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblsales">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="sale_id" Type="numeric" Precision="18" Scale="0" />
           <Property Name="invoice_id" Type="numeric" Precision="18" Scale="0" />
           <Property Name="product_id" Type="numeric" Precision="18" Scale="0" />
@@ -125,13 +108,11 @@ warning 6002: The table/view 'mvc_pos.dbo.tblsales' does not have a primary key 
           <Property Name="unit_price" Type="numeric" Precision="18" Scale="0" />
           <Property Name="sub_total" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'mvc_pos.dbo.tblsupplier' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblsupplier">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="supplier_int" Type="numeric" Precision="18" Scale="0" />
           <Property Name="supplier_code" Type="varchar" MaxLength="50" />
           <Property Name="supplier_name" Type="varchar" MaxLength="50" />
@@ -140,146 +121,34 @@ warning 6002: The table/view 'mvc_pos.dbo.tblsupplier' does not have a primary k
           <Property Name="supplier_email" Type="varbinary" MaxLength="50" />
           <Property Name="flag" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'mvc_pos.dbo.tbluser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tbluser">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="user_id" Type="numeric" Precision="18" Scale="0" />
           <Property Name="user_name" Type="varchar" MaxLength="50" />
           <Property Name="password" Type="varchar" MaxLength="50" />
           <Property Name="fullname" Type="varchar" MaxLength="50" />
+          <Property Name="email_id" Type="varchar" MaxLength="50" />
           <Property Name="designation" Type="varchar" MaxLength="50" />
           <Property Name="role" Type="varchar" MaxLength="50" />
           <Property Name="account_type" Type="int" />
           <Property Name="flag" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="mvc_posModelStoreContainer">
-          <EntitySet Name="tblcustomer" EntityType="Self.tblcustomer" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblcustomer].[int] AS [int], 
-    [tblcustomer].[customer_id] AS [customer_id], 
-    [tblcustomer].[customer_code] AS [customer_code], 
-    [tblcustomer].[customer_name] AS [customer_name], 
-    [tblcustomer].[contact] AS [contact], 
-    [tblcustomer].[address] AS [address], 
-    [tblcustomer].[flag] AS [flag]
-    FROM [dbo].[tblcustomer] AS [tblcustomer]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tblinvoice" EntityType="Self.tblinvoice" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblinvoice].[id] AS [id], 
-    [tblinvoice].[invoice_id] AS [invoice_id], 
-    [tblinvoice].[customer_id] AS [customer_id], 
-    [tblinvoice].[payment_type] AS [payment_type], 
-    [tblinvoice].[total_amount] AS [total_amount], 
-    [tblinvoice].[amount_tendered] AS [amount_tendered], 
-    [tblinvoice].[bank_account_name] AS [bank_account_name], 
-    [tblinvoice].[bank_account_number] AS [bank_account_number], 
-    [tblinvoice].[date_recorded] AS [date_recorded], 
-    [tblinvoice].[user_id] AS [user_id], 
-    [tblinvoice].[flag] AS [flag]
-    FROM [dbo].[tblinvoice] AS [tblinvoice]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tblproduct" EntityType="Self.tblproduct" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblproduct].[id] AS [id], 
-    [tblproduct].[product_id] AS [product_id], 
-    [tblproduct].[product_code] AS [product_code], 
-    [tblproduct].[product_name] AS [product_name], 
-    [tblproduct].[unit_id] AS [unit_id], 
-    [tblproduct].[category_id] AS [category_id], 
-    [tblproduct].[unit_in_stock] AS [unit_in_stock], 
-    [tblproduct].[unit_price] AS [unit_price], 
-    [tblproduct].[discount_percentage] AS [discount_percentage], 
-    [tblproduct].[recorder_level] AS [recorder_level], 
-    [tblproduct].[user_id] AS [user_id]
-    FROM [dbo].[tblproduct] AS [tblproduct]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tblproductcategory" EntityType="Self.tblproductcategory" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblproductcategory].[id] AS [id], 
-    [tblproductcategory].[category_id] AS [category_id], 
-    [tblproductcategory].[category_name] AS [category_name]
-    FROM [dbo].[tblproductcategory] AS [tblproductcategory]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tblproductunit" EntityType="Self.tblproductunit" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblproductunit].[id] AS [id], 
-    [tblproductunit].[unit_id] AS [unit_id], 
-    [tblproductunit].[unit_name] AS [unit_name]
-    FROM [dbo].[tblproductunit] AS [tblproductunit]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tblpurchaseorder" EntityType="Self.tblpurchaseorder" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblpurchaseorder].[id] AS [id], 
-    [tblpurchaseorder].[purchase_order_id] AS [purchase_order_id], 
-    [tblpurchaseorder].[product_id] AS [product_id], 
-    [tblpurchaseorder].[quantity] AS [quantity], 
-    [tblpurchaseorder].[unit_price] AS [unit_price], 
-    [tblpurchaseorder].[sub_total] AS [sub_total], 
-    [tblpurchaseorder].[supplier_id] AS [supplier_id], 
-    [tblpurchaseorder].[order_date] AS [order_date], 
-    [tblpurchaseorder].[user_id] AS [user_id], 
-    [tblpurchaseorder].[order_status] AS [order_status], 
-    [tblpurchaseorder].[flag] AS [flag]
-    FROM [dbo].[tblpurchaseorder] AS [tblpurchaseorder]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tblreceiveproduct" EntityType="Self.tblreceiveproduct" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblreceiveproduct].[int] AS [int], 
-    [tblreceiveproduct].[receive_product_id] AS [receive_product_id], 
-    [tblreceiveproduct].[product_id] AS [product_id], 
-    [tblreceiveproduct].[quantity] AS [quantity], 
-    [tblreceiveproduct].[unit_price] AS [unit_price], 
-    [tblreceiveproduct].[sub_total] AS [sub_total], 
-    [tblreceiveproduct].[supplier_id] AS [supplier_id], 
-    [tblreceiveproduct].[received_date] AS [received_date], 
-    [tblreceiveproduct].[user_id] AS [user_id], 
-    [tblreceiveproduct].[flag] AS [flag]
-    FROM [dbo].[tblreceiveproduct] AS [tblreceiveproduct]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tblsales" EntityType="Self.tblsales" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblsales].[id] AS [id], 
-    [tblsales].[sale_id] AS [sale_id], 
-    [tblsales].[invoice_id] AS [invoice_id], 
-    [tblsales].[product_id] AS [product_id], 
-    [tblsales].[quantity] AS [quantity], 
-    [tblsales].[unit_price] AS [unit_price], 
-    [tblsales].[sub_total] AS [sub_total]
-    FROM [dbo].[tblsales] AS [tblsales]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tblsupplier" EntityType="Self.tblsupplier" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblsupplier].[id] AS [id], 
-    [tblsupplier].[supplier_int] AS [supplier_int], 
-    [tblsupplier].[supplier_code] AS [supplier_code], 
-    [tblsupplier].[supplier_name] AS [supplier_name], 
-    [tblsupplier].[supplier_contact] AS [supplier_contact], 
-    [tblsupplier].[supplier_address] AS [supplier_address], 
-    [tblsupplier].[supplier_email] AS [supplier_email], 
-    [tblsupplier].[flag] AS [flag]
-    FROM [dbo].[tblsupplier] AS [tblsupplier]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tbluser" EntityType="Self.tbluser" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tbluser].[id] AS [id], 
-    [tbluser].[user_id] AS [user_id], 
-    [tbluser].[user_name] AS [user_name], 
-    [tbluser].[password] AS [password], 
-    [tbluser].[fullname] AS [fullname], 
-    [tbluser].[designation] AS [designation], 
-    [tbluser].[role] AS [role], 
-    [tbluser].[account_type] AS [account_type], 
-    [tbluser].[flag] AS [flag]
-    FROM [dbo].[tbluser] AS [tbluser]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="tblcustomer" EntityType="Self.tblcustomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblinvoice" EntityType="Self.tblinvoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblproduct" EntityType="Self.tblproduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblproductcategory" EntityType="Self.tblproductcategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblproductunit" EntityType="Self.tblproductunit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblpurchaseorder" EntityType="Self.tblpurchaseorder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblreceiveproduct" EntityType="Self.tblreceiveproduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblsales" EntityType="Self.tblsales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblsupplier" EntityType="Self.tblsupplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbluser" EntityType="Self.tbluser" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="mvc_posModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -288,7 +157,7 @@ warning 6002: The table/view 'mvc_pos.dbo.tbluser' does not have a primary key d
             <PropertyRef Name="int" />
           </Key>
           <Property Name="int" Type="Int32" Nullable="false" />
-          <Property Name="customer_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="customer_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="customer_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="customer_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -300,7 +169,7 @@ warning 6002: The table/view 'mvc_pos.dbo.tbluser' does not have a primary key d
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="invoice_id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="invoice_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="customer_id" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="payment_type" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="total_amount" Type="Decimal" Precision="18" Scale="0" />
@@ -315,7 +184,7 @@ warning 6002: The table/view 'mvc_pos.dbo.tbluser' does not have a primary key d
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="product_id" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="product_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -331,16 +200,15 @@ warning 6002: The table/view 'mvc_pos.dbo.tbluser' does not have a primary key d
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="category_id" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="category_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblproductunit">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="unit_id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="unit_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="unit_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
@@ -348,7 +216,7 @@ warning 6002: The table/view 'mvc_pos.dbo.tbluser' does not have a primary key d
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="purchase_order_id" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="product_id" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="quantity" Type="Decimal" Precision="18" Scale="0" />
@@ -364,7 +232,7 @@ warning 6002: The table/view 'mvc_pos.dbo.tbluser' does not have a primary key d
           <Key>
             <PropertyRef Name="int" />
           </Key>
-          <Property Name="int" Type="Int32" Nullable="false" />
+          <Property Name="int" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="receive_product_id" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="product_id" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="quantity" Type="Decimal" Precision="18" Scale="0" />
@@ -379,7 +247,7 @@ warning 6002: The table/view 'mvc_pos.dbo.tbluser' does not have a primary key d
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="sale_id" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="invoice_id" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="product_id" Type="Decimal" Precision="18" Scale="0" />
@@ -391,7 +259,7 @@ warning 6002: The table/view 'mvc_pos.dbo.tbluser' does not have a primary key d
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="supplier_int" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="supplier_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="supplier_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -404,7 +272,7 @@ warning 6002: The table/view 'mvc_pos.dbo.tbluser' does not have a primary key d
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="user_id" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -413,8 +281,9 @@ warning 6002: The table/view 'mvc_pos.dbo.tbluser' does not have a primary key d
           <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="account_type" Type="Int32" />
           <Property Name="flag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="mvc_posEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="mvc_pos_conn" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tblcustomers" EntityType="Self.tblcustomer" />
           <EntitySet Name="tblinvoices" EntityType="Self.tblinvoice" />
           <EntitySet Name="tblproducts" EntityType="Self.tblproduct" />
@@ -431,7 +300,7 @@ warning 6002: The table/view 'mvc_pos.dbo.tbluser' does not have a primary key d
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="mvc_posModelStoreContainer" CdmEntityContainer="mvc_posEntities">
+        <EntityContainerMapping StorageEntityContainer="mvc_posModelStoreContainer" CdmEntityContainer="mvc_pos_conn">
           <EntitySetMapping Name="tblcustomers">
             <EntityTypeMapping TypeName="mvc_posModel.tblcustomer">
               <MappingFragment StoreEntitySet="tblcustomer">
@@ -560,6 +429,7 @@ warning 6002: The table/view 'mvc_pos.dbo.tbluser' does not have a primary key d
           <EntitySetMapping Name="tblusers">
             <EntityTypeMapping TypeName="mvc_posModel.tbluser">
               <MappingFragment StoreEntitySet="tbluser">
+                <ScalarProperty Name="email_id" ColumnName="email_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="user_name" ColumnName="user_name" />

@@ -15,7 +15,7 @@ namespace MVCproject.Models
     public partial class tblcustomer
     {
         public int @int { get; set; }
-        public Nullable<decimal> customer_id { get; set; }
+        public decimal customer_id { get; set; }
         public string customer_code { get; set; }
         public string customer_name { get; set; }
         public string contact { get; set; }

@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="mvc_posModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblcustomer">
+    <Key>
+      <PropertyRef Name="int" />
+    </Key>
+    <Property Name="int" Type="Int32" Nullable="false" />
+    <Property Name="customer_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="customer_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="customer_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="flag" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblinvoice">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="invoice_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="customer_id" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="payment_type" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="total_amount" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="amount_tendered" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="bank_account_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bank_account_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="date_recorded" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="user_id" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="flag" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblproduct">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="product_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="unit_id" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="category_id" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="unit_in_stock" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="unit_price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="discount_percentage" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="recorder_level" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="user_id" Type="Decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="tblproductcategory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category_id" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="category_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblproductunit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="unit_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="unit_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblpurchaseorder">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="purchase_order_id" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="product_id" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="quantity" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="unit_price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="sub_total" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="supplier_id" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="order_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="user_id" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="order_status" Type="Int32" />
+    <Property Name="flag" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblreceiveproduct">
+    <Key>
+      <PropertyRef Name="int" />
+    </Key>
+    <Property Name="int" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="receive_product_id" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="product_id" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="quantity" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="unit_price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="sub_total" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="supplier_id" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="received_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="user_id" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="flag" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblsale">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sale_id" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="invoice_id" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="product_id" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="quantity" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="unit_price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="sub_total" Type="Decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="tblsupplier">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="supplier_int" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="supplier_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="supplier_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="supplier_contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="supplier_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="supplier_email" Type="Binary" MaxLength="50" FixedLength="false" />
+    <Property Name="flag" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbluser">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="account_type" Type="Int32" />
+    <Property Name="flag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="mvc_pos_conn" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblcustomers" EntityType="Self.tblcustomer" />
+    <EntitySet Name="tblinvoices" EntityType="Self.tblinvoice" />
+    <EntitySet Name="tblproducts" EntityType="Self.tblproduct" />
+    <EntitySet Name="tblproductcategories" EntityType="Self.tblproductcategory" />
+    <EntitySet Name="tblproductunits" EntityType="Self.tblproductunit" />
+    <EntitySet Name="tblpurchaseorders" EntityType="Self.tblpurchaseorder" />
+    <EntitySet Name="tblreceiveproducts" EntityType="Self.tblreceiveproduct" />
+    <EntitySet Name="tblsales" EntityType="Self.tblsale" />
+    <EntitySet Name="tblsuppliers" EntityType="Self.tblsupplier" />
+    <EntitySet Name="tblusers" EntityType="Self.tbluser" />
+  </EntityContainer>
+</Schema>

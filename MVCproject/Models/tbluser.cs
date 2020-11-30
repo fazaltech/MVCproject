@@ -23,5 +23,6 @@ namespace MVCproject.Models
         public string role { get; set; }
         public Nullable<int> account_type { get; set; }
         public string flag { get; set; }
+        public string email_id { get; set; }
     }
 }

@@ -13,10 +13,10 @@ namespace MVCproject.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class mvc_posEntities : DbContext
+    public partial class mvc_pos_conn : DbContext
     {
-        public mvc_posEntities()
-            : base("name=mvc_posEntities")
+        public mvc_pos_conn()
+            : base("name=mvc_pos_conn")
         {
         }
     

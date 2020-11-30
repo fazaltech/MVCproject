@@ -15,7 +15,7 @@ namespace MVCproject.Models
     public partial class tblinvoice
     {
         public int id { get; set; }
-        public Nullable<decimal> invoice_id { get; set; }
+        public decimal invoice_id { get; set; }
         public Nullable<decimal> customer_id { get; set; }
         public Nullable<decimal> payment_type { get; set; }
         public Nullable<decimal> total_amount { get; set; }

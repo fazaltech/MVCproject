@@ -149,3 +149,7 @@ E:\MVCproject\MVCproject\obj\Debug\MVCproject.csproj.CoreCompileInputs.cache
 E:\MVCproject\MVCproject\obj\Debug\MVCproject.csproj.CopyComplete
 E:\MVCproject\MVCproject\obj\Debug\MVCproject.dll
 E:\MVCproject\MVCproject\obj\Debug\MVCproject.pdb
+E:\MVCproject\MVCproject\bin\EntityFramework.dll
+E:\MVCproject\MVCproject\bin\EntityFramework.SqlServer.dll
+E:\MVCproject\MVCproject\bin\EntityFramework.xml
+E:\MVCproject\MVCproject\bin\EntityFramework.SqlServer.xml

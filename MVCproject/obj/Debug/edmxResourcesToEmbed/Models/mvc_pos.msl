@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="mvc_posModelStoreContainer" CdmEntityContainer="mvc_pos_conn">
+    <EntitySetMapping Name="tblcustomers">
+      <EntityTypeMapping TypeName="mvc_posModel.tblcustomer">
+        <MappingFragment StoreEntitySet="tblcustomer">
+          <ScalarProperty Name="int" ColumnName="int" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="customer_code" ColumnName="customer_code" />
+          <ScalarProperty Name="customer_name" ColumnName="customer_name" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblinvoices">
+      <EntityTypeMapping TypeName="mvc_posModel.tblinvoice">
+        <MappingFragment StoreEntitySet="tblinvoice">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="invoice_id" ColumnName="invoice_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="payment_type" ColumnName="payment_type" />
+          <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+          <ScalarProperty Name="amount_tendered" ColumnName="amount_tendered" />
+          <ScalarProperty Name="bank_account_name" ColumnName="bank_account_name" />
+          <ScalarProperty Name="bank_account_number" ColumnName="bank_account_number" />
+          <ScalarProperty Name="date_recorded" ColumnName="date_recorded" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblproducts">
+      <EntityTypeMapping TypeName="mvc_posModel.tblproduct">
+        <MappingFragment StoreEntitySet="tblproduct">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="product_code" ColumnName="product_code" />
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="unit_in_stock" ColumnName="unit_in_stock" />
+          <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+          <ScalarProperty Name="discount_percentage" ColumnName="discount_percentage" />
+          <ScalarProperty Name="recorder_level" ColumnName="recorder_level" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblproductcategories">
+      <EntityTypeMapping TypeName="mvc_posModel.tblproductcategory">
+        <MappingFragment StoreEntitySet="tblproductcategory">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblproductunits">
+      <EntityTypeMapping TypeName="mvc_posModel.tblproductunit">
+        <MappingFragment StoreEntitySet="tblproductunit">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="unit_name" ColumnName="unit_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblpurchaseorders">
+      <EntityTypeMapping TypeName="mvc_posModel.tblpurchaseorder">
+        <MappingFragment StoreEntitySet="tblpurchaseorder">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="purchase_order_id" ColumnName="purchase_order_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+          <ScalarProperty Name="sub_total" ColumnName="sub_total" />
+          <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+          <ScalarProperty Name="order_date" ColumnName="order_date" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="order_status" ColumnName="order_status" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblreceiveproducts">
+      <EntityTypeMapping TypeName="mvc_posModel.tblreceiveproduct">
+        <MappingFragment StoreEntitySet="tblreceiveproduct">
+          <ScalarProperty Name="int" ColumnName="int" />
+          <ScalarProperty Name="receive_product_id" ColumnName="receive_product_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+          <ScalarProperty Name="sub_total" ColumnName="sub_total" />
+          <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+          <ScalarProperty Name="received_date" ColumnName="received_date" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblsales">
+      <EntityTypeMapping TypeName="mvc_posModel.tblsale">
+        <MappingFragment StoreEntitySet="tblsales">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="sale_id" ColumnName="sale_id" />
+          <ScalarProperty Name="invoice_id" ColumnName="invoice_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+          <ScalarProperty Name="sub_total" ColumnName="sub_total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblsuppliers">
+      <EntityTypeMapping TypeName="mvc_posModel.tblsupplier">
+        <MappingFragment StoreEntitySet="tblsupplier">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="supplier_int" ColumnName="supplier_int" />
+          <ScalarProperty Name="supplier_code" ColumnName="supplier_code" />
+          <ScalarProperty Name="supplier_name" ColumnName="supplier_name" />
+          <ScalarProperty Name="supplier_contact" ColumnName="supplier_contact" />
+          <ScalarProperty Name="supplier_address" ColumnName="supplier_address" />
+          <ScalarProperty Name="supplier_email" ColumnName="supplier_email" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblusers">
+      <EntityTypeMapping TypeName="mvc_posModel.tbluser">
+        <MappingFragment StoreEntitySet="tbluser">
+          <ScalarProperty Name="email_id" ColumnName="email_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="designation" ColumnName="designation" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="account_type" ColumnName="account_type" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
