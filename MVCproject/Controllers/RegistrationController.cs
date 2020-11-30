@@ -15,7 +15,7 @@ namespace MVCproject.Controllers
 
         private mvc_pos_conn db = new mvc_pos_conn();
 
-        // GET: Registration
+        
         // GET: Registration
 
         [Authorize(Roles = "admin")]
@@ -108,6 +108,10 @@ namespace MVCproject.Controllers
         public ActionResult Registration(tbluser use)
         {
 
+
+            var random = new System.Random();
+            int num = random.Next(100);
+
             Thread.Sleep(200);
             var precheck = db.tblusers.Where(x => x.user_name == use.user_name).FirstOrDefault();
 
@@ -119,7 +123,7 @@ namespace MVCproject.Controllers
             }
             else if (ModelState.IsValid)
             {
-
+               // use.user_id = ("ur"+num);
                 use.role = "assign role";
                 db.tblusers.Add(use);
                 db.SaveChanges();
