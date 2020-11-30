@@ -123,7 +123,7 @@ namespace MVCproject.Controllers
             }
             else if (ModelState.IsValid)
             {
-               // use.user_id = ("ur"+num);
+                use.user_id =num;
                 use.role = "assign role";
                 db.tblusers.Add(use);
                 db.SaveChanges();
@@ -144,43 +144,29 @@ namespace MVCproject.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(tbluser user, string Fieldview)
+        public ActionResult Login(tbluser user,string Password, string Email)
         {
-            var assgrole = db.tblusers
-                 .Where(x => x.user_name == user.user_name)
-                 .Where(x => x.password == user.password)
-                 .Select(x => x.role).Max();
-            if (Fieldview == "-1")
+            user.email_id = Email;
+            user.password = Password;
+
+            if (IsValid(user.email_id, user.password))
             {
-                ViewBag.FieldSelect = "Please Select a Field";
-                return View(user);
-            }
-
-            else if (assgrole == "assign role")
-            {
-                ViewBag.assgnRole = "Contact admin to assign role";
-                return View(user);
-
-            }
-
-            else if (IsValid(user.user_name, user.password))
-            {
-                var mail = db.tblusers
-                  .Where(x => x.user_name == user.user_name)
-                  .Where(x => x.password == user.password)
-                  .Select(x => x.email_id).Max();
-                string m = mail;
+                //var mail = db.tblusers
+                //  .Where(x => x.user_name == user.user_name)
+                //  .Where(x => x.password == user.password)
+                //  .Select(x => x.email_id).Max();
+               // string m = mail;
 
 
 
-                Session["field"] = Fieldview.ToString();
+                //Session["field"] = Fieldview.ToString();
 
 
 
-                FormsAuthentication.SetAuthCookie(user.user_name, false);
+                FormsAuthentication.SetAuthCookie(user.email_id, false);
 
 
-                return RedirectToAction("ReportEorror", "Feedback");
+                return RedirectToAction("Index", "Home");
 
 
             }
@@ -209,13 +195,13 @@ namespace MVCproject.Controllers
         }
 
 
-        private bool IsValid(string name, string passwords)
+        private bool IsValid(string email, string passwords)
         {
 
             bool IsValid = false;
 
 
-            var user = db.tblusers.FirstOrDefault(u => u.user_name == name);
+            var user = db.tblusers.FirstOrDefault(u => u.email_id == email);
             if (user != null)
             {
                 if (user.password == passwords)
