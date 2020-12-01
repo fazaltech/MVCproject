@@ -18,7 +18,7 @@ namespace MVCproject.Controllers
         
         // GET: Registration
 
-        [Authorize(Roles = "admin")]
+       
         public ActionResult Index(string name, string roles)
         {
 
