@@ -149,27 +149,36 @@ namespace MVCproject.Controllers
             user.email_id = Email;
             user.password = Password;
 
-            if (IsValid(user.email_id, user.password))
-            {
-                //var mail = db.tblusers
-                //  .Where(x => x.user_name == user.user_name)
-                //  .Where(x => x.password == user.password)
-                //  .Select(x => x.email_id).Max();
-               // string m = mail;
+            var flag = db.tblusers
+              .Where(x => x.email_id == user.email_id)
+              .Where(x => x.password == user.password)
+              .Select(x => x.flag).Max();
+            string flnum = flag;
+
+
+           
+                if (IsValid(user.email_id, user.password) && flnum=="1")
+                {
+                    //var mail = db.tblusers
+                    //  .Where(x => x.user_name == user.user_name)
+                    //  .Where(x => x.password == user.password)
+                    //  .Select(x => x.email_id).Max();
+                    // string m = mail;
 
 
 
-                //Session["field"] = Fieldview.ToString();
+                    //Session["field"] = Fieldview.ToString();
 
 
 
-                FormsAuthentication.SetAuthCookie(user.email_id, false);
+                    FormsAuthentication.SetAuthCookie(user.email_id, false);
 
 
-                return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home");
 
 
-            }
+                }
+            
             else
             {
 
@@ -201,10 +210,12 @@ namespace MVCproject.Controllers
             bool IsValid = false;
 
 
+            
             var user = db.tblusers.FirstOrDefault(u => u.email_id == email);
+            
             if (user != null)
             {
-                if (user.password == passwords)
+                if (user.password == passwords )
                 {
                     IsValid = true;
                 }
