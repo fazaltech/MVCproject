@@ -2115,6 +2115,7 @@
     <Content Include="Views\Shared\Partial_View\_navbar.cshtml" />
     <Content Include="Views\Shared\Partial_View\_sidebar.cshtml" />
     <Content Include="Views\Registration\Login.cshtml" />
+    <Content Include="Views\Registration\Registration.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
