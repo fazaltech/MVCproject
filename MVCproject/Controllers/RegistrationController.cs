@@ -105,15 +105,20 @@ namespace MVCproject.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Registration(tbluser use)
+        public ActionResult Registration(tbluser use,string first_name,string last_name,string email_address,string user_password,string repeat_password)
         {
 
 
-            var random = new System.Random();
-            int num = random.Next(100);
+            
 
             Thread.Sleep(200);
             var precheck = db.tblusers.Where(x => x.user_name == use.user_name).FirstOrDefault();
+            var rdnum = new System.Random();
+            int random = rdnum.Next(100);
+
+            string dd= DateTime.Now.ToString("yyMMddhhmmss");
+            decimal num = decimal.Parse(dd+random);
+
 
             if (precheck != null)
             {
@@ -123,14 +128,24 @@ namespace MVCproject.Controllers
             }
             else if (ModelState.IsValid)
             {
+                use.user_name = first_name;
+                use.email_id = email_address;
+                use.fullname = first_name + last_name;
                 use.user_id =num;
+                use.password = user_password;
+
+                use.role = "assign role";
+                use.designation = "assign by admin";
+                use.account_type = 0;
+                use.flag = "0";
+
                 use.role = "assign role";
                 db.tblusers.Add(use);
                 db.SaveChanges();
 
 
             }
-            ViewBag.Message = "Contact admin to assign role";
+            ViewBag.Message = "Contact admin to assign role and designation";
             return View();
 
 
@@ -212,6 +227,7 @@ namespace MVCproject.Controllers
 
             
             var user = db.tblusers.FirstOrDefault(u => u.email_id == email);
+            string fl = user.flag;
             
             if (user != null)
             {
