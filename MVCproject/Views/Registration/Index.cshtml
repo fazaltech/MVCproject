@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<MVCproject.Models.tbluser>
 
 
 <!DOCTYPE html>
@@ -9,51 +9,74 @@
     <title>Index</title>
 </head>
 <body>
-     <!-- Begin Page Content -->
-                <div class="container-fluid">
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+        <p class="mb-4">
+            DataTables is a third party plugin that is used to generate the demo table below.
+            For more information about DataTables, please visit the <a target="_blank"
+                                                                       href="https://datatables.net">official DataTables documentation</a>.
+        </p>
+        @using (Html.BeginForm("Index", "Registration", FormMethod.Get))
+        {
+            <p>
+                Role: @Html.DropDownList("roles", "All")
+                Name: @Html.TextBox("name")
+                <br />
+                <input type="submit" value="Filter" />
+            </p>
+        }
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            </div>
 
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody></tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
 
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>  @Html.DisplayNameFor(model => model.user_name)</th>
+                                <th> @Html.DisplayNameFor(model => model.fullname)</th>
+                                <th> @Html.DisplayNameFor(model => model.designation)</th>
+                                <th> @Html.DisplayNameFor(model => model.role)</th>
+                                <th> @Html.DisplayNameFor(model => model.email_id)</th>
+
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>  @Html.DisplayNameFor(model => model.user_name)</th>
+                                <th> @Html.DisplayNameFor(model => model.fullname)</th>
+                                <th> @Html.DisplayNameFor(model => model.designation)</th>
+                                <th> @Html.DisplayNameFor(model => model.role)</th>
+                                <th> @Html.DisplayNameFor(model => model.email_id)</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(model => item.user_name)</td>
+                                    <td> @Html.DisplayFor(model => item.fullname)</td>
+                                    <td>@Html.DisplayFor(model => item.designation)</td>
+                                    <td>@Html.DisplayFor(model => item.role)</td>
+                                    <td>@Html.DisplayFor(model => item.email_id)</td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
-                <!-- /.container-fluid -->
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
 
 </body>
 </html>
