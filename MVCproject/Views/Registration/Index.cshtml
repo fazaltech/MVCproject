@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<MVCproject.Models.tbluser>
+@{ 
 
+
+}
 
 <!DOCTYPE html>
 
@@ -39,8 +42,10 @@
                     <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
                         <div class="row"><div class="col-sm-12 col-md-6">
                                              <div class="dataTables_length" id="dataTable_length">
-
-                                                 <label>Search:<input type="search" id="Role" name="Role" class="form-control form-control-sm" placeholder="" aria-controls="dataTable"></label><label style="padding-left: 12px;">Search:<input type="search" id="user_name" name="user_name" class="form-control form-control-sm" placeholder="" aria-controls="dataTable"></label><label style="padding-left: 12px;"><input type="submit" class="btn btn-primary btn-user btn-block" value="Search"></label></div></div></div>
+                                                 @using (Html.BeginForm("Index", "Registration", FormMethod.Get))
+                                                 {
+                                                 <label>Roles:@Html.DropDownList("roles", (SelectList)ViewBag.Role, "Select Role", new { @class = " form-control form-control-sm"})</label><label style="padding-left: 12px;">Name:<input type="search" id="user_name" name="user_name" class="form-control form-control-sm" placeholder="" aria-controls="dataTable"></label><label style="padding-left: 12px;"><input type="submit" class="btn btn-primary btn-user btn-block" value="Search"></label>
+                                                 }</div></div></div>
                         
                         <div class="row">
                             <div class="col-sm-12">
@@ -90,3 +95,6 @@
 
 </body>
 </html>
+
+
+@*<input type="search" id="Role" name="Role" class="form-control form-control-sm" placeholder="" aria-controls="dataTable">*@

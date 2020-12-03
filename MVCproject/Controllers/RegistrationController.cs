@@ -19,7 +19,7 @@ namespace MVCproject.Controllers
         // GET: Registration
 
        
-        public ActionResult Index(string name, string roles)
+        public ActionResult Index(string user_name, string roles)
         {
 
             var Lst = new List<string>();
@@ -32,14 +32,15 @@ namespace MVCproject.Controllers
 
             var urlt = from m in db.tblusers
                        select m;
-            if (!String.IsNullOrEmpty(name))
+            if (!String.IsNullOrEmpty(user_name))
             {
-                urlt = urlt.Where(s => s.user_name.Contains(name));
+                urlt = urlt.Where(s => s.user_name.Contains(user_name));
             }
             if (!string.IsNullOrEmpty(roles))
             {
                 urlt = urlt.Where(x => x.role == roles);
             }
+            
 
 
 
