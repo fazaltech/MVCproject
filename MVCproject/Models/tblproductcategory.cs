@@ -15,7 +15,8 @@ namespace MVCproject.Models
     public partial class tblproductcategory
     {
         public int id { get; set; }
-        public Nullable<decimal> category_id { get; set; }
+        public string category_id { get; set; }
         public string category_name { get; set; }
+        public string flag { get; set; }
     }
 }
