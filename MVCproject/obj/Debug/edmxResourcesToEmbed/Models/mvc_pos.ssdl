@@ -1,146 +1,146 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="mvc_posModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="tblcustomer">
+<Schema Namespace="mvc_posModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="mvc_posModelStoreContainer">
+    <EntitySet Name="tblcustomers" EntityType="mvc_posModel.Store.tblcustomers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblinvoices" EntityType="mvc_posModel.Store.tblinvoices" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblproducts" EntityType="mvc_posModel.Store.tblproducts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblproductcategories" EntityType="mvc_posModel.Store.tblproductcategories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblproductunits" EntityType="mvc_posModel.Store.tblproductunits" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblpurchaseorders" EntityType="mvc_posModel.Store.tblpurchaseorders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblreceiveproducts" EntityType="mvc_posModel.Store.tblreceiveproducts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblsales" EntityType="mvc_posModel.Store.tblsales" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblsuppliers" EntityType="mvc_posModel.Store.tblsuppliers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblusers" EntityType="mvc_posModel.Store.tblusers" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="tblcustomers">
     <Key>
       <PropertyRef Name="int" />
     </Key>
     <Property Name="int" Type="int" Nullable="false" />
-    <Property Name="customer_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="customer_code" Type="varchar" MaxLength="50" />
-    <Property Name="customer_name" Type="varchar" MaxLength="50" />
-    <Property Name="contact" Type="varchar" MaxLength="50" />
-    <Property Name="address" Type="varchar" MaxLength="50" />
-    <Property Name="flag" Type="int" />
+    <Property Name="customer_id" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="customer_code" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="customer_name" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="contact" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="address" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="flag" Type="int" Nullable="true" />
   </EntityType>
-  <EntityType Name="tblinvoice">
+  <EntityType Name="tblinvoices">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" Nullable="false" />
-    <Property Name="invoice_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="customer_id" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="payment_type" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="total_amount" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="amount_tendered" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="bank_account_name" Type="varchar" MaxLength="50" />
-    <Property Name="bank_account_number" Type="varchar" MaxLength="50" />
-    <Property Name="date_recorded" Type="varchar" MaxLength="50" />
-    <Property Name="user_id" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="flag" Type="int" />
+    <Property Name="invoice_id" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="customer_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="payment_type" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="total_amount" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="amount_tendered" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="bank_account_name" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="bank_account_number" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="date_recorded" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="user_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="flag" Type="int" Nullable="true" />
   </EntityType>
-  <EntityType Name="tblproduct">
+  <EntityType Name="tblproducts">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="product_id" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="product_code" Type="varchar" MaxLength="50" />
-    <Property Name="product_name" Type="varchar" MaxLength="50" />
-    <Property Name="unit_id" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="category_id" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="unit_in_stock" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="unit_price" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="discount_percentage" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="recorder_level" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="user_id" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="product_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="product_code" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="product_name" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="unit_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="category_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="unit_in_stock" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="unit_price" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="discount_percentage" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="recorder_level" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="user_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
   </EntityType>
-  <EntityType Name="tblproductcategory">
+  <EntityType Name="tblproductcategories">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="category_id" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="category_name" Type="varchar" MaxLength="50" />
+    <Property Name="category_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="category_name" Type="varchar" Nullable="true" MaxLength="50" />
   </EntityType>
-  <EntityType Name="tblproductunit">
+  <EntityType Name="tblproductunits">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="unit_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="unit_name" Type="varchar" MaxLength="50" />
+    <Property Name="unit_id" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="unit_name" Type="varchar" Nullable="true" MaxLength="50" />
   </EntityType>
-  <EntityType Name="tblpurchaseorder">
+  <EntityType Name="tblpurchaseorders">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="purchase_order_id" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="product_id" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="quantity" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="unit_price" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="sub_total" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="supplier_id" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="order_date" Type="varchar" MaxLength="50" />
-    <Property Name="user_id" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="order_status" Type="int" />
-    <Property Name="flag" Type="int" />
+    <Property Name="purchase_order_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="product_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="quantity" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="unit_price" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="sub_total" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="supplier_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="order_date" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="user_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="order_status" Type="int" Nullable="true" />
+    <Property Name="flag" Type="int" Nullable="true" />
   </EntityType>
-  <EntityType Name="tblreceiveproduct">
+  <EntityType Name="tblreceiveproducts">
     <Key>
       <PropertyRef Name="int" />
     </Key>
     <Property Name="int" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="receive_product_id" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="product_id" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="quantity" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="unit_price" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="sub_total" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="supplier_id" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="received_date" Type="varchar" MaxLength="50" />
-    <Property Name="user_id" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="flag" Type="int" />
+    <Property Name="receive_product_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="product_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="quantity" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="unit_price" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="sub_total" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="supplier_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="received_date" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="user_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="flag" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="tblsales">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="sale_id" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="invoice_id" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="product_id" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="quantity" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="unit_price" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="sub_total" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="sale_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="invoice_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="product_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="quantity" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="unit_price" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="sub_total" Type="decimal" Nullable="true" Precision="18" Scale="0" />
   </EntityType>
-  <EntityType Name="tblsupplier">
+  <EntityType Name="tblsuppliers">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="supplier_int" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="supplier_code" Type="varchar" MaxLength="50" />
-    <Property Name="supplier_name" Type="varchar" MaxLength="50" />
-    <Property Name="supplier_contact" Type="varchar" MaxLength="50" />
-    <Property Name="supplier_address" Type="varchar" MaxLength="50" />
-    <Property Name="supplier_email" Type="varbinary" MaxLength="50" />
-    <Property Name="flag" Type="int" />
+    <Property Name="supplier_int" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="supplier_code" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="supplier_name" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="supplier_contact" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="supplier_address" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="supplier_email" Type="varbinary" Nullable="true" MaxLength="50" />
+    <Property Name="flag" Type="int" Nullable="true" />
   </EntityType>
-  <EntityType Name="tbluser">
+  <EntityType Name="tblusers">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="user_id" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="user_name" Type="varchar" MaxLength="50" />
-    <Property Name="password" Type="varchar" MaxLength="50" />
-    <Property Name="fullname" Type="varchar" MaxLength="50" />
-    <Property Name="email_id" Type="varchar" MaxLength="50" />
-    <Property Name="designation" Type="varchar" MaxLength="50" />
-    <Property Name="role" Type="varchar" MaxLength="50" />
-    <Property Name="account_type" Type="int" />
-    <Property Name="flag" Type="varchar" MaxLength="50" />
+    <Property Name="user_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="user_name" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="password" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="fullname" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="designation" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="role" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="account_type" Type="int" Nullable="true" />
+    <Property Name="flag" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="email_id" Type="varchar" Nullable="true" MaxLength="50" />
   </EntityType>
-  <EntityContainer Name="mvc_posModelStoreContainer">
-    <EntitySet Name="tblcustomer" EntityType="Self.tblcustomer" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tblinvoice" EntityType="Self.tblinvoice" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tblproduct" EntityType="Self.tblproduct" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tblproductcategory" EntityType="Self.tblproductcategory" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tblproductunit" EntityType="Self.tblproductunit" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tblpurchaseorder" EntityType="Self.tblpurchaseorder" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tblreceiveproduct" EntityType="Self.tblreceiveproduct" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tblsales" EntityType="Self.tblsales" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tblsupplier" EntityType="Self.tblsupplier" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tbluser" EntityType="Self.tbluser" Schema="dbo" store:Type="Tables" />
-  </EntityContainer>
 </Schema>

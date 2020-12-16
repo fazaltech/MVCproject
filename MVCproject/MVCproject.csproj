@@ -1895,6 +1895,7 @@
       <DependentUpon>mvc_pos.edmx</DependentUpon>
       <LastGenOutput>mvc_pos.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\mvc_pos.edmx.sql" />
     <Content Include="Models\mvc_pos.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>mvc_pos.edmx</DependentUpon>

@@ -4,151 +4,151 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="mvc_posModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="tblcustomer">
-          <Key>
-            <PropertyRef Name="int" />
-          </Key>
-          <Property Name="int" Type="int" Nullable="false" />
-          <Property Name="customer_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="customer_code" Type="varchar" MaxLength="50" />
-          <Property Name="customer_name" Type="varchar" MaxLength="50" />
-          <Property Name="contact" Type="varchar" MaxLength="50" />
-          <Property Name="address" Type="varchar" MaxLength="50" />
-          <Property Name="flag" Type="int" />
-        </EntityType>
-        <EntityType Name="tblinvoice">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="invoice_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="customer_id" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="payment_type" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="total_amount" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="amount_tendered" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="bank_account_name" Type="varchar" MaxLength="50" />
-          <Property Name="bank_account_number" Type="varchar" MaxLength="50" />
-          <Property Name="date_recorded" Type="varchar" MaxLength="50" />
-          <Property Name="user_id" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="flag" Type="int" />
-        </EntityType>
-        <EntityType Name="tblproduct">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="product_id" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="product_code" Type="varchar" MaxLength="50" />
-          <Property Name="product_name" Type="varchar" MaxLength="50" />
-          <Property Name="unit_id" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="category_id" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="unit_in_stock" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="unit_price" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="discount_percentage" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="recorder_level" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="user_id" Type="numeric" Precision="18" Scale="0" />
-        </EntityType>
-        <EntityType Name="tblproductcategory">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="category_id" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="category_name" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="tblproductunit">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="unit_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="unit_name" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="tblpurchaseorder">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="purchase_order_id" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="product_id" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="quantity" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="unit_price" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="sub_total" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="supplier_id" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="order_date" Type="varchar" MaxLength="50" />
-          <Property Name="user_id" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="order_status" Type="int" />
-          <Property Name="flag" Type="int" />
-        </EntityType>
-        <EntityType Name="tblreceiveproduct">
-          <Key>
-            <PropertyRef Name="int" />
-          </Key>
-          <Property Name="int" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="receive_product_id" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="product_id" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="quantity" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="unit_price" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="sub_total" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="supplier_id" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="received_date" Type="varchar" MaxLength="50" />
-          <Property Name="user_id" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="flag" Type="int" />
-        </EntityType>
-        <EntityType Name="tblsales">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="sale_id" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="invoice_id" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="product_id" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="quantity" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="unit_price" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="sub_total" Type="numeric" Precision="18" Scale="0" />
-        </EntityType>
-        <EntityType Name="tblsupplier">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="supplier_int" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="supplier_code" Type="varchar" MaxLength="50" />
-          <Property Name="supplier_name" Type="varchar" MaxLength="50" />
-          <Property Name="supplier_contact" Type="varchar" MaxLength="50" />
-          <Property Name="supplier_address" Type="varchar" MaxLength="50" />
-          <Property Name="supplier_email" Type="varbinary" MaxLength="50" />
-          <Property Name="flag" Type="int" />
-        </EntityType>
-        <EntityType Name="tbluser">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="user_id" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="user_name" Type="varchar" MaxLength="50" />
-          <Property Name="password" Type="varchar" MaxLength="50" />
-          <Property Name="fullname" Type="varchar" MaxLength="50" />
-          <Property Name="email_id" Type="varchar" MaxLength="50" />
-          <Property Name="designation" Type="varchar" MaxLength="50" />
-          <Property Name="role" Type="varchar" MaxLength="50" />
-          <Property Name="account_type" Type="int" />
-          <Property Name="flag" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityContainer Name="mvc_posModelStoreContainer">
-          <EntitySet Name="tblcustomer" EntityType="Self.tblcustomer" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblinvoice" EntityType="Self.tblinvoice" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblproduct" EntityType="Self.tblproduct" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblproductcategory" EntityType="Self.tblproductcategory" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblproductunit" EntityType="Self.tblproductunit" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblpurchaseorder" EntityType="Self.tblpurchaseorder" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblreceiveproduct" EntityType="Self.tblreceiveproduct" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblsales" EntityType="Self.tblsales" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblsupplier" EntityType="Self.tblsupplier" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbluser" EntityType="Self.tbluser" Schema="dbo" store:Type="Tables" />
-        </EntityContainer>
-      </Schema></edmx:StorageModels>
+    <Schema Namespace="mvc_posModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="mvc_posModelStoreContainer">
+    <EntitySet Name="tblcustomers" EntityType="mvc_posModel.Store.tblcustomers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblinvoices" EntityType="mvc_posModel.Store.tblinvoices" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblproducts" EntityType="mvc_posModel.Store.tblproducts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblproductcategories" EntityType="mvc_posModel.Store.tblproductcategories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblproductunits" EntityType="mvc_posModel.Store.tblproductunits" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblpurchaseorders" EntityType="mvc_posModel.Store.tblpurchaseorders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblreceiveproducts" EntityType="mvc_posModel.Store.tblreceiveproducts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblsales" EntityType="mvc_posModel.Store.tblsales" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblsuppliers" EntityType="mvc_posModel.Store.tblsuppliers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tblusers" EntityType="mvc_posModel.Store.tblusers" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="tblcustomers">
+    <Key>
+      <PropertyRef Name="int" />
+    </Key>
+    <Property Name="int" Type="int" Nullable="false" />
+    <Property Name="customer_id" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="customer_code" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="customer_name" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="contact" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="address" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="flag" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="tblinvoices">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="invoice_id" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="customer_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="payment_type" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="total_amount" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="amount_tendered" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="bank_account_name" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="bank_account_number" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="date_recorded" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="user_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="flag" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="tblproducts">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="product_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="product_code" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="product_name" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="unit_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="category_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="unit_in_stock" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="unit_price" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="discount_percentage" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="recorder_level" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="user_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="tblproductcategories">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="category_name" Type="varchar" Nullable="true" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblproductunits">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="unit_id" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="unit_name" Type="varchar" Nullable="true" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblpurchaseorders">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="purchase_order_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="product_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="quantity" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="unit_price" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="sub_total" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="supplier_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="order_date" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="user_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="order_status" Type="int" Nullable="true" />
+    <Property Name="flag" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="tblreceiveproducts">
+    <Key>
+      <PropertyRef Name="int" />
+    </Key>
+    <Property Name="int" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="receive_product_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="product_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="quantity" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="unit_price" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="sub_total" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="supplier_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="received_date" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="user_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="flag" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="tblsales">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sale_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="invoice_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="product_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="quantity" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="unit_price" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="sub_total" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="tblsuppliers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="supplier_int" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="supplier_code" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="supplier_name" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="supplier_contact" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="supplier_address" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="supplier_email" Type="varbinary" Nullable="true" MaxLength="50" />
+    <Property Name="flag" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="tblusers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="user_name" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="password" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="fullname" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="designation" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="role" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="account_type" Type="int" Nullable="true" />
+    <Property Name="flag" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="email_id" Type="varchar" Nullable="true" MaxLength="50" />
+  </EntityType>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="mvc_posModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -299,152 +299,151 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="mvc_posModelStoreContainer" CdmEntityContainer="mvc_pos_conn">
-          <EntitySetMapping Name="tblcustomers">
-            <EntityTypeMapping TypeName="mvc_posModel.tblcustomer">
-              <MappingFragment StoreEntitySet="tblcustomer">
-                <ScalarProperty Name="int" ColumnName="int" />
-                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
-                <ScalarProperty Name="customer_code" ColumnName="customer_code" />
-                <ScalarProperty Name="customer_name" ColumnName="customer_name" />
-                <ScalarProperty Name="contact" ColumnName="contact" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="flag" ColumnName="flag" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblinvoices">
-            <EntityTypeMapping TypeName="mvc_posModel.tblinvoice">
-              <MappingFragment StoreEntitySet="tblinvoice">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="invoice_id" ColumnName="invoice_id" />
-                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
-                <ScalarProperty Name="payment_type" ColumnName="payment_type" />
-                <ScalarProperty Name="total_amount" ColumnName="total_amount" />
-                <ScalarProperty Name="amount_tendered" ColumnName="amount_tendered" />
-                <ScalarProperty Name="bank_account_name" ColumnName="bank_account_name" />
-                <ScalarProperty Name="bank_account_number" ColumnName="bank_account_number" />
-                <ScalarProperty Name="date_recorded" ColumnName="date_recorded" />
-                <ScalarProperty Name="user_id" ColumnName="user_id" />
-                <ScalarProperty Name="flag" ColumnName="flag" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblproducts">
-            <EntityTypeMapping TypeName="mvc_posModel.tblproduct">
-              <MappingFragment StoreEntitySet="tblproduct">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="product_id" ColumnName="product_id" />
-                <ScalarProperty Name="product_code" ColumnName="product_code" />
-                <ScalarProperty Name="product_name" ColumnName="product_name" />
-                <ScalarProperty Name="unit_id" ColumnName="unit_id" />
-                <ScalarProperty Name="category_id" ColumnName="category_id" />
-                <ScalarProperty Name="unit_in_stock" ColumnName="unit_in_stock" />
-                <ScalarProperty Name="unit_price" ColumnName="unit_price" />
-                <ScalarProperty Name="discount_percentage" ColumnName="discount_percentage" />
-                <ScalarProperty Name="recorder_level" ColumnName="recorder_level" />
-                <ScalarProperty Name="user_id" ColumnName="user_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblproductcategories">
-            <EntityTypeMapping TypeName="mvc_posModel.tblproductcategory">
-              <MappingFragment StoreEntitySet="tblproductcategory">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="category_id" ColumnName="category_id" />
-                <ScalarProperty Name="category_name" ColumnName="category_name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblproductunits">
-            <EntityTypeMapping TypeName="mvc_posModel.tblproductunit">
-              <MappingFragment StoreEntitySet="tblproductunit">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="unit_id" ColumnName="unit_id" />
-                <ScalarProperty Name="unit_name" ColumnName="unit_name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblpurchaseorders">
-            <EntityTypeMapping TypeName="mvc_posModel.tblpurchaseorder">
-              <MappingFragment StoreEntitySet="tblpurchaseorder">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="purchase_order_id" ColumnName="purchase_order_id" />
-                <ScalarProperty Name="product_id" ColumnName="product_id" />
-                <ScalarProperty Name="quantity" ColumnName="quantity" />
-                <ScalarProperty Name="unit_price" ColumnName="unit_price" />
-                <ScalarProperty Name="sub_total" ColumnName="sub_total" />
-                <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
-                <ScalarProperty Name="order_date" ColumnName="order_date" />
-                <ScalarProperty Name="user_id" ColumnName="user_id" />
-                <ScalarProperty Name="order_status" ColumnName="order_status" />
-                <ScalarProperty Name="flag" ColumnName="flag" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblreceiveproducts">
-            <EntityTypeMapping TypeName="mvc_posModel.tblreceiveproduct">
-              <MappingFragment StoreEntitySet="tblreceiveproduct">
-                <ScalarProperty Name="int" ColumnName="int" />
-                <ScalarProperty Name="receive_product_id" ColumnName="receive_product_id" />
-                <ScalarProperty Name="product_id" ColumnName="product_id" />
-                <ScalarProperty Name="quantity" ColumnName="quantity" />
-                <ScalarProperty Name="unit_price" ColumnName="unit_price" />
-                <ScalarProperty Name="sub_total" ColumnName="sub_total" />
-                <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
-                <ScalarProperty Name="received_date" ColumnName="received_date" />
-                <ScalarProperty Name="user_id" ColumnName="user_id" />
-                <ScalarProperty Name="flag" ColumnName="flag" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblsales">
-            <EntityTypeMapping TypeName="mvc_posModel.tblsale">
-              <MappingFragment StoreEntitySet="tblsales">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="sale_id" ColumnName="sale_id" />
-                <ScalarProperty Name="invoice_id" ColumnName="invoice_id" />
-                <ScalarProperty Name="product_id" ColumnName="product_id" />
-                <ScalarProperty Name="quantity" ColumnName="quantity" />
-                <ScalarProperty Name="unit_price" ColumnName="unit_price" />
-                <ScalarProperty Name="sub_total" ColumnName="sub_total" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblsuppliers">
-            <EntityTypeMapping TypeName="mvc_posModel.tblsupplier">
-              <MappingFragment StoreEntitySet="tblsupplier">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="supplier_int" ColumnName="supplier_int" />
-                <ScalarProperty Name="supplier_code" ColumnName="supplier_code" />
-                <ScalarProperty Name="supplier_name" ColumnName="supplier_name" />
-                <ScalarProperty Name="supplier_contact" ColumnName="supplier_contact" />
-                <ScalarProperty Name="supplier_address" ColumnName="supplier_address" />
-                <ScalarProperty Name="supplier_email" ColumnName="supplier_email" />
-                <ScalarProperty Name="flag" ColumnName="flag" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblusers">
-            <EntityTypeMapping TypeName="mvc_posModel.tbluser">
-              <MappingFragment StoreEntitySet="tbluser">
-                <ScalarProperty Name="email_id" ColumnName="email_id" />
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="user_id" ColumnName="user_id" />
-                <ScalarProperty Name="user_name" ColumnName="user_name" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="fullname" ColumnName="fullname" />
-                <ScalarProperty Name="designation" ColumnName="designation" />
-                <ScalarProperty Name="role" ColumnName="role" />
-                <ScalarProperty Name="account_type" ColumnName="account_type" />
-                <ScalarProperty Name="flag" ColumnName="flag" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="mvc_posModelStoreContainer" CdmEntityContainer="mvc_pos_conn">
+    <EntitySetMapping Name="tblcustomers">
+      <EntityTypeMapping TypeName="IsTypeOf(mvc_posModel.tblcustomer)">
+        <MappingFragment StoreEntitySet="tblcustomers">
+          <ScalarProperty Name="int" ColumnName="int" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="customer_code" ColumnName="customer_code" />
+          <ScalarProperty Name="customer_name" ColumnName="customer_name" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblinvoices">
+      <EntityTypeMapping TypeName="IsTypeOf(mvc_posModel.tblinvoice)">
+        <MappingFragment StoreEntitySet="tblinvoices">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="invoice_id" ColumnName="invoice_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="payment_type" ColumnName="payment_type" />
+          <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+          <ScalarProperty Name="amount_tendered" ColumnName="amount_tendered" />
+          <ScalarProperty Name="bank_account_name" ColumnName="bank_account_name" />
+          <ScalarProperty Name="bank_account_number" ColumnName="bank_account_number" />
+          <ScalarProperty Name="date_recorded" ColumnName="date_recorded" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblproducts">
+      <EntityTypeMapping TypeName="IsTypeOf(mvc_posModel.tblproduct)">
+        <MappingFragment StoreEntitySet="tblproducts">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="product_code" ColumnName="product_code" />
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="unit_in_stock" ColumnName="unit_in_stock" />
+          <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+          <ScalarProperty Name="discount_percentage" ColumnName="discount_percentage" />
+          <ScalarProperty Name="recorder_level" ColumnName="recorder_level" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblproductcategories">
+      <EntityTypeMapping TypeName="IsTypeOf(mvc_posModel.tblproductcategory)">
+        <MappingFragment StoreEntitySet="tblproductcategories">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblproductunits">
+      <EntityTypeMapping TypeName="IsTypeOf(mvc_posModel.tblproductunit)">
+        <MappingFragment StoreEntitySet="tblproductunits">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="unit_name" ColumnName="unit_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblpurchaseorders">
+      <EntityTypeMapping TypeName="IsTypeOf(mvc_posModel.tblpurchaseorder)">
+        <MappingFragment StoreEntitySet="tblpurchaseorders">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="purchase_order_id" ColumnName="purchase_order_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+          <ScalarProperty Name="sub_total" ColumnName="sub_total" />
+          <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+          <ScalarProperty Name="order_date" ColumnName="order_date" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="order_status" ColumnName="order_status" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblreceiveproducts">
+      <EntityTypeMapping TypeName="IsTypeOf(mvc_posModel.tblreceiveproduct)">
+        <MappingFragment StoreEntitySet="tblreceiveproducts">
+          <ScalarProperty Name="int" ColumnName="int" />
+          <ScalarProperty Name="receive_product_id" ColumnName="receive_product_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+          <ScalarProperty Name="sub_total" ColumnName="sub_total" />
+          <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+          <ScalarProperty Name="received_date" ColumnName="received_date" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblsales">
+      <EntityTypeMapping TypeName="IsTypeOf(mvc_posModel.tblsale)">
+        <MappingFragment StoreEntitySet="tblsales">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="sale_id" ColumnName="sale_id" />
+          <ScalarProperty Name="invoice_id" ColumnName="invoice_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+          <ScalarProperty Name="sub_total" ColumnName="sub_total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblsuppliers">
+      <EntityTypeMapping TypeName="IsTypeOf(mvc_posModel.tblsupplier)">
+        <MappingFragment StoreEntitySet="tblsuppliers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="supplier_int" ColumnName="supplier_int" />
+          <ScalarProperty Name="supplier_code" ColumnName="supplier_code" />
+          <ScalarProperty Name="supplier_name" ColumnName="supplier_name" />
+          <ScalarProperty Name="supplier_contact" ColumnName="supplier_contact" />
+          <ScalarProperty Name="supplier_address" ColumnName="supplier_address" />
+          <ScalarProperty Name="supplier_email" ColumnName="supplier_email" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblusers">
+      <EntityTypeMapping TypeName="IsTypeOf(mvc_posModel.tbluser)">
+        <MappingFragment StoreEntitySet="tblusers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="designation" ColumnName="designation" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="account_type" ColumnName="account_type" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
+          <ScalarProperty Name="email_id" ColumnName="email_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -458,7 +457,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

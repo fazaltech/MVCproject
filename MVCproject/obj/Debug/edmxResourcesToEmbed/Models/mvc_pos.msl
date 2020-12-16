@@ -2,8 +2,8 @@
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="mvc_posModelStoreContainer" CdmEntityContainer="mvc_pos_conn">
     <EntitySetMapping Name="tblcustomers">
-      <EntityTypeMapping TypeName="mvc_posModel.tblcustomer">
-        <MappingFragment StoreEntitySet="tblcustomer">
+      <EntityTypeMapping TypeName="IsTypeOf(mvc_posModel.tblcustomer)">
+        <MappingFragment StoreEntitySet="tblcustomers">
           <ScalarProperty Name="int" ColumnName="int" />
           <ScalarProperty Name="customer_id" ColumnName="customer_id" />
           <ScalarProperty Name="customer_code" ColumnName="customer_code" />
@@ -15,8 +15,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblinvoices">
-      <EntityTypeMapping TypeName="mvc_posModel.tblinvoice">
-        <MappingFragment StoreEntitySet="tblinvoice">
+      <EntityTypeMapping TypeName="IsTypeOf(mvc_posModel.tblinvoice)">
+        <MappingFragment StoreEntitySet="tblinvoices">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="invoice_id" ColumnName="invoice_id" />
           <ScalarProperty Name="customer_id" ColumnName="customer_id" />
@@ -32,8 +32,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblproducts">
-      <EntityTypeMapping TypeName="mvc_posModel.tblproduct">
-        <MappingFragment StoreEntitySet="tblproduct">
+      <EntityTypeMapping TypeName="IsTypeOf(mvc_posModel.tblproduct)">
+        <MappingFragment StoreEntitySet="tblproducts">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="product_id" ColumnName="product_id" />
           <ScalarProperty Name="product_code" ColumnName="product_code" />
@@ -49,8 +49,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblproductcategories">
-      <EntityTypeMapping TypeName="mvc_posModel.tblproductcategory">
-        <MappingFragment StoreEntitySet="tblproductcategory">
+      <EntityTypeMapping TypeName="IsTypeOf(mvc_posModel.tblproductcategory)">
+        <MappingFragment StoreEntitySet="tblproductcategories">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="category_id" ColumnName="category_id" />
           <ScalarProperty Name="category_name" ColumnName="category_name" />
@@ -58,8 +58,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblproductunits">
-      <EntityTypeMapping TypeName="mvc_posModel.tblproductunit">
-        <MappingFragment StoreEntitySet="tblproductunit">
+      <EntityTypeMapping TypeName="IsTypeOf(mvc_posModel.tblproductunit)">
+        <MappingFragment StoreEntitySet="tblproductunits">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="unit_id" ColumnName="unit_id" />
           <ScalarProperty Name="unit_name" ColumnName="unit_name" />
@@ -67,8 +67,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblpurchaseorders">
-      <EntityTypeMapping TypeName="mvc_posModel.tblpurchaseorder">
-        <MappingFragment StoreEntitySet="tblpurchaseorder">
+      <EntityTypeMapping TypeName="IsTypeOf(mvc_posModel.tblpurchaseorder)">
+        <MappingFragment StoreEntitySet="tblpurchaseorders">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="purchase_order_id" ColumnName="purchase_order_id" />
           <ScalarProperty Name="product_id" ColumnName="product_id" />
@@ -84,8 +84,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblreceiveproducts">
-      <EntityTypeMapping TypeName="mvc_posModel.tblreceiveproduct">
-        <MappingFragment StoreEntitySet="tblreceiveproduct">
+      <EntityTypeMapping TypeName="IsTypeOf(mvc_posModel.tblreceiveproduct)">
+        <MappingFragment StoreEntitySet="tblreceiveproducts">
           <ScalarProperty Name="int" ColumnName="int" />
           <ScalarProperty Name="receive_product_id" ColumnName="receive_product_id" />
           <ScalarProperty Name="product_id" ColumnName="product_id" />
@@ -100,7 +100,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblsales">
-      <EntityTypeMapping TypeName="mvc_posModel.tblsale">
+      <EntityTypeMapping TypeName="IsTypeOf(mvc_posModel.tblsale)">
         <MappingFragment StoreEntitySet="tblsales">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="sale_id" ColumnName="sale_id" />
@@ -113,8 +113,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblsuppliers">
-      <EntityTypeMapping TypeName="mvc_posModel.tblsupplier">
-        <MappingFragment StoreEntitySet="tblsupplier">
+      <EntityTypeMapping TypeName="IsTypeOf(mvc_posModel.tblsupplier)">
+        <MappingFragment StoreEntitySet="tblsuppliers">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="supplier_int" ColumnName="supplier_int" />
           <ScalarProperty Name="supplier_code" ColumnName="supplier_code" />
@@ -127,9 +127,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblusers">
-      <EntityTypeMapping TypeName="mvc_posModel.tbluser">
-        <MappingFragment StoreEntitySet="tbluser">
-          <ScalarProperty Name="email_id" ColumnName="email_id" />
+      <EntityTypeMapping TypeName="IsTypeOf(mvc_posModel.tbluser)">
+        <MappingFragment StoreEntitySet="tblusers">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="user_id" ColumnName="user_id" />
           <ScalarProperty Name="user_name" ColumnName="user_name" />
@@ -139,6 +138,7 @@
           <ScalarProperty Name="role" ColumnName="role" />
           <ScalarProperty Name="account_type" ColumnName="account_type" />
           <ScalarProperty Name="flag" ColumnName="flag" />
+          <ScalarProperty Name="email_id" ColumnName="email_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
