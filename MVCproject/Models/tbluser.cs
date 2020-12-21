@@ -29,5 +29,6 @@ namespace MVCproject.Models
         public Nullable<int> account_type { get; set; }
         public string flag { get; set; }
         public string email_id { get; set; }
+        
     }
 }

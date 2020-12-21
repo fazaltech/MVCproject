@@ -144,7 +144,6 @@ E:\MVCproject\MVCproject\bin\System.Web.WebPages.Razor.xml
 E:\MVCproject\MVCproject\bin\Newtonsoft.Json.xml
 E:\MVCproject\MVCproject\bin\Antlr3.Runtime.pdb
 E:\MVCproject\MVCproject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\MVCproject\MVCproject\obj\Debug\MVCproject.csprojAssemblyReference.cache
 E:\MVCproject\MVCproject\obj\Debug\MVCproject.csproj.CoreCompileInputs.cache
 E:\MVCproject\MVCproject\obj\Debug\MVCproject.csproj.CopyComplete
 E:\MVCproject\MVCproject\obj\Debug\MVCproject.dll
@@ -233,3 +232,5 @@ D:\MVCproject\MVCproject\obj\Debug\MVCproject.csproj.CoreCompileInputs.cache
 D:\MVCproject\MVCproject\obj\Debug\MVCproject.csproj.CopyComplete
 D:\MVCproject\MVCproject\obj\Debug\MVCproject.dll
 D:\MVCproject\MVCproject\obj\Debug\MVCproject.pdb
+E:\MVCproject\MVCproject\obj\Debug\MVCproject.Migrations.Initial.resources
+E:\MVCproject\MVCproject\obj\Debug\MVCproject.csproj.GenerateResource.cache
