@@ -6,14 +6,19 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace MVCproject.Models
 {
-    using System;
-    using System.Collections.Generic;
+
     
     public partial class tbluser
     {
+        [Key]
         public int id { get; set; }
         public Nullable<decimal> user_id { get; set; }
         public string user_name { get; set; }

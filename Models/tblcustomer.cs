@@ -6,20 +6,20 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MVCproject.Models
 {
-
+    using System;
+    using System.Collections.Generic;
     
-    public partial class tblproductunit
+    public partial class tblcustomer
     {
-        public long id { get; set; }
-        public decimal unit_id { get; set; }
-        public string unit_name { get; set; }
+        public int @int { get; set; }
+        public decimal customer_id { get; set; }
+        public string customer_code { get; set; }
+        public string customer_name { get; set; }
+        public string contact { get; set; }
+        public string address { get; set; }
+        public Nullable<int> flag { get; set; }
     }
 }

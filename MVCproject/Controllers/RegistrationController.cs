@@ -30,7 +30,7 @@ namespace MVCproject.Controllers
             Lst.AddRange(Qry.Distinct());
             ViewBag.roles = new SelectList(Lst);
 
-            var urlt = from m in db.tblusers
+            var urlt = from m in db.tblusers where m.flag=="1"
                        select m;
             if (!String.IsNullOrEmpty(user_name))
             {
@@ -165,15 +165,15 @@ namespace MVCproject.Controllers
             user.email_id = Email;
             user.password = Password;
 
-            var flag = db.tblusers
-              .Where(x => x.email_id == user.email_id)
-              .Where(x => x.password == user.password)
-              .Select(x => x.flag).Max();
-            string flnum = flag;
+            //var flag = db.tblusers
+            //  .Where(x => x.email_id == user.email_id)
+            //  .Where(x => x.password == user.password)
+            //  .Select(x => x.flag).Max();
+            //string flnum = flag;
 
 
            
-                if (IsValid(user.email_id, user.password) && flnum=="1")
+                if (IsValid(user.email_id, user.password))
                 {
                     //var mail = db.tblusers
                     //  .Where(x => x.user_name == user.user_name)

@@ -6,27 +6,20 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MVCproject.Models
 {
-
+    using System;
+    using System.Collections.Generic;
     
-    public partial class tblreceiveproduct
+    public partial class tblsale
     {
-        public long id { get; set; }
-        public Nullable<decimal> receive_product_id { get; set; }
+        public int id { get; set; }
+        public Nullable<decimal> sale_id { get; set; }
+        public Nullable<decimal> invoice_id { get; set; }
         public Nullable<decimal> product_id { get; set; }
         public Nullable<decimal> quantity { get; set; }
         public Nullable<decimal> unit_price { get; set; }
         public Nullable<decimal> sub_total { get; set; }
-        public Nullable<decimal> supplier_id { get; set; }
-        public string received_date { get; set; }
-        public Nullable<decimal> user_id { get; set; }
-        public Nullable<int> flag { get; set; }
     }
 }

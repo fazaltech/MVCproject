@@ -7,14 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
 namespace MVCproject.Models
 {
-    using System;
-    using System.Collections.Generic;
     
     public partial class tblsupplier
     {
-        public int id { get; set; }
+        public long id { get; set; }
         public Nullable<decimal> supplier_int { get; set; }
         public string supplier_code { get; set; }
         public string supplier_name { get; set; }

@@ -6,34 +6,35 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 
 namespace MVCproject.Models
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
+ 
     
     public partial class mvc_pos_conn : DbContext
     {
+
+        public DbSet<tblcustomer> tblcustomers { get; set; }
+        public DbSet<tblinvoice> tblinvoices { get; set; }
+        public DbSet<tblproduct> tblproducts { get; set; }
+        public DbSet<tblproductcategory> tblproductcategories { get; set; }
+        public DbSet<tblproductunit> tblproductunits { get; set; }
+        public DbSet<tblpurchaseorder> tblpurchaseorders { get; set; }
+        public DbSet<tblreceiveproduct> tblreceiveproducts { get; set; }
+        public DbSet<tblsale> tblsales { get; set; }
+        public DbSet<tblsupplier> tblsuppliers { get; set; }
+        public DbSet<tbluser> tblusers { get; set; }
+
         public mvc_pos_conn()
-            : base("name=mvc_pos_conn")
+                  : base("mvc_pos_conn")
         {
+            Database.CreateIfNotExists();
         }
-    
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
-        }
-    
-        public virtual DbSet<tblcustomer> tblcustomers { get; set; }
-        public virtual DbSet<tblinvoice> tblinvoices { get; set; }
-        public virtual DbSet<tblproduct> tblproducts { get; set; }
-        public virtual DbSet<tblproductcategory> tblproductcategories { get; set; }
-        public virtual DbSet<tblproductunit> tblproductunits { get; set; }
-        public virtual DbSet<tblpurchaseorder> tblpurchaseorders { get; set; }
-        public virtual DbSet<tblreceiveproduct> tblreceiveproducts { get; set; }
-        public virtual DbSet<tblsale> tblsales { get; set; }
-        public virtual DbSet<tblsupplier> tblsuppliers { get; set; }
-        public virtual DbSet<tbluser> tblusers { get; set; }
+
+       
+
     }
 }

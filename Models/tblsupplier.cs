@@ -6,24 +6,21 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MVCproject.Models
 {
-
+    using System;
+    using System.Collections.Generic;
     
-    public partial class tblcustomer
+    public partial class tblsupplier
     {
-        public long id { get; set; }
-        public decimal customer_id { get; set; }
-        public string customer_code { get; set; }
-        public string customer_name { get; set; }
-        public string contact { get; set; }
-        public string address { get; set; }
+        public int id { get; set; }
+        public Nullable<decimal> supplier_int { get; set; }
+        public string supplier_code { get; set; }
+        public string supplier_name { get; set; }
+        public string supplier_contact { get; set; }
+        public string supplier_address { get; set; }
+        public byte[] supplier_email { get; set; }
         public Nullable<int> flag { get; set; }
     }
 }

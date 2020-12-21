@@ -50,7 +50,8 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="category_id" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="category_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="category_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="flag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="tblproductunit">
     <Key>

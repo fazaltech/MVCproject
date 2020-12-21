@@ -6,15 +6,19 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace MVCproject.Models
 {
-    using System;
-    using System.Collections.Generic;
+  
     
     public partial class tblpurchaseorder
     {
-        public int id { get; set; }
+        public long id { get; set; }
         public Nullable<decimal> purchase_order_id { get; set; }
         public Nullable<decimal> product_id { get; set; }
         public Nullable<decimal> quantity { get; set; }

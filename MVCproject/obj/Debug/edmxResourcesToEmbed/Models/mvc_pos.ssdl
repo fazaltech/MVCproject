@@ -62,7 +62,8 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="category_id" Type="decimal" Nullable="true" Precision="18" Scale="0" />
-    <Property Name="category_name" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="category_name" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="flag" Type="varchar" Nullable="true" MaxLength="50" />
   </EntityType>
   <EntityType Name="tblproductunits">
     <Key>

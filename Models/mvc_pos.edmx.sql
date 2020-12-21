@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/16/2020 14:20:10
--- Generated from EDMX file: D:\MVCproject\MVCproject\Models\mvc_pos.edmx
+-- Date Created: 12/21/2020 13:02:03
+-- Generated from EDMX file: E:\MVCproject\MVCproject\Models\mvc_pos.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -22,35 +22,35 @@ GO
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[tblcustomer]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[tblcustomer];
+IF OBJECT_ID(N'[dbo].[tblcustomers]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[tblcustomers];
 GO
-IF OBJECT_ID(N'[dbo].[tblinvoice]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[tblinvoice];
+IF OBJECT_ID(N'[dbo].[tblinvoices]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[tblinvoices];
 GO
-IF OBJECT_ID(N'[dbo].[tblproduct]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[tblproduct];
+IF OBJECT_ID(N'[dbo].[tblproductcategories]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[tblproductcategories];
 GO
-IF OBJECT_ID(N'[dbo].[tblproductcategory]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[tblproductcategory];
+IF OBJECT_ID(N'[dbo].[tblproducts]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[tblproducts];
 GO
-IF OBJECT_ID(N'[dbo].[tblproductunit]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[tblproductunit];
+IF OBJECT_ID(N'[dbo].[tblproductunits]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[tblproductunits];
 GO
-IF OBJECT_ID(N'[dbo].[tblpurchaseorder]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[tblpurchaseorder];
+IF OBJECT_ID(N'[dbo].[tblpurchaseorders]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[tblpurchaseorders];
 GO
-IF OBJECT_ID(N'[dbo].[tblreceiveproduct]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[tblreceiveproduct];
+IF OBJECT_ID(N'[dbo].[tblreceiveproducts]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[tblreceiveproducts];
 GO
 IF OBJECT_ID(N'[dbo].[tblsales]', 'U') IS NOT NULL
     DROP TABLE [dbo].[tblsales];
 GO
-IF OBJECT_ID(N'[dbo].[tblsupplier]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[tblsupplier];
+IF OBJECT_ID(N'[dbo].[tblsuppliers]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[tblsuppliers];
 GO
-IF OBJECT_ID(N'[dbo].[tbluser]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[tbluser];
+IF OBJECT_ID(N'[dbo].[tblusers]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[tblusers];
 GO
 
 -- --------------------------------------------------
@@ -105,7 +105,8 @@ GO
 CREATE TABLE [dbo].[tblproductcategories] (
     [id] int IDENTITY(1,1) NOT NULL,
     [category_id] decimal(18,0)  NULL,
-    [category_name] varchar(50)  NULL
+    [category_name] varchar(255)  NULL,
+    [flag] varchar(50)  NULL
 );
 GO
 

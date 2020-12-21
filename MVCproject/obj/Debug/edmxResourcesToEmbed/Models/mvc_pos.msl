@@ -54,6 +54,7 @@
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="category_id" ColumnName="category_id" />
           <ScalarProperty Name="category_name" ColumnName="category_name" />
+          <ScalarProperty Name="flag" ColumnName="flag" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

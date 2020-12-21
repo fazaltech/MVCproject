@@ -134,52 +134,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\mvc_pos.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>mvc_pos.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\mvc_pos.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>mvc_pos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\mvc_pos.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>mvc_pos.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="Models\mvc_pos.Context.cs" />
     <Compile Include="Models\SiteRole.cs" />
-    <Compile Include="Models\tblcustomer.cs">
-      <DependentUpon>mvc_pos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblinvoice.cs">
-      <DependentUpon>mvc_pos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblproduct.cs">
-      <DependentUpon>mvc_pos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblproductcategory.cs">
-      <DependentUpon>mvc_pos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblproductunit.cs">
-      <DependentUpon>mvc_pos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblpurchaseorder.cs">
-      <DependentUpon>mvc_pos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblreceiveproduct.cs">
-      <DependentUpon>mvc_pos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblsale.cs">
-      <DependentUpon>mvc_pos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblsupplier.cs">
-      <DependentUpon>mvc_pos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tbluser.cs">
-      <DependentUpon>mvc_pos.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\tblcustomer.cs" />
+    <Compile Include="Models\tblinvoice.cs" />
+    <Compile Include="Models\tblproduct.cs" />
+    <Compile Include="Models\tblproductcategory.cs" />
+    <Compile Include="Models\tblproductunit.cs" />
+    <Compile Include="Models\tblpurchaseorder.cs" />
+    <Compile Include="Models\tblreceiveproduct.cs" />
+    <Compile Include="Models\tblsale.cs" />
+    <Compile Include="Models\tblsupplier.cs" />
+    <Compile Include="Models\tbluser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1891,17 +1857,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\mvc_pos.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>mvc_pos.edmx</DependentUpon>
-      <LastGenOutput>mvc_pos.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\mvc_pos.edmx.sql" />
-    <Content Include="Models\mvc_pos.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>mvc_pos.edmx</DependentUpon>
-      <LastGenOutput>mvc_pos.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="asset\.browserslistrc" />
@@ -2082,13 +2037,6 @@
     <Content Include="asset\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="asset\vendor\jquery\jquery.min.map" />
     <Content Include="asset\vendor\jquery\jquery.slim.min.map" />
-    <EntityDeploy Include="Models\mvc_pos.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>mvc_pos.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\mvc_pos.edmx.diagram">
-      <DependentUpon>mvc_pos.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

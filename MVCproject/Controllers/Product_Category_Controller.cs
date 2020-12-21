@@ -29,35 +29,35 @@ namespace MVCproject.Controllers
         public ActionResult Add_Category(tblproductcategory category,string procat)
         {
 
-            category.category_name = procat;
+            //category.category_name = procat;
 
 
-            Thread.Sleep(200);
-            var precheck = db.tblproductcategories.Where(x => x.category_name == category.category_name).FirstOrDefault();
-            var rdnum = new System.Random();
-            int random = rdnum.Next(100);
+            //Thread.Sleep(200);
+            //var precheck = db.tblproductcategories.Where(x => x.category_name == category.category_name).FirstOrDefault();
+            //var rdnum = new System.Random();
+            //int random = rdnum.Next(100);
 
-            string dd = DateTime.Now.ToString("yyMMddhhmmss");
-            string catid = "pcid"+dd + random;
+            //string dd = DateTime.Now.ToString("yyMMddhhmmss");
+            //string catid = "pcid"+dd + random;
 
 
-            if (precheck != null)
-            {
-                ViewBag.chk = "User Already Exist";
-                return View(use);
+            //if (precheck != null)
+            //{
+            //    ViewBag.chk = "User Already Exist";
+            //    return View(use);
 
-            }
-            else if (ModelState.IsValid)
-            {
+            //}
+            //else if (ModelState.IsValid)
+            //{
                
 
                
-                db.tblusers.Add(use);
-                db.SaveChanges();
+            //    db.tblusers.Add(use);
+            //    db.SaveChanges();
 
 
-            }
-            ViewBag.Message = "Contact admin to assign role and designation";
+            //}
+            //ViewBag.Message = "Contact admin to assign role and designation";
             return View();
 
 
