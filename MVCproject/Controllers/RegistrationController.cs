@@ -109,8 +109,8 @@ namespace MVCproject.Controllers
         public ActionResult Registration(tbluser use,string first_name,string last_name,string email_address,string user_password,string repeat_password)
         {
 
+            use.user_name = first_name;
 
-            
 
             Thread.Sleep(200);
             var precheck = db.tblusers.Where(x => x.user_name == use.user_name).FirstOrDefault();
@@ -138,7 +138,7 @@ namespace MVCproject.Controllers
                 use.role = "assign role";
                 use.designation = "assign by admin";
                 use.account_type = 0;
-                use.flag = "0";
+                use.flag = "1";
 
                 use.role = "assign role";
                 db.tblusers.Add(use);
@@ -241,21 +241,7 @@ namespace MVCproject.Controllers
             return IsValid;
         }
 
-        //public JsonResult Fields()
-        //{
-        //    try
-        //    {
-        //        return Json(db..Select(x => new
-        //        {
-        //            DepartmentID = x.Id,
-        //            DepartmentName = x.field_name
-        //        }).ToList(), JsonRequestBehavior.AllowGet);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return ViewBag.error = ex.Message;
-        //    }
-        //}
+      
         [Authorize(Roles = "admin")]
         public ActionResult AssignRole(int? id)
         {

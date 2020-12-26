@@ -26,43 +26,65 @@ namespace MVCproject.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Add_Category(tblproductcategory category,string procat)
+        public ActionResult Add_Category(tblproductcategory category, string procat)
         {
 
-            //category.category_name = procat;
+            category.category_name = procat;
 
 
-            //Thread.Sleep(200);
-            //var precheck = db.tblproductcategories.Where(x => x.category_name == category.category_name).FirstOrDefault();
-            //var rdnum = new System.Random();
-            //int random = rdnum.Next(100);
+            Thread.Sleep(200);
+            var precheck = db.tblproductcategories.Where(x => x.category_name == category.category_name).FirstOrDefault();
+            var rdnum = new System.Random();
+            int random = rdnum.Next(100);
 
-            //string dd = DateTime.Now.ToString("yyMMddhhmmss");
-            //string catid = "pcid"+dd + random;
-
-
-            //if (precheck != null)
-            //{
-            //    ViewBag.chk = "User Already Exist";
-            //    return View(use);
-
-            //}
-            //else if (ModelState.IsValid)
-            //{
-               
-
-               
-            //    db.tblusers.Add(use);
-            //    db.SaveChanges();
+            string dd = DateTime.Now.ToString("yyMMddhhmmss");
+            string catid = "pcid" + dd + random;
 
 
-            //}
-            //ViewBag.Message = "Contact admin to assign role and designation";
+            if (precheck != null)
+            {
+                ViewBag.chk = "User Already Exist";
+                return View(category);
+
+            }
+            else if (ModelState.IsValid)
+            {
+                category.category_id = catid;
+                category.category_name = procat;
+                category.flag = "1";
+
+                db.tblproductcategories.Add(category);
+                db.SaveChanges();
+
+
+            }
+      
             return View();
 
 
         }
 
-
+        public ActionResult Edit_Category()
+        {
+            return View();
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit_Category(tblproductcategory category)
+        {
+            return View();
+        }
+        public ActionResult Delete_Category()
+        {
+            return View();
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete_Category(tblproductcategory category)
+        {
+            return View();
+        }
     }
 }
