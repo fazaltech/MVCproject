@@ -15,7 +15,7 @@ namespace MVCproject.Controllers
         // GET: Product_Category_
 
 
-        public ActionResult Index(string name,string abc)
+        public ActionResult Index(string pt_name,string abc)
         {
             var Lst = new List<string>();
 
@@ -28,13 +28,13 @@ namespace MVCproject.Controllers
             var prctv = from m in db.tblproductcategories
                        where m.flag == "1"
                        select m;
-            if (!String.IsNullOrEmpty(name))
+            if (!String.IsNullOrEmpty(abc))
             {
-                prctv = prctv.Where(s => s.category_name.Contains(name));
+                prctv = prctv.Where(s => s.category_name.Contains(abc));
             }
-            if (!string.IsNullOrEmpty(abc))
+            if (!string.IsNullOrEmpty(pt_name))
             {
-                prctv = prctv.Where(x => x.category_name == abc);
+                prctv = prctv.Where(x => x.category_name == pt_name);
             }
 
 

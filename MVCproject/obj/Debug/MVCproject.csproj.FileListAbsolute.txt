@@ -233,5 +233,3 @@ D:\MVCproject\MVCproject\obj\Debug\MVCproject.csproj.CopyComplete
 D:\MVCproject\MVCproject\obj\Debug\MVCproject.dll
 D:\MVCproject\MVCproject\obj\Debug\MVCproject.pdb
 E:\MVCproject\MVCproject\obj\Debug\MVCproject.csprojAssemblyReference.cache
-E:\MVCproject\MVCproject\obj\Debug\MVCproject.Migrations.decimaltostring.resources
-E:\MVCproject\MVCproject\obj\Debug\MVCproject.csproj.GenerateResource.cache
