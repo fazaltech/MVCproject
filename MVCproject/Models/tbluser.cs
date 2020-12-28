@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,13 +22,23 @@ namespace MVCproject.Models
         [Key]
         public int id { get; set; }
         public Nullable<decimal> user_id { get; set; }
+
+        [DisplayName("User Name")]
         public string user_name { get; set; }
         public string password { get; set; }
+
+        [DisplayName("Full Name")]
         public string fullname { get; set; }
+
+        [DisplayName("Designation")]
         public string designation { get; set; }
+
+        [DisplayName("Role")]
         public string role { get; set; }
         public Nullable<int> account_type { get; set; }
         public string flag { get; set; }
+
+        [DisplayName("Email")]
         public string email_id { get; set; }
         
     }
