@@ -45,7 +45,8 @@
                                 <div class="dataTables_length" id="dataTable_length">
                                     @using (Html.BeginForm("Index", "Product_Category_", FormMethod.Get))
                                     {
-                                        <label>Roles:@Html.DropDownList("abc", (SelectList)ViewBag.Role, "Select Category", new { @class = " form-control form-control-sm" })</label><label style="padding-left: 12px;">Name:<input type="search" id="pt_name" name="pt_name" class="form-control form-control-sm" placeholder="" aria-controls="dataTable"></label><label style="padding-left: 12px;"><input type="submit" class="btn btn-primary btn-user btn-block" value="Search"></label>
+                                        <label>Roles:@Html.DropDownList("productscat", (SelectList)ViewBag.productscats, "Select Category", new { @class = " form-control form-control-sm" })</label>
+                                    <label style="padding-left: 12px;">Name:<input type="search" id="pt_name" name="pt_name" class="form-control form-control-sm" placeholder="" aria-controls="dataTable"></label><label style="padding-left: 12px;"><input type="submit" class="btn btn-primary btn-user btn-block" value="Search"></label>
                                     }
                                 </div>
                             </div>

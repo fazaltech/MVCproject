@@ -8,7 +8,16 @@ namespace MVCproject.Models
 {
     public class SiteRole : RoleProvider
     {
-        public override string ApplicationName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public override string ApplicationName {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
 
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)
         {
@@ -35,9 +44,14 @@ namespace MVCproject.Models
             throw new NotImplementedException();
         }
 
-        public override string[] GetRolesForUser(string username)
+        public override string[] GetRolesForUser(string emailid)
         {
-            throw new NotImplementedException();
+
+            mvc_pos_conn db = new mvc_pos_conn();
+            string data = db.tblusers.Where(a => a.email_id == emailid).SingleOrDefault().role;
+            string[] result = { data };
+            return result;
+           // throw new NotImplementedException();
         }
 
         public override string[] GetUsersInRole(string roleName)

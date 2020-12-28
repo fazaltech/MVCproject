@@ -20,10 +20,11 @@ namespace MVCproject.Controllers
             var Lst = new List<string>();
 
             var Qry = from d in db.tblproductcategories
+                      where d.flag == "1"
                       orderby d.category_name
                       select d.category_name;
             Lst.AddRange(Qry.Distinct());
-            ViewBag.roles = new SelectList(Lst);
+            ViewBag.productscat = new SelectList(Lst);
 
             var prctv = from m in db.tblproductcategories
                        where m.flag == "1"

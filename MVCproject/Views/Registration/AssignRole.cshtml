@@ -1,0 +1,64 @@
+﻿@model MVCproject.Models.tbluser
+
+@{
+    ViewBag.Title = "Assign Role";
+}
+
+<h2>AssignRole</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
+
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.user_name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.user_name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.email_id)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.email_id)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.role)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.role)
+            </dd>
+        </dl>
+
+        <div class="form-group">
+            <b>Change Roles</b>
+            <select name="Roles" id="Roles" class="form-control" style="width:20%;">
+                <option value="manager">Manager</option>
+                <option value="admin">Admin</option>
+
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
