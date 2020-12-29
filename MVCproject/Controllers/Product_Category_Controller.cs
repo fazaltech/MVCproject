@@ -15,33 +15,19 @@ namespace MVCproject.Controllers
         // GET: Product_Category_
 
 
-        public ActionResult Index(string pt_name,string abc)
+        public ActionResult Index()
         {
-            var Lst = new List<string>();
 
-            var Qry = from d in db.tblproductcategories
-                      where d.flag == "1"
-                      orderby d.category_name
-                      select d.category_name;
-            Lst.AddRange(Qry.Distinct());
-            ViewBag.productscat = new SelectList(Lst);
+            
 
-            var prctv = from m in db.tblproductcategories
-                       where m.flag == "1"
-                       select m;
-            if (!String.IsNullOrEmpty(abc))
-            {
-                prctv = prctv.Where(s => s.category_name.Contains(abc));
-            }
-            if (!string.IsNullOrEmpty(pt_name))
-            {
-                prctv = prctv.Where(x => x.category_name == pt_name);
-            }
+            var urlt =db.tblproductcategories.Where(x => x.flag == "1").FirstOrDefault();
 
 
 
 
-            return View(prctv);
+
+
+            return View(urlt);
         }
 
 
