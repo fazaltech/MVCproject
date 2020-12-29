@@ -2070,6 +2070,7 @@
     <Content Include="Views\Registration\Index.cshtml" />
     <Content Include="Views\Product_Category_\Index.cshtml" />
     <Content Include="Views\Registration\AssignRole.cshtml" />
+    <Content Include="Views\Shared\Partial_View\_admin_sidebar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
