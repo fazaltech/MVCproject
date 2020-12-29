@@ -58,6 +58,7 @@
                                             <th> @Html.DisplayNameFor(model => model.role)</th>
                                             <th> @Html.DisplayNameFor(model => model.email_id)</th>
                                             <th> Assign Role</th>
+                                            <th> Action</th>
 
                                         </tr>
                                     </thead>
@@ -69,6 +70,7 @@
                                             <th> @Html.DisplayNameFor(model => model.role)</th>
                                             <th> @Html.DisplayNameFor(model => model.email_id)</th>
                                             <th> Assign Role</th>
+                                            <th> Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -81,6 +83,8 @@
                                                 <td>@Html.DisplayFor(model => item.role)</td>
                                                 <td>@Html.DisplayFor(model => item.email_id)</td>
                                                 <td>@Html.ActionLink("Assign Role", "AssignRole", new { id = item.id })</td>
+                                                <td><a href="@Url.Action("AssignRole", "Registration", new { id = item.id })"><i class="fas fa-edit"></i></a> <a href="@Url.Action("AssignRole", "Registration", new { id = item.id })"><i class="fas fa-trash"></i></a></td>
+
 
                                             </tr>
                                             
