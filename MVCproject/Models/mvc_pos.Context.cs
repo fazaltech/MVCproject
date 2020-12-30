@@ -18,9 +18,10 @@ namespace MVCproject.Models
     {
 
         public DbSet<tblcustomer> tblcustomers { get; set; }
+        public DbSet<tblproductcategory> tblproductcategorys { get; set; }
         public DbSet<tblinvoice> tblinvoices { get; set; }
         public DbSet<tblproduct> tblproducts { get; set; }
-        public DbSet<tblproductcategory> tblproductcategories { get; set; }
+        
         public DbSet<tblproductunit> tblproductunits { get; set; }
         public DbSet<tblpurchaseorder> tblpurchaseorders { get; set; }
         public DbSet<tblreceiveproduct> tblreceiveproducts { get; set; }
