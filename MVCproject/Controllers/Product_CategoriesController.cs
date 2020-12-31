@@ -15,9 +15,33 @@ namespace MVCproject.Controllers
         private mvc_pos_conn db = new mvc_pos_conn();
 
         // GET: Product_Categories
-        public ActionResult Index()
+
+        public ActionResult Index(string productscat, string ptc_name)
         {
-            return View(db.tblproductcategorys.ToList());
+            var Lst = new List<string>();
+
+            var Qry = from d in db.tblproductcategorys
+                      orderby d.category_name
+                      select d.category_name;
+            Lst.AddRange(Qry.Distinct());
+            ViewBag.productscats = new SelectList(Lst);
+
+            var prctv = from m in db.tblproductcategorys
+                        where m.flag == "1"
+                        select m;
+            if (!String.IsNullOrEmpty(productscat))
+            {
+                prctv = prctv.Where(s => s.category_name.Contains(productscat));
+            }
+            if (!string.IsNullOrEmpty(ptc_name))
+            {
+                prctv = prctv.Where(x => x.category_name == ptc_name);
+            }
+
+
+
+
+            return View(prctv);
         }
 
         // GET: Product_Categories/Details/5

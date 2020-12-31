@@ -13,6 +13,8 @@ namespace MVCproject.Models
     {
         public int id { get; set; }
         public string category_id { get; set; }
+
+        [DisplayName("Category Name")]
         public string category_name { get; set; }
         public string flag { get; set; }
   
