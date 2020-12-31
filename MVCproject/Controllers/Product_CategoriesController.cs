@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using MVCproject.Models;
@@ -60,26 +61,51 @@ namespace MVCproject.Controllers
         }
 
         // GET: Product_Categories/Create
-        public ActionResult Create()
+        [HttpGet]
+        public ActionResult Add_Category()
         {
             return View();
         }
 
-        // POST: Product_Categories/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost, ActionName("Add_Category")]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,category_id,category_name,flag")] tblproductcategory tblproductcategory)
+        public ActionResult Add_Category(tblproductcategory category, string procat)
         {
-            if (ModelState.IsValid)
-            {
-                db.tblproductcategorys.Add(tblproductcategory);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
-            return View(tblproductcategory);
+            category.category_name = procat;
+
+
+            Thread.Sleep(200);
+            var precheck = db.tblproductcategorys.Where(x => x.category_name == category.category_name).FirstOrDefault();
+            var rdnum = new System.Random();
+            int random = rdnum.Next(100);
+
+            string dd = DateTime.Now.ToString("yyMMddhhmmss");
+            string catid = "pcid" + dd + random;
+
+
+            if (precheck != null)
+            {
+                ViewBag.chk = "Category Already Exist";
+                return View(category);
+
+            }
+            else if (ModelState.IsValid)
+            {
+                category.category_id = catid;
+                category.category_name = procat;
+                category.flag = "1";
+
+                db.tblproductcategorys.Add(category);
+                db.SaveChanges();
+
+
+            }
+            ViewBag.Message = "Product Category Added";
+            return View();
+
+
         }
 
         // GET: Product_Categories/Edit/5
@@ -90,6 +116,10 @@ namespace MVCproject.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             tblproductcategory tblproductcategory = db.tblproductcategorys.Find(id);
+            var name = db.tblproductcategorys
+                  .Where(x => x.id == id)
+                  .Select(x => x.category_name).Max();
+            ViewBag.preprocatname = name;
             if (tblproductcategory == null)
             {
                 return HttpNotFound();
@@ -100,15 +130,26 @@ namespace MVCproject.Controllers
         // POST: Product_Categories/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,category_id,category_name,flag")] tblproductcategory tblproductcategory)
+        public ActionResult Edit([Bind(Include = "id,category_id,category_name,flag")] tblproductcategory tblproductcategory,string procat, int? id)
         {
+            
             if (ModelState.IsValid)
             {
-                db.Entry(tblproductcategory).State = EntityState.Modified;
+                var prodtcat = db.tblproductcategorys.SingleOrDefault(b => b.id == id);
+                prodtcat.category_name = procat;
+               
                 db.SaveChanges();
                 return RedirectToAction("Index");
+            }
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            if (tblproductcategory == null)
+            {
+                return HttpNotFound();
             }
             return View(tblproductcategory);
         }

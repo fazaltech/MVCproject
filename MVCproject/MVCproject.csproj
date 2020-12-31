@@ -2069,11 +2069,11 @@
     <Content Include="Views\Registration\Index.cshtml" />
     <Content Include="Views\Registration\AssignRole.cshtml" />
     <Content Include="Views\Shared\Partial_View\_admin_sidebar.cshtml" />
-    <Content Include="Views\Product_Categories\Create.cshtml" />
     <Content Include="Views\Product_Categories\Delete.cshtml" />
     <Content Include="Views\Product_Categories\Details.cshtml" />
     <Content Include="Views\Product_Categories\Edit.cshtml" />
     <Content Include="Views\Product_Categories\Index.cshtml" />
+    <Content Include="Views\Product_Categories\Add_Category.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

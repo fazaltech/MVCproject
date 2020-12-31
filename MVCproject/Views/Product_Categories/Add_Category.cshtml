@@ -1,0 +1,54 @@
+﻿@model MVCproject.Models.tblproductcategory
+
+@{
+    ViewBag.Title = "Add Product Category";
+}
+<div class="card mb-4" style="width: 1002px;">
+    <div class="card-header">
+        Add Product Category
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                <div class="form-group">
+
+                    <input type="text" name="procat" id="procat" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
+                </div>
+
+                <div class="text-center">
+                    <input type="submit" value="Insert" class="btn btn-primary btn-user btn-block" />
+
+                    <p class="alert-danger">@ViewBag.chk</p>
+
+                </div>
+
+
+            </div>
+        }
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+
+
+    </script>
+
+}

@@ -74,8 +74,8 @@
                                         <tr>
                                             <td>@Html.DisplayFor(model => item.category_name)</td>
                                             <td>
-                                                <a href="@Url.Action("AssignRole", "Registration", new { id = item.id })"><i class="fas fa-edit"></i></a>
-                                                <a href="@Url.Action("AssignRole", "Registration", new { id = item.id })"><i class="fas fa-trash"></i></a>
+                                                <a href="@Url.Action("Edit", "Product_Categories", new { id = item.id })"><i class="fas fa-edit"></i></a>
+                                                <a href="@Url.Action("Delete", "Product_Categories", new { id = item.id })"><i class="fas fa-trash"></i></a>
                                             </td>
 
                                         </tr>
@@ -94,92 +94,3 @@
     </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@*<h2>Index</h2>
-
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.category_id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.category_name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.flag)
-            </th>
-            <th></th>
-        </tr>
-
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.category_id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.category_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.flag)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.id })
-            </td>
-        </tr>
-    }
-
-    </table>*@
