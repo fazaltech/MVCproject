@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Add Product Category";
+    string resp = "0";
 }
 <div class="card mb-4" style="width: 1002px;">
     <div class="card-header">
@@ -42,13 +43,17 @@
 
 @if (ViewBag.Message != null)
 {
+
     <script type="text/javascript">
 
             window.onload = function () {
                 alert("@ViewBag.Message");
+                location.href = "Index";
+
             };
 
 
     </script>
+
 
 }

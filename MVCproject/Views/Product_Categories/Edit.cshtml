@@ -27,13 +27,13 @@
             </div>
             <div class="form-group">
 
-                <input type="text" name="procat" id="procat" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
+                <input type="text" name="procated" id="procated" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
             </div>
 
             <div class="text-center">
                 <input type="submit" value="Update" class="btn btn-primary btn-user btn-block" />
 
-                <p class="alert-danger">@ViewBag.chk</p>
+                @*<p class="alert-danger">@ViewBag.chk</p>*@
 
             </div>
 
@@ -47,15 +47,15 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@if (ViewBag.Message != null)
+@if (ViewBag.MessageED != null)
 {
     <script type="text/javascript">
 
             window.onload = function () {
-                alert("@ViewBag.Message");
+                alert("@ViewBag.MessageED");
             };
 
 
     </script>
-
+    Response.Redirect("~/Product_Categories/Index");
 }

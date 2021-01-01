@@ -132,16 +132,17 @@ namespace MVCproject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,category_id,category_name,flag")] tblproductcategory tblproductcategory,string procat, int? id)
+        public ActionResult Edit([Bind(Include = "id,category_id,category_name,flag")] tblproductcategory tblproductcategory,string procated, int? id)
         {
             
             if (ModelState.IsValid)
             {
                 var prodtcat = db.tblproductcategorys.SingleOrDefault(b => b.id == id);
-                prodtcat.category_name = procat;
+                prodtcat.category_name = procated;
                
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.MessageED = "Product Category Update";
+               
             }
             if (id == null)
             {
@@ -151,6 +152,7 @@ namespace MVCproject.Controllers
             {
                 return HttpNotFound();
             }
+            
             return View(tblproductcategory);
         }
 
@@ -162,6 +164,10 @@ namespace MVCproject.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             tblproductcategory tblproductcategory = db.tblproductcategorys.Find(id);
+            var name = db.tblproductcategorys
+                 .Where(x => x.id == id)
+                 .Select(x => x.category_name).Max();
+            ViewBag.preprocatnamedt = name;
             if (tblproductcategory == null)
             {
                 return HttpNotFound();
@@ -172,12 +178,27 @@ namespace MVCproject.Controllers
         // POST: Product_Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirm([Bind(Include = "id,category_id,category_name,flag")] tblproductcategory tblproductcategory, int? id)
         {
-            tblproductcategory tblproductcategory = db.tblproductcategorys.Find(id);
-            db.tblproductcategorys.Remove(tblproductcategory);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+
+            if (ModelState.IsValid)
+            {
+                var prodtcatdt = db.tblproductcategorys.SingleOrDefault(b => b.id == id);
+                prodtcatdt.flag = "0";
+
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            if (tblproductcategory == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.MessageDT = "Product Category Delete";
+            return View(tblproductcategory);
         }
 
         protected override void Dispose(bool disposing)
