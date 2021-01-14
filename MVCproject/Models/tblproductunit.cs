@@ -9,17 +9,19 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace MVCproject.Models
 {
 
-    
+    [Table("tblproductunits")]
     public partial class tblproductunit
     {
         public long id { get; set; }
-        public decimal unit_id { get; set; }
+        public string unit_id { get; set; }
         public string unit_name { get; set; }
+        public string flag { get; set; }
     }
 }

@@ -148,7 +148,6 @@ D:\MVCproject\MVCproject\bin\System.Web.WebPages.Razor.xml
 D:\MVCproject\MVCproject\bin\Newtonsoft.Json.xml
 D:\MVCproject\MVCproject\bin\Antlr3.Runtime.pdb
 D:\MVCproject\MVCproject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\MVCproject\MVCproject\obj\Debug\MVCproject.csprojAssemblyReference.cache
 D:\MVCproject\MVCproject\obj\Debug\MVCproject.csproj.CoreCompileInputs.cache
 D:\MVCproject\MVCproject\obj\Debug\MVCproject.csproj.CopyComplete
 D:\MVCproject\MVCproject\obj\Debug\MVCproject.dll
