@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -19,8 +20,9 @@ namespace MVCproject.Models
     [Table("tblproductunits")]
     public partial class tblproductunit
     {
-        public long id { get; set; }
+        public int id { get; set; }
         public string unit_id { get; set; }
+        [DisplayName("Unit Name")]
         public string unit_name { get; set; }
         public string flag { get; set; }
     }

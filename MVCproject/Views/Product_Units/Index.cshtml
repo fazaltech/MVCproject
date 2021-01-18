@@ -1,0 +1,96 @@
+﻿@model IEnumerable<MVCproject.Models.tblproductunit>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        @*<h1 class="h3 mb-2 text-gray-800">Tables</h1>
+            <p class="mb-4">
+                DataTables is a third party plugin that is used to generate the demo table below.
+                For more information about DataTables, please visit the <a target="_blank"
+                                                                           href="https://datatables.net">official DataTables documentation</a>.
+            </p>*@
+        @*@using (Html.BeginForm("Index", "Registration", FormMethod.Get))
+            {
+                <p>
+                    Role: @Html.DropDownList("roles", "All")
+                    Name: @Html.TextBox("name")
+                    <br />
+                    <input type="submit" value="Filter" />
+                </p>
+            }*@
+        <!-- DataTales Example -->
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="dataTables_length" id="dataTable_length">
+                                    @using (Html.BeginForm("Index", "Product_Units", FormMethod.Get))
+                                    {
+                                        <label>Name:@Html.DropDownList("productsunt", (SelectList)ViewBag.productsunts, "Select Unites", new { @class = " form-control form-control-sm" })</label>
+                                        <label style="padding-left: 12px;">Name:<input type="search" id="ptu_name" name="ptu_name" class="form-control form-control-sm" placeholder="" aria-controls="dataTable"></label><label style="padding-left: 12px;"><input type="submit" class="btn btn-primary btn-user btn-block" value="Search"></label>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>  @Html.DisplayNameFor(model => model.unit_name)</th>
+                                            <th> Action</th>
+
+
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>  @Html.DisplayNameFor(model => model.unit_name)</th>
+                                            <th> Action</th>
+
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@Html.DisplayFor(model => item.unit_name)</td>
+                                                <td>
+                                                    <a href="@Url.Action("Edit", "Product_Units", new { id = item.id })"><i class="fas fa-edit"></i></a>
+                                                    <a href="@Url.Action("Delete", "Product_Units", new { id = item.id })"><i class="fas fa-trash"></i></a>
+                                                </td>
+
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+</body>
+</html>

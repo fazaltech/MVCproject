@@ -16,7 +16,7 @@ namespace MVCproject.Controllers
 
         private mvc_pos_conn db = new mvc_pos_conn();
         // GET: Product_Unit
-        public ActionResult Index(string productscat, string ptc_name)
+        public ActionResult Index(string productsunt, string ptu_name)
         {
             var Lst = new List<string>();
 
@@ -24,18 +24,18 @@ namespace MVCproject.Controllers
                       orderby d.unit_name
                       select d.unit_name;
             Lst.AddRange(Qry.Distinct());
-            ViewBag.productscats = new SelectList(Lst);
+            ViewBag.productsunts = new SelectList(Lst);
 
             var prctv = from m in db.tblproductunits
                         where m.flag == "1"
                         select m;
-            if (!String.IsNullOrEmpty(productscat))
+            if (!String.IsNullOrEmpty(productsunt))
             {
-                prctv = prctv.Where(s => s.unit_name.Contains(productscat));
+                prctv = prctv.Where(s => s.unit_name.Contains(productsunt));
             }
-            if (!string.IsNullOrEmpty(ptc_name))
+            if (!string.IsNullOrEmpty(ptu_name))
             {
-                prctv = prctv.Where(x => x.unit_name == ptc_name);
+                prctv = prctv.Where(x => x.unit_name == ptu_name);
             }
 
 
@@ -66,7 +66,7 @@ namespace MVCproject.Controllers
             return View();
         }
 
-        [HttpPost, ActionName("Add_Unity")]
+        [HttpPost, ActionName("Add_Units")]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Add_Units(tblproductunit add_unit, string prounit)
@@ -118,7 +118,7 @@ namespace MVCproject.Controllers
             var name = db.tblproductunits
                   .Where(x => x.id == id)
                   .Select(x => x.unit_name).Max();
-            ViewBag.preprocatname = name;
+            ViewBag.preprountname = name;
             if (tblproductUnit == null)
             {
                 return HttpNotFound();
@@ -140,7 +140,7 @@ namespace MVCproject.Controllers
                 prodtcat.unit_name = prounted;
 
                 db.SaveChanges();
-                ViewBag.MessageED = "Product Unity Update";
+                ViewBag.MessageED = "Product Units Update";
 
             }
             if (id == null)
@@ -196,7 +196,7 @@ namespace MVCproject.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MessageDT = "Product Unity Delete";
+            ViewBag.MessageDT = "Product Unit Delete";
             return View(tblproductUnit);
         }
 

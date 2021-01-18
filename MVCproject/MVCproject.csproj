@@ -2075,11 +2075,13 @@
     <Content Include="Views\Product_Categories\Edit.cshtml" />
     <Content Include="Views\Product_Categories\Index.cshtml" />
     <Content Include="Views\Product_Categories\Add_Category.cshtml" />
+    <Content Include="Views\Product_Units\Index.cshtml" />
+    <Content Include="Views\Product_Units\Add_Units.cshtml" />
+    <Content Include="Views\Product_Units\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Migrations\" />
-    <Folder Include="Views\Product_Unit\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
