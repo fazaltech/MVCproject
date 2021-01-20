@@ -166,7 +166,7 @@ namespace MVCproject.Controllers
             var name = db.tblproductunits
                  .Where(x => x.id == id)
                  .Select(x => x.unit_name).Max();
-            ViewBag.preprocatnamedt = name;
+            ViewBag.preprountnamedt = name;
             if (tblproductUnit == null)
             {
                 return HttpNotFound();
