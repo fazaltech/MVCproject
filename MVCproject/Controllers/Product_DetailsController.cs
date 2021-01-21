@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
-
+using MVCproject.Models;
 namespace MVCproject.Controllers
 {
     public class Product_DetailsController : Controller
     {
+        private mvc_pos_conn db = new mvc_pos_conn();
         // GET: Product_Details
         public ActionResult Index()
         {
@@ -41,56 +46,56 @@ namespace MVCproject.Controllers
         }
 
 
-        //// GET: Product_Categories/Create
-        //[HttpGet]
-        //public ActionResult Add_Category()
-        //{
-        //    return View();
-        //}
+        // GET: Product_Details/Create
+        [HttpGet]
+        public ActionResult Add_Detail()
+        {
+            return View();
+        }
 
-        //[HttpPost, ActionName("Add_Category")]
-        //[AllowAnonymous]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Add_Category(tblproductcategory category, string procat)
-        //{
+        [HttpPost, ActionName("Add_Category")]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Add_Category(tblproductcategory category, string procat)
+        {
 
-        //    category.category_name = procat;
-
-
-        //    Thread.Sleep(200);
-        //    var precheck = db.tblproductcategorys.Where(x => x.category_name == category.category_name).FirstOrDefault();
-        //    var rdnum = new System.Random();
-        //    int random = rdnum.Next(100);
-
-        //    string dd = DateTime.Now.ToString("yyMMddhhmmss");
-        //    string catid = "pcid" + dd + random;
+            category.category_name = procat;
 
 
-        //    if (precheck != null)
-        //    {
-        //        ViewBag.chk = "Category Already Exist";
-        //        return View(category);
+            Thread.Sleep(200);
+            var precheck = db.tblproductcategorys.Where(x => x.category_name == category.category_name).FirstOrDefault();
+            var rdnum = new System.Random();
+            int random = rdnum.Next(100);
 
-        //    }
-        //    else if (ModelState.IsValid)
-        //    {
-        //        category.category_id = catid;
-        //        category.category_name = procat;
-        //        category.flag = "1";
-
-        //        db.tblproductcategorys.Add(category);
-        //        db.SaveChanges();
+            string dd = DateTime.Now.ToString("yyMMddhhmmss");
+            string catid = "pcid" + dd + random;
 
 
-        //    }
-        //    ViewBag.Message = "Product Category Added";
-        //    return View();
+            if (precheck != null)
+            {
+                ViewBag.chk = "Category Already Exist";
+                return View(category);
+
+            }
+            else if (ModelState.IsValid)
+            {
+                category.category_id = catid;
+                category.category_name = procat;
+                category.flag = "1";
+
+                db.tblproductcategorys.Add(category);
+                db.SaveChanges();
 
 
-        //}
+            }
+            ViewBag.Message = "Product Category Added";
+            return View();
 
 
-        // GET: Product_Categories/Edit/5
+        }
+
+
+        // GET: Product_Details/Edit/5
         //public ActionResult Edit(int? id)
         //{
         //    if (id == null)
@@ -109,7 +114,7 @@ namespace MVCproject.Controllers
         //    return View(tblproductcategory);
         //}
 
-        //// POST: Product_Categories/Edit/5
+        //// POST: Product_Details/Edit/5
         //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         //[HttpPost, ActionName("Edit")]
@@ -138,7 +143,7 @@ namespace MVCproject.Controllers
         //    return View(tblproductcategory);
         //}
 
-        //// GET: Product_Categories/Delete/5
+        //// GET: Product_Details/Delete/5
         //public ActionResult Delete(int? id)
         //{
         //    if (id == null)
@@ -157,7 +162,7 @@ namespace MVCproject.Controllers
         //    return View(tblproductcategory);
         //}
 
-        //// POST: Product_Categories/Delete/5
+        //// POST: Product_Details/Delete/5
         //[HttpPost, ActionName("Delete")]
         //[ValidateAntiForgeryToken]
         //public ActionResult DeleteConfirm([Bind(Include = "id,category_id,category_name,flag")] tblproductcategory tblproductcategory, int? id)
