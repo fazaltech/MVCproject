@@ -2083,6 +2083,7 @@
     <Content Include="Views\Product_Units\Edit.cshtml" />
     <Content Include="Views\Product_Units\Delete.cshtml" />
     <Content Include="Views\Product_Details\Index.cshtml" />
+    <Content Include="Views\Product_Details\Add_Product_Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -48,47 +48,47 @@ namespace MVCproject.Controllers
 
         // GET: Product_Details/Create
         [HttpGet]
-        public ActionResult Add_Detail()
+        public ActionResult Add_Product_Detail()
         {
             return View();
         }
 
-        [HttpPost, ActionName("Add_Category")]
+        [HttpPost, ActionName("Add_Product_Detail")]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Add_Category(tblproductcategory category, string procat)
+        public ActionResult Add_Product_Detail(tblproduct category, string procat)
         {
 
-            category.category_name = procat;
+            //category.category_name = procat;
 
 
-            Thread.Sleep(200);
-            var precheck = db.tblproductcategorys.Where(x => x.category_name == category.category_name).FirstOrDefault();
-            var rdnum = new System.Random();
-            int random = rdnum.Next(100);
+            //Thread.Sleep(200);
+            //var precheck = db.tblproductcategorys.Where(x => x.category_name == category.category_name).FirstOrDefault();
+            //var rdnum = new System.Random();
+            //int random = rdnum.Next(100);
 
-            string dd = DateTime.Now.ToString("yyMMddhhmmss");
-            string catid = "pcid" + dd + random;
-
-
-            if (precheck != null)
-            {
-                ViewBag.chk = "Category Already Exist";
-                return View(category);
-
-            }
-            else if (ModelState.IsValid)
-            {
-                category.category_id = catid;
-                category.category_name = procat;
-                category.flag = "1";
-
-                db.tblproductcategorys.Add(category);
-                db.SaveChanges();
+            //string dd = DateTime.Now.ToString("yyMMddhhmmss");
+            //string catid = "pcid" + dd + random;
 
 
-            }
-            ViewBag.Message = "Product Category Added";
+            //if (precheck != null)
+            //{
+            //    ViewBag.chk = "Category Already Exist";
+            //    return View(category);
+
+            //}
+            //else if (ModelState.IsValid)
+            //{
+            //    category.category_id = catid;
+            //    category.category_name = procat;
+            //    category.flag = "1";
+
+            //    db.tblproductcategorys.Add(category);
+            //    db.SaveChanges();
+
+
+            //}
+            //ViewBag.Message = "Product Category Added";
             return View();
 
 
