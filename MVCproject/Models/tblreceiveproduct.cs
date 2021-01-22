@@ -18,15 +18,15 @@ namespace MVCproject.Models
     
     public partial class tblreceiveproduct
     {
-        public long id { get; set; }
-        public Nullable<decimal> receive_product_id { get; set; }
-        public Nullable<decimal> product_id { get; set; }
-        public Nullable<decimal> quantity { get; set; }
-        public Nullable<decimal> unit_price { get; set; }
-        public Nullable<decimal> sub_total { get; set; }
-        public Nullable<decimal> supplier_id { get; set; }
+        public int id { get; set; }
+        public string receive_product_id { get; set; }
+        public string product_id { get; set; }
+        public string quantity { get; set; }
+        public string unit_price { get; set; }
+        public string sub_total { get; set; }
+        public string supplier_id { get; set; }
         public string received_date { get; set; }
-        public Nullable<decimal> user_id { get; set; }
-        public Nullable<int> flag { get; set; }
+        public string user_id { get; set; }
+        public string flag { get; set; }
     }
 }
