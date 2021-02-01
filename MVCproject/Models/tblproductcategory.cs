@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MVCproject.Models
 {
-    [Table("tblproductcategory")]
+    [Table("tblproductcategories")]
     public class tblproductcategory
     {
         public int id { get; set; }

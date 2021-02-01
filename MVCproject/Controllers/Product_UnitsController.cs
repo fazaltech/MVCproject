@@ -21,6 +21,7 @@ namespace MVCproject.Controllers
             var Lst = new List<string>();
 
             var Qry = from d in db.tblproductunits
+                      where d.flag == "1"
                       orderby d.unit_name
                       select d.unit_name;
             Lst.AddRange(Qry.Distinct());

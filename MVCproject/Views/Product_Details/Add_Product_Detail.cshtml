@@ -6,13 +6,13 @@
 }
 <div class="card mb-4" style="width: 1002px;">
     <div class="card-header">
-        Add Product Category
+        Add Product Detail
     </div>
     <div class="card-body">
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Add_Product_Detail", "Product_Details", FormMethod.Post, new { id = "__AjaxAntiForgeryForm" }))
         {
-            @Html.AntiForgeryToken()
 
+           
             <div class="form-horizontal">
 
 
@@ -21,33 +21,27 @@
 
                 <div class="form-group">
 
-                    <input type="text" name="procat" id="procat" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
+                    <input type="text" name="proname" id="proname" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
                 </div>
                 <div class="form-group">
 
-                    <select class="form-control" id="unit_name" name="unit_name"></select>
+                    <select class="form-control" id="pro_unit" name="pro_unit"></select>
                 </div>
             </div>
             <div class="form-group">
+                <select class="form-control" id="pro_cat" name="pro_cat"></select>
+            </div>
 
-                <select class="form-control" id="category_name" name="category_name"></select>
-            </div>
-            <div class="form-group">
-                <input type="text" name="unit_stock" id="unit_stock" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
-            </div>
             <div class="form-group">
                 <input type="text" name="unit_price" id="unit_price" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
             </div>
             <div class="form-group">
                 <input type="text" name="discount_percentage" id="discount_percentage" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
             </div>
-            <div class="form-group">
-                <input type="text" name="record_level" id="record_level" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
-            </div>
-            @*input numeric unit in stock<input type="text" name="procat" id="procat" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />*@
-            @*input uni t price  <input type="text" name="procat" id="procat" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />*@
-            @*discount percentage<input type="text" name="procat" id="procat" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />*@
-            @*discount percentage<input type="text" name="procat" id="procat" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />*@
+
+
+
+
 
 
             <div class="text-center">
@@ -59,7 +53,26 @@
 
 
 
+
+
         }
+
+
+
+        <div class="text-center">
+            <input id="btnPost" value="AJAX" class="btn btn-primary btn-user btn-block" />
+
+
+
+        </div>
+
+
+        <div class="text-center">
+            <input id="myDiv" value="myDiv" class="btn btn-primary btn-user btn-block" />
+
+
+
+        </div>
     </div>
 </div>
 
@@ -83,3 +96,142 @@
 
 
 }
+
+
+
+
+<!-- Bootstrap core JavaScript-->
+<script src="~/asset/vendor/jquery/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="~/asset/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="~/asset/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+
+<script>
+
+
+
+
+    @* script for Category view in drop down *@
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "/Product_Details/Pro_cat_view",
+            data: "{}",
+            success: function (data) {
+                var s = '<option value="-1">Please Select a Category</option>';
+                for (var i = 0; i < data.length; i++) {
+                    s += '<option value="' + data[i].CategoryName + '">' + data[i].CategoryName + '</option>';
+                }
+                $("#pro_cat").html(s);
+            }
+        });
+    });
+
+    @* script for Unit view in drop down *@
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "/Product_Details/Pro_Unit_view",
+            data: "{}",
+            success: function (data) {
+                var s = '<option value="-1">Please Select a Unit</option>';
+                for (var i = 0; i < data.length; i++) {
+                    s += '<option value="' + data[i].UnitName + '">' + data[i].UnitName + '</option>';
+                }
+                $("#pro_unit").html(s);
+            }
+        });
+    });
+
+
+
+    var product = new Object();
+    product.Name = $('#proname').val();
+    product.category = $('#pro_cat').val();
+    product.unit = $('#pro_unit').val();
+    product.unitprice = $('#unit_price').val();
+    product.discountpercentage = $('#discount_percentage').val();
+
+
+
+    
+
+    $("#btnPost").click(function () {
+        var form = $('#__AjaxAntiForgeryForm');
+        var token = $('input[name="__RequestVerificationToken"]', form).val();
+       
+        var headers = {};
+
+        headers['__RequestVerificationToken'] = token;
+           $.ajax({
+                type: "POST",
+               url: "/Product_Details/Add_Product_Detail",
+               headers: headers,
+               data: JSON.stringify({ form }),
+                contentType: "application/json; charset=utf-8",
+                processData: true,
+
+                dataType: "json",
+
+                success: function (response) {
+                    if (response != null) {
+                        alert("Add Product");
+                    } else {
+                        alert("Something went wrong");
+                    }
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        
+    });
+
+    $('#myDiv').submit(function () {
+        var form = $('#__AjaxAntiForgeryForm');
+        var token = $('input[name="__RequestVerificationToken"]', form).val();
+        var headers = {};
+
+        headers['__RequestVerificationToken'] = token;
+        $.ajax({
+            url: $(this).data('url'),
+            type: 'POST',
+            headers: headers,
+            data: {
+                __RequestVerificationToken: token,
+                someValue: 'some value'
+            },
+            success: function (response) {
+                if (response != null) {
+                    alert("Add Product");
+                } else {
+                    alert("Something went wrong");
+                }
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+        return false;
+    });
+
+
+</script>
+
+
+
+

@@ -50,6 +50,18 @@ namespace MVCproject.Controllers
         [HttpGet]
         public ActionResult Add_Product_Detail()
         {
+
+            //product unit name
+            //product category name
+            var catg = from m in db.tblproductcategorys
+                        where m.flag == "1"
+                        select m;
+
+            ViewBag.category_id = new SelectList(db.tblproductcategorys, "category_id", "category_name");
+            //product quantity form recive unit in stock
+            //product quantity form recive recoder
+
+
             return View();
         }
 
@@ -196,5 +208,48 @@ namespace MVCproject.Controllers
         //    }
         //    base.Dispose(disposing);
         //}
+
+        [HttpGet]
+        public JsonResult Pro_cat_view()
+        {
+           
+            
+            try
+            {
+                return Json(db.tblproductcategorys.Where(x => x.flag == "1").Select(x => new
+                {
+                    CategoryID = x.id,
+                    CategoryName = x.category_name
+                }).ToList(), JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return ViewBag.error = ex.Message;
+            }
+        }
+
+
+        [HttpGet]
+        public JsonResult Pro_unit_view()
+        {
+
+
+            try
+            {
+                return Json(db.tblproductunits.Where(x => x.flag == "1").Select(x => new
+                {
+                    UnitID = x.id,
+                    UnitName = x.unit_name
+                }).ToList(), JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return ViewBag.error = ex.Message;
+            }
+        }
+
+
+
+
     }
 }

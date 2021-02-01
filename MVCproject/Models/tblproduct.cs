@@ -24,10 +24,10 @@ namespace MVCproject.Models
         public string product_name { get; set; }
         public string unit_id { get; set; }
         public string category_id { get; set; }
-        public string unit_in_stock { get; set; }
-        public string unit_price { get; set; }
-        public string discount_percentage { get; set; }
-        public string recorder_level { get; set; }
+        public Nullable<decimal> unit_in_stock { get; set; }
+        public Nullable<decimal> unit_price { get; set; }
+        public Nullable<decimal> discount_percentage { get; set; }
+        public Nullable<decimal> recorder_level { get; set; }
         public string user_id { get; set; }
     }
 }

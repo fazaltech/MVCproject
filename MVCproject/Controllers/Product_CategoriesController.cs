@@ -22,10 +22,18 @@ namespace MVCproject.Controllers
             var Lst = new List<string>();
 
             var Qry = from d in db.tblproductcategorys
+                     where d.flag == "1"
                       orderby d.category_name
                       select d.category_name;
             Lst.AddRange(Qry.Distinct());
             ViewBag.productscats = new SelectList(Lst);
+
+
+            //var Qry = from d in db.tblproductunits
+            //          orderby d.unit_name
+            //          select d.unit_name;
+            //Lst.AddRange(Qry.Distinct());
+            //ViewBag.productsunts = new SelectList(Lst);
 
             var prctv = from m in db.tblproductcategorys
                         where m.flag == "1"
