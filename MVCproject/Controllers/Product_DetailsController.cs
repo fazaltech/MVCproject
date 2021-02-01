@@ -48,6 +48,7 @@ namespace MVCproject.Controllers
 
         // GET: Product_Details/Create
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Add_Product_Detail()
         {
 
@@ -68,7 +69,7 @@ namespace MVCproject.Controllers
         [HttpPost, ActionName("Add_Product_Detail")]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Add_Product_Detail(tblproduct category, string procat)
+        public ActionResult Add_Product_Detail(tblproduct product_name, string procat)
         {
 
             //category.category_name = procat;

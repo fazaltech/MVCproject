@@ -77,7 +77,7 @@ namespace MVCproject.Controllers
 
         [HttpPost, ActionName("Add_Category")]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+       
         public ActionResult Add_Category(tblproductcategory category, string procat)
         {
 

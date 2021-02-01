@@ -11,12 +11,12 @@
     <div class="card-body">
         @using (Html.BeginForm("Add_Product_Detail", "Product_Details", FormMethod.Post, new { id = "__AjaxAntiForgeryForm" }))
         {
-
+            @Html.AntiForgeryToken();
            
             <div class="form-horizontal">
 
-
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+     
+             
 
 
                 <div class="form-group">
@@ -153,33 +153,30 @@
 
 
 
-    var product = new Object();
-    product.Name = $('#proname').val();
-    product.category = $('#pro_cat').val();
-    product.unit = $('#pro_unit').val();
-    product.unitprice = $('#unit_price').val();
-    product.discountpercentage = $('#discount_percentage').val();
+    
+
 
 
 
     
 
     $("#btnPost").click(function () {
+      
+
         var form = $('#__AjaxAntiForgeryForm');
-        var token = $('input[name="__RequestVerificationToken"]', form).val();
-       
-        var headers = {};
-
-        headers['__RequestVerificationToken'] = token;
-           $.ajax({
-                type: "POST",
+        var token = $('input[name="__RequestVerificationToken"]').val();
+        
+         var product_name = $('#proname').val();
+  
+           $.ajax({ 
+               method: "POST",
                url: "/Product_Details/Add_Product_Detail",
-               headers: headers,
-               data: JSON.stringify({ form }),
-                contentType: "application/json; charset=utf-8",
-                processData: true,
-
-                dataType: "json",
+             
+               data: {
+                   __RequestVerificationToken: token,
+                   product_name
+                
+               }, 
 
                 success: function (response) {
                     if (response != null) {
