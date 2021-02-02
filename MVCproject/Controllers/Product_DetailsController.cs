@@ -69,9 +69,11 @@ namespace MVCproject.Controllers
         [HttpPost, ActionName("Add_Product_Detail")]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Add_Product_Detail(tblproduct product_name, string procat)
+        public ActionResult Add_Product_Detail(tblproduct product,productview product_views)
         {
 
+            
+            product.product_name = product_views.name;
             //category.category_name = procat;
 
 
@@ -250,7 +252,16 @@ namespace MVCproject.Controllers
         }
 
 
+        public class productview
+        {
+            public string name { get; set; }
+            public string unit_name { get; set; }
+            public string cat_name { get; set; }
+            public string price { get; set; }
+            public string dist_pre { get; set; }
 
+
+        }
 
     }
 }

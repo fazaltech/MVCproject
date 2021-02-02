@@ -33,10 +33,10 @@
             </div>
 
             <div class="form-group">
-                <input type="text" name="unit_price" id="unit_price" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
+                <input type="text" name="unit_price" id="unit_price" class="form-control form-control-user"  maxlength="50" />
             </div>
             <div class="form-group">
-                <input type="text" name="discount_percentage" id="discount_percentage" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
+                <input type="text" name="discount_percentage" id="discount_percentage" class="form-control form-control-user" data-mask="00.00" maxlength="50" />
             </div>
 
 
@@ -103,7 +103,9 @@
 <!-- Bootstrap core JavaScript-->
 <script src="~/asset/vendor/jquery/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 <script src="~/asset/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 <!-- Core plugin JavaScript-->
 <script src="~/asset/vendor/jquery-easing/jquery.easing.min.js"></script>
 
@@ -115,8 +117,10 @@
 
 
 <script>
+    $(":input").inputmask();
 
-
+    
+    $("#discount_percentage").inputmask({ "mask": "99.99" });
 
 
     @* script for Category view in drop down *@
@@ -165,17 +169,31 @@
 
         var form = $('#__AjaxAntiForgeryForm');
         var token = $('input[name="__RequestVerificationToken"]').val();
+
+        var product =
+        {
+          
+
+
+            name: $("#proname").val(),
+            unit_name: $("#pro_unit").val(),
+            cat_name: $("#pro_cat").val(),
+            price: $("#unit_price").val(),
+            dist_pre: $("#discount_percentage").val(),
+           
+      
+        }
+     
         
-         var product_name = $('#proname').val();
   
-           $.ajax({ 
-               method: "POST",
-               url: "/Product_Details/Add_Product_Detail",
-             
-               data: {
-                   __RequestVerificationToken: token,
-                   product_name
-                
+        $.ajax({
+            method: "POST",
+            url: "/Product_Details/Add_Product_Detail",
+
+            data: {
+                __RequestVerificationToken: token,
+                product_views: product
+               
                }, 
 
                 success: function (response) {
