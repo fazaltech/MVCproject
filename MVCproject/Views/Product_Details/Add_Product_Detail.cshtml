@@ -4,6 +4,15 @@
     ViewBag.Title = "Add Product Detail";
     string resp = "0";
 }
+
+
+
+
+
+
+
+<!-- Core plugin JavaScript-->
+<script src="~/asset/vendor/jquery-easing/jquery.easing.min.js"></script>
 <div class="card mb-4" style="width: 1002px;">
     <div class="card-header">
         Add Product Detail
@@ -12,11 +21,11 @@
         @using (Html.BeginForm("Add_Product_Detail", "Product_Details", FormMethod.Post, new { id = "__AjaxAntiForgeryForm" }))
         {
             @Html.AntiForgeryToken();
-           
+
             <div class="form-horizontal">
 
-     
-             
+
+
 
 
                 <div class="form-group">
@@ -33,7 +42,7 @@
             </div>
 
             <div class="form-group">
-                <input type="text" name="unit_price" id="unit_price" class="form-control form-control-user"  maxlength="50" />
+                <input type="text" name="unit_price" id="unit_price" class="form-control form-control-user" maxlength="50" />
             </div>
             <div class="form-group">
                 <input type="text" name="discount_percentage" id="discount_percentage" class="form-control form-control-user" data-mask="00.00" maxlength="50" />
@@ -67,12 +76,7 @@
         </div>
 
 
-        <div class="text-center">
-            <input id="myDiv" value="myDiv" class="btn btn-primary btn-user btn-block" />
 
-
-
-        </div>
     </div>
 </div>
 
@@ -100,27 +104,19 @@
 
 
 
-<!-- Bootstrap core JavaScript-->
-<script src="~/asset/vendor/jquery/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-<script src="~/asset/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="~/asset/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+
 
 
 
 <script>
-    $(":input").inputmask();
 
-    
-    $("#discount_percentage").inputmask({ "mask": "99.99" });
+
+
 
 
     @* script for Category view in drop down *@
@@ -157,35 +153,30 @@
 
 
 
-    
 
 
 
 
-    
+
+
 
     $("#btnPost").click(function () {
-      
+
 
         var form = $('#__AjaxAntiForgeryForm');
         var token = $('input[name="__RequestVerificationToken"]').val();
 
         var product =
         {
-          
-
-
             name: $("#proname").val(),
             unit_name: $("#pro_unit").val(),
             cat_name: $("#pro_cat").val(),
             price: $("#unit_price").val(),
             dist_pre: $("#discount_percentage").val(),
-           
-      
         }
-     
-        
-  
+
+
+
         $.ajax({
             method: "POST",
             url: "/Product_Details/Add_Product_Detail",
@@ -193,8 +184,8 @@
             data: {
                 __RequestVerificationToken: token,
                 product_views: product
-               
-               }, 
+
+               },
 
                 success: function (response) {
                     if (response != null) {
@@ -210,39 +201,14 @@
                     alert(response.responseText);
                 }
             });
-        
+
     });
 
-    $('#myDiv').submit(function () {
-        var form = $('#__AjaxAntiForgeryForm');
-        var token = $('input[name="__RequestVerificationToken"]', form).val();
-        var headers = {};
 
-        headers['__RequestVerificationToken'] = token;
-        $.ajax({
-            url: $(this).data('url'),
-            type: 'POST',
-            headers: headers,
-            data: {
-                __RequestVerificationToken: token,
-                someValue: 'some value'
-            },
-            success: function (response) {
-                if (response != null) {
-                    alert("Add Product");
-                } else {
-                    alert("Something went wrong");
-                }
-            },
-            failure: function (response) {
-                alert(response.responseText);
-            },
-            error: function (response) {
-                alert(response.responseText);
-            }
-        });
-        return false;
-    });
+
+        $("#discount_percentage").inputmask({ "mask": "99.99" });
+    
+
 
 
 </script>

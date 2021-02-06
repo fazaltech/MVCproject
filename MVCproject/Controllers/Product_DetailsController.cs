@@ -215,8 +215,6 @@ namespace MVCproject.Controllers
         [HttpGet]
         public JsonResult Pro_cat_view()
         {
-           
-            
             try
             {
                 return Json(db.tblproductcategorys.Where(x => x.flag == "1").Select(x => new
