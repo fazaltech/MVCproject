@@ -51,18 +51,7 @@ namespace MVCproject.Controllers
         [AllowAnonymous]
         public ActionResult Add_Product_Detail()
         {
-
-            //product unit name
-            //product category name
-            var catg = from m in db.tblproductcategorys
-                        where m.flag == "1"
-                        select m;
-
-            ViewBag.category_id = new SelectList(db.tblproductcategorys, "category_id", "category_name");
-            //product quantity form recive unit in stock
-            //product quantity form recive recoder
-
-
+            
             return View();
         }
 
@@ -74,37 +63,50 @@ namespace MVCproject.Controllers
 
             
             product.product_name = product_views.name;
-            //category.category_name = procat;
+           string name= product_views.name;
+            string proc = name.Substring(0,4);
 
 
-            //Thread.Sleep(200);
-            //var precheck = db.tblproductcategorys.Where(x => x.category_name == category.category_name).FirstOrDefault();
-            //var rdnum = new System.Random();
-            //int random = rdnum.Next(100);
-
-            //string dd = DateTime.Now.ToString("yyMMddhhmmss");
-            //string catid = "pcid" + dd + random;
+            Thread.Sleep(200);
+            var precheck = db.tblproducts.Where(x => x.product_name == product.product_name).FirstOrDefault();
+            var rdnum = new System.Random();
+            int random = rdnum.Next(100);
 
 
-            //if (precheck != null)
-            //{
-            //    ViewBag.chk = "Category Already Exist";
-            //    return View(category);
-
-            //}
-            //else if (ModelState.IsValid)
-            //{
-            //    category.category_id = catid;
-            //    category.category_name = procat;
-            //    category.flag = "1";
-
-            //    db.tblproductcategorys.Add(category);
-            //    db.SaveChanges();
+            var unitids = db.tblproductunits.Where(x => x.unit_name == product_views.unit_name).Select(x => x.unit_id).Max();
+            string unitid = unitids;
+            var catproids = db.tblproductcategorys.Where(x => x.category_name == product_views.cat_name).Select(x => x.category_id).Max();
+            string catid = catproids;
 
 
-            //}
-            //ViewBag.Message = "Product Category Added";
-            return View();
+
+            string dd = DateTime.Now.ToString("yyMMddhhmmss");
+            string proid = "ppid" + dd + random;
+            string procode = proc+product_views.price;
+
+            if (precheck != null)
+            {
+
+                return Json(new { success = false, responseText = "Product Already Exist" }, JsonRequestBehavior.AllowGet);
+               
+
+            }
+            else if (ModelState.IsValid)
+            {
+                product.product_id = proid;
+                product.product_code = procode;
+                product.unit_id = unitid;
+                product.category_id = catid;
+                product.product_name = product_views.name;
+                product.flag = "1";
+
+                db.tblproducts.Add(product);
+                db.SaveChanges();
+
+
+            }
+
+            return Json(new { success = true, responseText = "Product Added" }, JsonRequestBehavior.AllowGet);
 
 
         }

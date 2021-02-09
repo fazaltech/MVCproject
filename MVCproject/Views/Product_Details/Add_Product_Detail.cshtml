@@ -42,11 +42,14 @@
             </div>
 
             <div class="form-group">
-                <input type="text" name="unit_price" id="unit_price" class="form-control form-control-user" maxlength="50" />
+                <input type="text" name="unit_price" id="unit_price" class="form-control form-control-user" maxlength="50" placeholder="Price" />
             </div>
             <div class="form-group">
-                <input type="text" name="discount_percentage" id="discount_percentage" class="form-control form-control-user" data-mask="00.00" maxlength="50" />
+                <input type="text" name="discount_percentage" id="discount_percentage" class="form-control form-control-user" data-mask="00.00" maxlength="50" placeholder="Discount Percentage" />
             </div>
+
+
+
 
 
 
@@ -54,26 +57,17 @@
 
 
             <div class="text-center">
-                <input type="submit" value="Insert" class="btn btn-primary btn-user btn-block" />
+                <input id="btnRang" value="Insert" class="btn btn-primary btn-user btn-block" onclick="BtnClick()" />
 
-                <p class="alert-danger">@ViewBag.chk</p>
+
 
             </div>
-
-
-
 
 
         }
 
 
 
-        <div class="text-center">
-            <input id="btnPost" value="AJAX" class="btn btn-primary btn-user btn-block" />
-
-
-
-        </div>
 
 
 
@@ -84,39 +78,11 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@if (ViewBag.Message != null)
-{
-
-    <script type="text/javascript">
-
-            window.onload = function () {
-                alert("@ViewBag.Message");
-                location.href = "Index";
-
-            };
-
-
-    </script>
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script>
 
+    $("#unit_price").inputmask({ "mask": "9999" });
 
-
+    $("#discount_percentage").inputmask({ "mask": "99.99" });
 
 
     @* script for Category view in drop down *@
@@ -160,10 +126,25 @@
 
 
 
-    $("#btnPost").click(function () {
+
+    function BtnClick() {
 
 
-        var form = $('#__AjaxAntiForgeryForm');
+        if (range())
+        {
+          
+            ajfun();
+            
+          
+
+        }
+
+
+    }
+
+
+    function ajfun() {
+
         var token = $('input[name="__RequestVerificationToken"]').val();
 
         var product =
@@ -174,39 +155,73 @@
             price: $("#unit_price").val(),
             dist_pre: $("#discount_percentage").val(),
         }
-
-
-
         $.ajax({
             method: "POST",
             url: "/Product_Details/Add_Product_Detail",
 
             data: {
-                __RequestVerificationToken: token,
+               __RequestVerificationToken: token,
                 product_views: product
 
-               },
+            },
 
-                success: function (response) {
-                    if (response != null) {
-                        alert("Add Product");
-                    } else {
-                        alert("Something went wrong");
-                    }
-                },
-                failure: function (response) {
-                    alert(response.responseText);
-                },
-                error: function (response) {
-                    alert(response.responseText);
-                }
-            });
-
-    });
+            success: function (response) {
+              
+                alert(response.responseText);
+                location.reload(true);
+               
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert("Contact Developer Team");
+            }
+        })
+    }
 
 
 
-        $("#discount_percentage").inputmask({ "mask": "99.99" });
+    function range()
+    {
+        var val_name = $("#proname").val();
+        var val_unit = $("#pro_unit").val();
+        var val_cat = $("#pro_cat").val();
+        var val_price = $("#unit_price").val();
+        var val_dis = $("#discount_percentage").val();
+
+
+        if (!val_name.match(/\S/)) {
+            alert("Please Enter Product Name");
+            return false;
+        }
+        if (val_unit =="-1") {
+            alert("Please Select a Unit");
+            return false;
+        }
+        if (val_cat == "-1") {
+            alert("Please Select a Category");
+            return false;
+        }
+        if (val_price < 10 || val_price > 500) {
+            alert("Price Wrong");
+            return false;
+        }
+        if (val_dis < 5 || val_dis > 25) {
+            alert("Range Wrong");
+            return false;
+
+        }
+       
+
+        return true;
+
+    }
+
+
+
+
+       
     
 
 

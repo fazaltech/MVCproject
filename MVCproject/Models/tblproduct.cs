@@ -29,5 +29,6 @@ namespace MVCproject.Models
         public Nullable<decimal> discount_percentage { get; set; }
         public Nullable<decimal> recorder_level { get; set; }
         public string user_id { get; set; }
+        public string flag { get; set; }
     }
 }
