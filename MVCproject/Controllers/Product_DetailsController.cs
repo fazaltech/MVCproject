@@ -14,34 +14,26 @@ namespace MVCproject.Controllers
     {
         private mvc_pos_conn db = new mvc_pos_conn();
         // GET: Product_Details
+        [HttpGet]
         public ActionResult Index()
         {
 
 
-            //var Lst = new List<string>();
+            var pro =( from d in db.tblproducts
+                      where d.flag=="1"
+                      join u in db.tblproductunits on d.unit_id equals u.unit_id
+                      join c in db.tblproductcategorys on d.category_id equals c.category_id
+                      select new {
+                          d.product_name,
+                          u.unit_name,
+                          c.category_name,
+                          d.unit_in_stock,
+                          d.unit_price,
+                          d.recorder_level
+                          
+                      }).ToList();
 
-            //var Qry = from d in db.tblproductcategorys
-            //          orderby d.category_name
-            //          select d.category_name;
-            //Lst.AddRange(Qry.Distinct());
-            //ViewBag.productscats = new SelectList(Lst);
-
-            //var prctv = from m in db.tblproductcategorys
-            //            where m.flag == "1"
-            //            select m;
-            //if (!String.IsNullOrEmpty(productscat))
-            //{
-            //    prctv = prctv.Where(s => s.category_name.Contains(productscat));
-            //}
-            //if (!string.IsNullOrEmpty(ptc_name))
-            //{
-            //    prctv = prctv.Where(x => x.category_name == ptc_name);
-            //}
-
-
-
-
-            //return View(prctv);
+            //return Json(new { data = pro }, JsonRequestBehavior.AllowGet);
             return View();
         }
 
@@ -68,7 +60,7 @@ namespace MVCproject.Controllers
 
 
             Thread.Sleep(200);
-            var precheck = db.tblproducts.Where(x => x.product_name == product.product_name).FirstOrDefault();
+            var precheck = db.tblproducts.Where(x => x.product_name == product.product_name).Where(x=>x.flag=="1").FirstOrDefault();
             var rdnum = new System.Random();
             int random = rdnum.Next(100);
 
@@ -252,6 +244,40 @@ namespace MVCproject.Controllers
         }
 
 
+        public JsonResult TableView()
+        {
+            List<Producttable> tt = new List<Producttable>();
+
+            try
+            {
+                var pro = (from d in db.tblproducts
+                           where d.flag == "1"
+                           join u in db.tblproductunits on d.unit_id equals u.unit_id
+                           join c in db.tblproductcategorys on d.category_id equals c.category_id
+                           select new
+                           {
+                               d.id,
+                               d.product_name,
+                               u.unit_name,
+                               c.category_name,
+                               d.unit_in_stock,
+                               d.unit_price,
+                               d.recorder_level
+
+                           }).ToList();
+
+
+              
+
+
+                return Json(new { data = pro }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return ViewBag.error = ex.Message;
+            }
+        }
+
         public class productview
         {
             public string name { get; set; }
@@ -263,5 +289,17 @@ namespace MVCproject.Controllers
 
         }
 
+
+        public class Producttable 
+        {
+            public int id { get; set; }
+            public string product_name { get; set; }
+            public string unit_name { get; set; }
+            public string category_name { get; set; }
+            public decimal unit_in_stock { get; set; }
+            public decimal unit_price { get; set; }
+            public decimal recorder_level{ get; set; }
+
+        }
     }
 }
