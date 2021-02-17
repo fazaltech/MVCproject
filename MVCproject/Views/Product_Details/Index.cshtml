@@ -29,6 +29,7 @@
                                     <th>Stock</th>
                                     <th>Price</th>
                                     <th>Record</th>
+                                    <th>Edit</th>
 
                                 </tr>
                             </thead>
@@ -40,6 +41,7 @@
                                     <th>Stock</th>
                                     <th>Price</th>
                                     <th>Record</th>
+                                    <th>Edit</th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -68,6 +70,11 @@
             paging: true,
             searching: true,
             ajax: "/Product_Details/TableView",
+            row: function (row, data) {
+                if ($.inArray(data.dataTable, selected) !== -1) {
+                    $(row).addClass('selected');
+                }
+            },
             columns: [
                 
                 { "data": "product_name" },
