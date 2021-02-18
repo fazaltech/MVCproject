@@ -104,24 +104,24 @@ namespace MVCproject.Controllers
         }
 
 
-        // GET: Product_Details/Edit/5
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    tblproductcategory tblproductcategory = db.tblproductcategorys.Find(id);
-        //    var name = db.tblproductcategorys
-        //          .Where(x => x.id == id)
-        //          .Select(x => x.category_name).Max();
-        //    ViewBag.preprocatname = name;
-        //    if (tblproductcategory == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(tblproductcategory);
-        //}
+        //Get: Product_Details/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            tblproduct tblproducts = db.tblproducts.Find(id);
+            var name = db.tblproducts
+                  .Where(x => x.id == id)
+                  .Select(x => x.product_name).Max();
+            ViewBag.preprocatname = name;
+            if (tblproducts == null)
+            {
+                return HttpNotFound();
+            }
+            return View(tblproducts);
+        }
 
         //// POST: Product_Details/Edit/5
         //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 

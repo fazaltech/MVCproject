@@ -23,6 +23,7 @@
 
                             <thead>
                                 <tr>
+                                   
                                     <th>Name</th>
                                     <th>Unit</th>
                                     <th>Category</th>
@@ -35,6 +36,7 @@
                             </thead>
                             <tfoot>
                                 <tr>
+                                   
                                     <th>Name</th>
                                     <th>Unit</th>
                                     <th>Category</th>
@@ -54,7 +56,7 @@
 
 </div>
 <!-- /.container-fluid -->
-<link href="https://cdn.datatables.net/1.10.15/css/dataTables.jqueryui.min.css" rel="stylesheet" />
+<link href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" />
 
 <script src="http://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js" defer></script>
 
@@ -64,6 +66,7 @@
 
 
     $(document).ready(function () {
+        
         $('#productTable').dataTable({
             processing: true,
             ordering: true,
@@ -71,12 +74,13 @@
             searching: true,
             ajax: "/Product_Details/TableView",
             row: function (row, data) {
-                if ($.inArray(data.dataTable, selected) !== -1) {
+                if ($.inArray(data.DT_RowId, selected) !== -1) {
                     $(row).addClass('selected');
                 }
             },
+            
             columns: [
-                
+             
                 { "data": "product_name" },
                 { "data": "unit_name" },
                 { "data": "category_name" },
@@ -85,11 +89,12 @@
                 { "data": "recorder_level" },
                 /* EDIT */ {
                     mRender: function (data, type, row) {
-                        return '<a class="table-edit" data-id="' + row[0] + '">EDIT</a>'
+                        
+                        return '<a class="table-edit" data-id="' + row[0] + '" href="/Product_Details/Edit/' + row.id + '"><i class="fas fa-edit"></i></a> <a class="table-edit" data-id="' + row[0] + '" href="/Product_Details/Edit/' + row.id + '">EDIT</a>'
                     }
                 }
             ]
-            
+
         });
     });
 
