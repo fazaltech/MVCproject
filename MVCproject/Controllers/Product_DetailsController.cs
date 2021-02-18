@@ -8,6 +8,8 @@ using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using MVCproject.Models;
+using Newtonsoft.Json;
+
 namespace MVCproject.Controllers
 {
     public class Product_DetailsController : Controller
@@ -18,22 +20,6 @@ namespace MVCproject.Controllers
         public ActionResult Index()
         {
 
-
-            var pro =( from d in db.tblproducts
-                      where d.flag=="1"
-                      join u in db.tblproductunits on d.unit_id equals u.unit_id
-                      join c in db.tblproductcategorys on d.category_id equals c.category_id
-                      select new {
-                          d.product_name,
-                          u.unit_name,
-                          c.category_name,
-                          d.unit_in_stock,
-                          d.unit_price,
-                          d.recorder_level
-                          
-                      }).ToList();
-
-            //return Json(new { data = pro }, JsonRequestBehavior.AllowGet);
             return View();
         }
 
@@ -107,20 +93,48 @@ namespace MVCproject.Controllers
         //Get: Product_Details/Edit/5
         public ActionResult Edit(int? id)
         {
+            producted(id);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             tblproduct tblproducts = db.tblproducts.Find(id);
-            var name = db.tblproducts
-                  .Where(x => x.id == id)
-                  .Select(x => x.product_name).Max();
-            ViewBag.preprocatname = name;
+       
             if (tblproducts == null)
             {
                 return HttpNotFound();
             }
-            return View(tblproducts);
+            try
+            {
+                var data = (from d in db.tblproducts
+                            where d.id == id
+                            join u in db.tblproductunits on d.unit_id equals u.unit_id
+                            join c in db.tblproductcategorys on d.category_id equals c.category_id
+                            select new
+                            {
+                                d.id,
+                                d.product_name,
+                                u.unit_name,
+                                c.category_name,
+                                d.unit_in_stock,
+                                d.unit_price,
+                                d.recorder_level
+
+                            }).ToList();
+
+
+
+
+
+                return View(data);
+            }
+            catch (Exception ex)
+            {
+                return ViewBag.error = ex.Message;
+            }
+
+            
+            
         }
 
         //// POST: Product_Details/Edit/5
@@ -266,11 +280,45 @@ namespace MVCproject.Controllers
 
                            }).ToList();
 
-
               
 
 
                 return Json(new { data = pro }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return ViewBag.error = ex.Message;
+            }
+        }
+        [HttpGet]
+        public JsonResult producted(int? id)
+        {
+         
+            List<Producttable> tt = new List<Producttable>();
+
+            try
+            {
+                var data = (from d in db.tblproducts
+                           where d.id == id
+                           join u in db.tblproductunits on d.unit_id equals u.unit_id
+                           join c in db.tblproductcategorys on d.category_id equals c.category_id
+                           select new
+                           {
+                               d.id,
+                               d.product_name,
+                               u.unit_name,
+                               c.category_name,
+                               d.unit_in_stock,
+                               d.unit_price,
+                               d.recorder_level
+
+                           }).ToList();
+
+
+
+
+
+                return Json(data, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
