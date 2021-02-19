@@ -38,8 +38,12 @@ namespace MVCproject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Add_Product_Detail(tblproduct product,productview product_views)
         {
+            string num = product_views.price;
 
-            
+            char[] charsToTrim = { '_', };
+
+            string result = num.Trim(charsToTrim);
+
             product.product_name = product_views.name;
            string name= product_views.name;
             string proc = name.Substring(0,4);
@@ -93,7 +97,7 @@ namespace MVCproject.Controllers
         //Get: Product_Details/Edit/5
         public ActionResult Edit(int? id)
         {
-            producted(id);
+          
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

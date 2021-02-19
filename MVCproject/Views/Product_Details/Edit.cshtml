@@ -84,17 +84,23 @@
         }
     </div>
 </div>
-
+<script src="~/asset/vendor/jsvaraiable.js"></script>
 <script>
 
-   
+    var url = window.location.href.replace(/\/$/, '');
+    var lastSeg = url.substr(url.lastIndexOf('/') + 1);
+
+    var id = lastSeg;
 
 
+    console.log(url);
+
+  
 
     $(document).ready(function () {
         $.ajax({
             type: "GET",
-            url: "/Product_Details/Edit",
+            url: "/Product_Details/producted/"+id+"",
             data: {},
            
             success: function (data) {

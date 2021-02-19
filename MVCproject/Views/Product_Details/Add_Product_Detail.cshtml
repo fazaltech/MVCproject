@@ -190,6 +190,11 @@
         var val_price = $("#unit_price").val();
         var val_dis = $("#discount_percentage").val();
 
+        var sl = val_name.length;
+        if (sl<=4) {
+            alert("Please Enter More than 4 digits Name");
+            return false;
+        }
 
         if (!val_name.match(/\S/)) {
             alert("Please Enter Product Name");

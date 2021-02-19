@@ -59,11 +59,11 @@
 <link href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" />
 
 <script src="http://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js" defer></script>
-
+<script src="~/asset/vendor/jsvaraiable.js"></script>
 <script>
 
 
-
+    var id = "10";
 
     $(document).ready(function () {
         
@@ -78,7 +78,10 @@
                     $(row).addClass('selected');
                 }
             },
-            
+            success: function (row) {
+                id = row.id;
+               
+            },
             columns: [
              
                 { "data": "product_name" },
@@ -98,5 +101,7 @@
         });
     });
 
+  
+  
 </script>
 
