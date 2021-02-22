@@ -56,9 +56,9 @@
 
 </div>
 <!-- /.container-fluid -->
-<link href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" />
 
-<script src="http://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js" defer></script>
+
+
 <script src="~/asset/vendor/jsvaraiable.js"></script>
 <script>
 
@@ -79,6 +79,15 @@
     $(document).ready(function () {
         
         $('#productTable').dataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'pdfHtml5',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5]
+                    }
+                },
+            ],
             processing: true,
             ordering: true,
             paging: true,
