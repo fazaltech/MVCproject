@@ -38,21 +38,39 @@ namespace MVCproject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Add_Product_Detail(tblproduct product,productview product_views)
         {
-            string num = product_views.price;
+            
+            
+            //For Trim the variable of price
+            string tmprice = product_views.price;
+            string tmdis = product_views.dist_pre;
+            char[] charsToTrim = { '_', '0'};
+            string prodprice = tmprice.Trim(charsToTrim);
+            string prodis = tmdis.Trim(charsToTrim);
 
-            char[] charsToTrim = { '_', };
-
-            string result = num.Trim(charsToTrim);
-
-            product.product_name = product_views.name;
-           string name= product_views.name;
+            
+            
+            
+           
+            
+            
+            //Substring of product name for product code
+            string name= product_views.name;
             string proc = name.Substring(0,4);
+            string procode = proc + prodprice;
 
 
-            Thread.Sleep(200);
-            var precheck = db.tblproducts.Where(x => x.product_name == product.product_name).Where(x=>x.flag=="1").FirstOrDefault();
+            //For generate product id
             var rdnum = new System.Random();
             int random = rdnum.Next(100);
+            string dd = DateTime.Now.ToString("yyMMddhhmmss");
+            string proid = "ppid" + dd + random;
+
+
+            //For precheck variable 
+            product.product_name = product_views.name;
+            Thread.Sleep(200);
+            var precheck = db.tblproducts.Where(x => x.product_name == product.product_name).Where(x=>x.flag=="1").FirstOrDefault();
+           
 
 
             var unitids = db.tblproductunits.Where(x => x.unit_name == product_views.unit_name).Select(x => x.unit_id).Max();
@@ -62,9 +80,12 @@ namespace MVCproject.Controllers
 
 
 
-            string dd = DateTime.Now.ToString("yyMMddhhmmss");
-            string proid = "ppid" + dd + random;
-            string procode = proc+product_views.price;
+
+            decimal price = Convert.ToDecimal(prodprice);
+            decimal discont = Convert.ToDecimal(prodis);
+
+
+
 
             if (precheck != null)
             {
@@ -77,9 +98,13 @@ namespace MVCproject.Controllers
             {
                 product.product_id = proid;
                 product.product_code = procode;
+                product.product_name = product_views.name;
                 product.unit_id = unitid;
                 product.category_id = catid;
-                product.product_name = product_views.name;
+                product.unit_price = price;
+                product.discount_percentage = discont;
+
+
                 product.flag = "1";
 
                 db.tblproducts.Add(product);

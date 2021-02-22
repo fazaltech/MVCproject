@@ -63,7 +63,18 @@
 <script>
 
 
-    var id = "10";
+    $(document).ready(function () {
+        // Setup - add a text input to each footer cell
+        $('#productTable tfoot th').each(function () {
+            var title = $(this).text();
+            $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+        });
+
+        // DataTable
+
+
+
+    });
 
     $(document).ready(function () {
         
@@ -78,13 +89,27 @@
                     $(row).addClass('selected');
                 }
             },
+            initComplete: function () {
+                // Apply the search
+                this.api().columns().every(function () {
+                    var that = this;
+
+                    $('input', this.footer()).on('keyup change clear', function () {
+                        if (that.search() !== this.value) {
+                            that
+                                .search(this.value)
+                                .draw();
+                        }
+                    });
+                });
+            },
             success: function (row) {
                 id = row.id;
                
             },
             columns: [
              
-                { "data": "product_name" },
+                { "data": "product_name"},
                 { "data": "unit_name" },
                 { "data": "category_name" },
                 { "data": "unit_in_stock" },
@@ -98,9 +123,13 @@
                 }
             ]
 
+
+
         });
     });
 
+ 
+   
   
   
 </script>

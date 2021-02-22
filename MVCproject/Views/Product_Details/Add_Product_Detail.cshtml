@@ -80,7 +80,7 @@
 
 <script>
 
-    $("#unit_price").inputmask({ "mask": "9999" });
+    $("#unit_price").inputmask({ "mask": "999.99" });
 
     $("#discount_percentage").inputmask({ "mask": "99.99" });
 
@@ -147,13 +147,23 @@
 
         var token = $('input[name="__RequestVerificationToken"]').val();
 
+
+
+        var prepric = $("#unit_price").val();
+        var tmpirce = prepric.replace(/_/g, 0);
+
+
+        var predis = $("#discount_percentage").val();
+        var tmdis = predis.replace(/_/g, 0);
+
+
         var product =
         {
             name: $("#proname").val(),
             unit_name: $("#pro_unit").val(),
             cat_name: $("#pro_cat").val(),
-            price: $("#unit_price").val(),
-            dist_pre: $("#discount_percentage").val(),
+            price: tmpirce,
+            dist_pre: tmdis,
         }
         $.ajax({
             method: "POST",
@@ -208,12 +218,12 @@
             alert("Please Select a Category");
             return false;
         }
-        if (val_price < 10 || val_price > 500) {
+        if (val_price < 1 || val_price > 1000) {
             alert("Price Wrong");
             return false;
         }
-        if (val_dis < 5 || val_dis > 25) {
-            alert("Range Wrong");
+        if (val_dis < 1 || val_dis > 25) {
+            alert("Discount Range Wrong");
             return false;
 
         }
