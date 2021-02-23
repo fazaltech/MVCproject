@@ -153,9 +153,9 @@ namespace MVCproject.Controllers
 
 
 
-
-
-                return View(data);
+                TempData["data"] = data;
+            
+                return View();
             }
             catch (Exception ex)
             {
@@ -320,39 +320,12 @@ namespace MVCproject.Controllers
             }
         }
         [HttpGet]
-        public JsonResult producted(int? id)
+        public JsonResult producted()
         {
-         
-            List<Producttable> tt = new List<Producttable>();
-
-            try
-            {
-                var data = (from d in db.tblproducts
-                           where d.id == id
-                           join u in db.tblproductunits on d.unit_id equals u.unit_id
-                           join c in db.tblproductcategorys on d.category_id equals c.category_id
-                           select new
-                           {
-                               d.id,
-                               d.product_name,
-                               u.unit_name,
-                               c.category_name,
-                               d.unit_in_stock,
-                               d.unit_price,
-                               d.recorder_level
-
-                           }).ToList();
+          var data = TempData["data"];
 
 
-
-
-
-                return Json(data, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception ex)
-            {
-                return ViewBag.error = ex.Message;
-            }
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
 
         public class productview

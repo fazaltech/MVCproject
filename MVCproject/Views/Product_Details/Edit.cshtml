@@ -87,16 +87,18 @@
 <script src="~/asset/vendor/jsvaraiable.js"></script>
 <script>
 
-    var url = window.location.href.replace(/\/$/, '');
-    var lastSeg = url.substr(url.lastIndexOf('/') + 1);
+    //var url = window.location.href.replace(/\/$/, '');
+    //var lastSeg = url.substr(url.lastIndexOf('/') + 1);
 
-    var id = lastSeg;
+    //var id = lastSeg;
+
 
 
     $(document).ready(function () {
         $.ajax({
             type: "GET",
-            url: "/Product_Details/producted/"+id+"",
+            url: "/Product_Details/producted/",
+        
             data: {},
            
             success: function (data) {
