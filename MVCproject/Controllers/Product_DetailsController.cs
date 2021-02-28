@@ -145,9 +145,9 @@ namespace MVCproject.Controllers
                                 d.product_name,
                                 u.unit_name,
                                 c.category_name,
-                                d.unit_in_stock,
+                               
                                 d.unit_price,
-                                d.recorder_level
+                                d.discount_percentage
 
                             }).ToList();
 
@@ -166,34 +166,34 @@ namespace MVCproject.Controllers
             
         }
 
-        //// POST: Product_Details/Edit/5
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost, ActionName("Edit")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "id,category_id,category_name,flag")] tblproductcategory tblproductcategory, string procated, int? id)
-        //{
+        // POST: Product_Details/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost, ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(productview product_views, int ? id)
+        {
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        var prodtcat = db.tblproductcategorys.SingleOrDefault(b => b.id == id);
-        //        prodtcat.category_name = procated;
+            //if (ModelState.IsValid)
+            //{
+            //    var prodtcat = db.tblproductcategorys.SingleOrDefault(b => b.id == id);
+            //    prodtcat.category_name = procated;
 
-        //        db.SaveChanges();
-        //        ViewBag.MessageED = "Product Category Update";
+            //    db.SaveChanges();
+            //    ViewBag.MessageED = "Product Category Update";
 
-        //    }
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    if (tblproductcategory == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
+            //}
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            //if (tblproductcategory == null)
+            //{
+            //    return HttpNotFound();
+            //}
 
-        //    return View(tblproductcategory);
-        //}
+            return View();
+        }
 
         //// GET: Product_Details/Delete/5
         //public ActionResult Delete(int? id)
