@@ -132,6 +132,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Product_CategoriesController.cs" />
     <Compile Include="Controllers\Product_UnitsController.cs" />
+    <Compile Include="Controllers\Receive_ProductController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2091,6 +2092,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Migrations\" />
     <Folder Include="Views\bjbjh\" />
+    <Folder Include="Views\Receive_Product\" />
+    <Folder Include="Views\Receive_Product_\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
