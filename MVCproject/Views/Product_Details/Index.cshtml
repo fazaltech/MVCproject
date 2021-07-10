@@ -23,7 +23,7 @@
 
                             <thead>
                                 <tr>
-                                   
+
                                     <th>Name</th>
                                     <th>Unit</th>
                                     <th>Category</th>
@@ -36,7 +36,7 @@
                             </thead>
                             <tfoot>
                                 <tr>
-                                   
+
                                     <th>Name</th>
                                     <th>Unit</th>
                                     <th>Category</th>
@@ -54,6 +54,13 @@
         </div>
     </div>
 
+</div>
+<div>
+  
+    <a href="~/Product_Details/Add_Product_Detail" class="btn btn-primary btn-icon-split">
+        
+        <span class="text">Add Product</span>
+    </a>
 </div>
 <!-- /.container-fluid -->
 
@@ -77,7 +84,7 @@
     });
 
     $(document).ready(function () {
-        
+
         $('#productTable').dataTable({
             dom: 'Bfrtip',
             buttons: [
@@ -114,11 +121,11 @@
             },
             success: function (row) {
                 id = row.id;
-               
+
             },
             columns: [
-             
-                { "data": "product_name"},
+
+                { "data": "product_name" },
                 { "data": "unit_name" },
                 { "data": "category_name" },
                 { "data": "unit_in_stock" },
@@ -126,7 +133,7 @@
                 { "data": "recorder_level" },
                 /* EDIT */ {
                     mRender: function (data, type, row) {
-                        
+
                         return '<a class="table-edit" data-id="' + row[0] + '" href="/Product_Details/Edit/' + row.id + '"><i class="fas fa-edit"></i></a>'
                     }
                 }
@@ -137,9 +144,9 @@
         });
     });
 
- 
-   
-  
-  
+
+
+
+
 </script>
 

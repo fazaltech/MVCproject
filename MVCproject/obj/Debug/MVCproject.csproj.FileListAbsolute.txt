@@ -152,7 +152,6 @@ D:\MVCproject\MVCproject\obj\Debug\MVCproject.csproj.CoreCompileInputs.cache
 D:\MVCproject\MVCproject\obj\Debug\MVCproject.csproj.CopyComplete
 D:\MVCproject\MVCproject\obj\Debug\MVCproject.dll
 D:\MVCproject\MVCproject\obj\Debug\MVCproject.pdb
-D:\MVCproject\MVCproject\obj\Debug\MVCproject.csprojAssemblyReference.cache
 E:\MVCproject\MVCproject\bin\MVCproject.dll.config
 E:\MVCproject\MVCproject\bin\MVCproject.dll
 E:\MVCproject\MVCproject\bin\MVCproject.pdb
@@ -233,3 +232,6 @@ E:\MVCproject\MVCproject\obj\Debug\MVCproject.csproj.CopyComplete
 E:\MVCproject\MVCproject\obj\Debug\MVCproject.dll
 E:\MVCproject\MVCproject\obj\Debug\MVCproject.pdb
 E:\MVCproject\MVCproject\obj\Debug\MVCproject.csprojAssemblyReference.cache
+D:\MVCproject\MVCproject\obj\Debug\MVCproject.csproj.AssemblyReference.cache
+D:\MVCproject\MVCproject\obj\Debug\MVCproject.Migrations.abc.resources
+D:\MVCproject\MVCproject\obj\Debug\MVCproject.csproj.GenerateResource.cache

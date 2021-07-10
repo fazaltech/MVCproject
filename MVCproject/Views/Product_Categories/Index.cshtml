@@ -15,20 +15,20 @@
 
         <!-- Page Heading -->
         @*<h1 class="h3 mb-2 text-gray-800">Tables</h1>
-            <p class="mb-4">
-                DataTables is a third party plugin that is used to generate the demo table below.
-                For more information about DataTables, please visit the <a target="_blank"
-                                                                           href="https://datatables.net">official DataTables documentation</a>.
-            </p>*@
+        <p class="mb-4">
+            DataTables is a third party plugin that is used to generate the demo table below.
+            For more information about DataTables, please visit the <a target="_blank"
+                                                                       href="https://datatables.net">official DataTables documentation</a>.
+        </p>*@
         @*@using (Html.BeginForm("Index", "Registration", FormMethod.Get))
-            {
-                <p>
-                    Role: @Html.DropDownList("roles", "All")
-                    Name: @Html.TextBox("name")
-                    <br />
-                    <input type="submit" value="Filter" />
-                </p>
-            }*@
+        {
+            <p>
+                Role: @Html.DropDownList("roles", "All")
+                Name: @Html.TextBox("name")
+                <br />
+                <input type="submit" value="Filter" />
+            </p>
+        }*@
         <!-- DataTales Example -->
 
         <div class="card shadow mb-4">
@@ -71,14 +71,14 @@
                                     <tbody>
                                         @foreach (var item in Model)
                                         {
-                                        <tr>
-                                            <td>@Html.DisplayFor(model => item.category_name)</td>
-                                            <td>
-                                                <a href="@Url.Action("Edit", "Product_Categories", new { id = item.id })"><i class="fas fa-edit"></i></a>
-                                                <a href="@Url.Action("Delete", "Product_Categories", new { id = item.id })"><i class="fas fa-trash"></i></a>
-                                            </td>
+                                            <tr>
+                                                <td>@Html.DisplayFor(model => item.category_name)</td>
+                                                <td>
+                                                    <a href="@Url.Action("Edit", "Product_Categories", new { id = item.id })"><i class="fas fa-edit"></i></a>
+                                                    <a href="@Url.Action("Delete", "Product_Categories", new { id = item.id })"><i class="fas fa-trash"></i></a>
+                                                </td>
 
-                                        </tr>
+                                            </tr>
                                         }
                                     </tbody>
                                 </table>
@@ -91,6 +91,10 @@
 
         </div>
         <!-- /.container-fluid -->
+        <a href="~/Product_Categories/Add_Category" class="btn btn-primary btn-icon-split">
+
+            <span class="text">Add Category</span>
+        </a>
     </div>
 </body>
 </html>

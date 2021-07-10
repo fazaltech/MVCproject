@@ -137,6 +137,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107080950562_abc.cs" />
+    <Compile Include="Migrations\202107080950562_abc.Designer.cs">
+      <DependentUpon>202107080950562_abc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\mvc_pos.Context.cs" />
     <Compile Include="Models\SiteRole.cs" />
     <Compile Include="Models\tblcustomer.cs" />
@@ -2090,7 +2095,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Migrations\" />
     <Folder Include="Views\bjbjh\" />
     <Folder Include="Views\Receive_Product\" />
     <Folder Include="Views\Receive_Product_\" />
@@ -2110,6 +2114,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202107080950562_abc.resx">
+      <DependentUpon>202107080950562_abc.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
