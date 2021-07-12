@@ -186,7 +186,7 @@ namespace MVCproject.Controllers
         }
 
 
-        [Authorize(Roles = "admin")]
+       // [Authorize(Roles = "admin")]
         public ActionResult AssignRole(int? id)
         {
             if (id == null)
@@ -202,7 +202,7 @@ namespace MVCproject.Controllers
             return View(urse);
         }
         [HttpPost, ActionName("AssignRole")]
-        [Authorize(Roles = "admin")]
+       // [Authorize(Roles = "admin")]
         [ValidateAntiForgeryToken]
         public ActionResult AssignRole([Bind(Include = "Id,user_name,email_id,password,role")]Models.tbluser users, string Roles, int? id)
         {

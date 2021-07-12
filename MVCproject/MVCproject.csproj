@@ -137,9 +137,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202107080950562_abc.cs" />
-    <Compile Include="Migrations\202107080950562_abc.Designer.cs">
-      <DependentUpon>202107080950562_abc.cs</DependentUpon>
+    <Compile Include="Migrations\202107121002208_abc.cs" />
+    <Compile Include="Migrations\202107121002208_abc.Designer.cs">
+      <DependentUpon>202107121002208_abc.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\mvc_pos.Context.cs" />
@@ -2116,8 +2116,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202107080950562_abc.resx">
-      <DependentUpon>202107080950562_abc.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107121002208_abc.resx">
+      <DependentUpon>202107121002208_abc.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
