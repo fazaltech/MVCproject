@@ -28,6 +28,7 @@ namespace MVCproject.Models
         public DbSet<tblsale> tblsales { get; set; }
         public DbSet<tblsupplier> tblsuppliers { get; set; }
         public DbSet<tbluser> tblusers { get; set; }
+        public DbSet<tblroles> tblrole { get; set; }
 
         public mvc_pos_conn()
                   : base("mvc_pos_conn")

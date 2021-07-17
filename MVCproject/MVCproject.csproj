@@ -46,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -137,9 +137,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202107121002208_abc.cs" />
-    <Compile Include="Migrations\202107121002208_abc.Designer.cs">
-      <DependentUpon>202107121002208_abc.cs</DependentUpon>
+    <Compile Include="Migrations\202107170837474_abc.cs" />
+    <Compile Include="Migrations\202107170837474_abc.Designer.cs">
+      <DependentUpon>202107170837474_abc.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\mvc_pos.Context.cs" />
@@ -151,6 +151,7 @@
     <Compile Include="Models\tblproductunit.cs" />
     <Compile Include="Models\tblpurchaseorder.cs" />
     <Compile Include="Models\tblreceiveproduct.cs" />
+    <Compile Include="Models\tblroles.cs" />
     <Compile Include="Models\tblsale.cs" />
     <Compile Include="Models\tblsupplier.cs" />
     <Compile Include="Models\tbluser.cs" />
@@ -2092,6 +2093,7 @@
     <Content Include="Views\Product_Details\Index.cshtml" />
     <Content Include="Views\Product_Details\Add_Product_Detail.cshtml" />
     <Content Include="Views\Product_Details\Edit.cshtml" />
+    <Content Include="Views\Registration\Add_Role.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2116,8 +2118,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202107121002208_abc.resx">
-      <DependentUpon>202107121002208_abc.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107170837474_abc.resx">
+      <DependentUpon>202107170837474_abc.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

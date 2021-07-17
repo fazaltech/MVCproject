@@ -232,5 +232,6 @@ E:\MVCproject\MVCproject\obj\Debug\MVCproject.csproj.CopyComplete
 E:\MVCproject\MVCproject\obj\Debug\MVCproject.dll
 E:\MVCproject\MVCproject\obj\Debug\MVCproject.pdb
 E:\MVCproject\MVCproject\obj\Debug\MVCproject.csprojAssemblyReference.cache
+D:\MVCproject\MVCproject\obj\Debug\MVCproject.csproj.AssemblyReference.cache
 D:\MVCproject\MVCproject\obj\Debug\MVCproject.Migrations.abc.resources
 D:\MVCproject\MVCproject\obj\Debug\MVCproject.csproj.GenerateResource.cache

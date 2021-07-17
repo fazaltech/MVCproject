@@ -1,0 +1,110 @@
+﻿@model MVCproject.Models.tblroles
+@{
+    ViewBag.Title = "Add_Role";
+}
+
+<h2>Add Role</h2>
+
+<script src="~/asset/vendor/jquery-easing/jquery.easing.min.js"></script>
+<div class="card mb-4" style="width: 1002px;">
+    <div class="card-header">
+       Insert Role
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("Add_Role", "Registration", FormMethod.Post, new { id = "__AjaxAntiForgeryForm" }))
+        {
+            @Html.AntiForgeryToken();
+
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <input type="text" name="role" id="role" class="form-control form-control-user" onkeypress="return /[a-z\s 0-9]/i.test(event.key)" maxlength="50" placeholder="Insert Role" />
+                </div>
+               
+            </div>
+        <div class="text-center">
+                <input id="btnRang" value="Insert" class="btn btn-primary btn-user btn-block" onclick="BtnClick()" />
+        </div>
+
+
+        }
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script>
+
+
+
+    function ajfun() {
+
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+
+
+
+
+
+        var _Role = $("#role").val();
+        
+        $.ajax({
+            method: "POST",
+            url: "/Registration/Add_Role",
+
+            data: {
+                __RequestVerificationToken: token,
+                vrole: _Role
+
+            },
+
+            success: function (response) {
+
+                alert(response.responseText);
+                location.reload(true);
+
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert("Contact Developer Team");
+            }
+        })
+    }
+
+
+
+    function BtnClick() {
+
+
+        if (validation()) {
+
+            ajfun();
+
+
+
+        }
+
+
+    }
+
+
+    function validation() {
+        var val_role = $("#role").val();
+
+        var sl = val_role.length;
+        if (sl <= 4) {
+            alert("Please Enter More than 4 digits Name");
+            return false;
+        }
+
+        if (!val_role.match(/\S/)) {
+            alert("Please Enter Product Name");
+            return false;
+        }
+
+        return true;
+    }
+</script>

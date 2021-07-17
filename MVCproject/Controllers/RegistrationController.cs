@@ -228,8 +228,31 @@ namespace MVCproject.Controllers
             return View(urse);
         }
 
-        
+        public ActionResult Add_Role()
+        {
+            return View();
+        }
+        [HttpPost, ActionName("Add_Role")]
+        // [Authorize(Roles = "admin")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Add_Role(tblroles role,string vrole) 
+        {
+            role.role = vrole;
+            var precheck = db.tblrole.Where(x => x.role == role.role).FirstOrDefault();
+            
+            if (precheck != null)
+            {
+                ViewBag.chk = "Role Already Exist";
+                return View(role);
 
+            }
+
+            if (ModelState.IsValid)
+            {
+
+            }
+                return View(); 
+        }
 
     }
 }

@@ -4,61 +4,77 @@
     ViewBag.Title = "Assign Role";
 }
 
-<h2>AssignRole</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.id)
+<h2>Assign Role</h2>
 
 
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.user_name)
-            </dt>
+<div class="card mb-4" style="width: 1002px;">
+    <div class="card-header">
+       Users Assign Role
+    </div>
+    <div class="card-body"></div>
 
-            <dd>
-                @Html.DisplayFor(model => model.user_name)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.email_id)
-            </dt>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-            <dd>
-                @Html.DisplayFor(model => model.email_id)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.role)
-            </dt>
+<div class="form-horizontal">
 
-            <dd>
-                @Html.DisplayFor(model => model.role)
-            </dd>
-        </dl>
-
-        <div class="form-group">
-            <b>Change Roles</b>
-            <select name="Roles" id="Roles" class="form-control" style="width:20%;">
-                <option value="manager">Manager</option>
-                <option value="admin">Admin</option>
-
-            </select>
-        </div>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.id)
 
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+<div class="form-group">
+    @Html.DisplayNameFor(model => model.user_name)
+    @Html.DisplayFor(model => model.user_name)
+</div>
+    <div class="form-group">
+
+        <input type="text" name="prodptnameed" id="prodptednameed" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
+    </div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.user_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.email_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email_id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.role)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.role)
+        </dd>
+    </dl>
+
+    <div class="form-group">
+        <b>Change Roles</b>
+        <select name="Roles" id="Roles" class="form-control" style="width:20%;">
+            <option value="manager">Manager</option>
+            <option value="admin">Admin</option>
+
+        </select>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+    }
+</div>
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
