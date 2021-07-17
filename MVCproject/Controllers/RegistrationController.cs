@@ -254,5 +254,17 @@ namespace MVCproject.Controllers
                 return View(); 
         }
 
+
+        public ActionResult Role_Index() 
+        {
+            return View();
+        }
+
+
+        public JsonResult TableView() 
+        {
+
+            return Json( JsonRequestBehavior.AllowGet);
+        }
     }
 }

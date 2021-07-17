@@ -9,5 +9,6 @@ namespace MVCproject.Models
     {
         public int id { get; set; }
         public string role { get; set; }
+        public string flag { get; set; }
     }
 }

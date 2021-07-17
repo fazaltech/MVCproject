@@ -141,6 +141,10 @@
     <Compile Include="Migrations\202107170837474_abc.Designer.cs">
       <DependentUpon>202107170837474_abc.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107170910375_xyz.cs" />
+    <Compile Include="Migrations\202107170910375_xyz.Designer.cs">
+      <DependentUpon>202107170910375_xyz.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\mvc_pos.Context.cs" />
     <Compile Include="Models\SiteRole.cs" />
@@ -2094,6 +2098,7 @@
     <Content Include="Views\Product_Details\Add_Product_Detail.cshtml" />
     <Content Include="Views\Product_Details\Edit.cshtml" />
     <Content Include="Views\Registration\Add_Role.cshtml" />
+    <Content Include="Views\Registration\Role_Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2120,6 +2125,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202107170837474_abc.resx">
       <DependentUpon>202107170837474_abc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107170910375_xyz.resx">
+      <DependentUpon>202107170910375_xyz.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

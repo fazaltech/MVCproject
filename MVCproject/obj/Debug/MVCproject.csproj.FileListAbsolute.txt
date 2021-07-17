@@ -235,3 +235,4 @@ E:\MVCproject\MVCproject\obj\Debug\MVCproject.csprojAssemblyReference.cache
 D:\MVCproject\MVCproject\obj\Debug\MVCproject.csproj.AssemblyReference.cache
 D:\MVCproject\MVCproject\obj\Debug\MVCproject.Migrations.abc.resources
 D:\MVCproject\MVCproject\obj\Debug\MVCproject.csproj.GenerateResource.cache
+D:\MVCproject\MVCproject\obj\Debug\MVCproject.Migrations.xyz.resources
