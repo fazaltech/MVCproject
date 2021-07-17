@@ -249,9 +249,13 @@ namespace MVCproject.Controllers
 
             if (ModelState.IsValid)
             {
-
+                role.role = vrole;
+                role.flag = "1";
+                db.tblrole.Add(role);
+                db.SaveChanges();
             }
-                return View(); 
+            return Json(new { success = true, responseText = "Role Added" }, JsonRequestBehavior.AllowGet);
+
         }
 
 
@@ -260,11 +264,26 @@ namespace MVCproject.Controllers
             return View();
         }
 
-
-        public JsonResult TableView() 
+        [HttpGet]
+        public JsonResult RoleView() 
         {
+            try
+            {
+                var pro = (from d in db.tblrole
+                           where d.flag == "1"
+                           select new
+                           {
+                               d.id,
+                               d.role,
+                             
 
-            return Json( JsonRequestBehavior.AllowGet);
+                           }).ToList();
+                return Json(new { data = pro }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return ViewBag.error = ex.Message;
+            }
         }
     }
 }

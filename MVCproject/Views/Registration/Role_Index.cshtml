@@ -18,19 +18,14 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <table id="productTable" class="table table-striped table-bordered">
+                        <table id="ajax_table" class="table table-striped table-bordered">
 
 
                             <thead>
                                 <tr>
 
                                     <th>Name</th>
-                                    <th>Unit</th>
-                                    <th>Category</th>
-                                    <th>Stock</th>
-                                    <th>Price</th>
-                                    <th>Record</th>
-                                    <th>Edit</th>
+                                 
 
                                 </tr>
                             </thead>
@@ -38,12 +33,7 @@
                                 <tr>
 
                                     <th>Name</th>
-                                    <th>Unit</th>
-                                    <th>Category</th>
-                                    <th>Stock</th>
-                                    <th>Price</th>
-                                    <th>Record</th>
-                                    <th>Edit</th>
+                                 
                                 </tr>
                             </tfoot>
                         </table>
@@ -57,9 +47,9 @@
 </div>
 <div>
 
-    <a href="~/Product_Details/Add_Product_Detail" class="btn btn-primary btn-icon-split">
+    <a href="~/Registration/Add_Role" class="btn btn-primary btn-icon-split">
 
-        <span class="text">Add Product</span>
+        <span class="text">Add Role</span>
     </a>
 </div>
 <!-- /.container-fluid -->
@@ -70,78 +60,28 @@
 <script>
 
 
-    $(document).ready(function () {
-        // Setup - add a text input to each footer cell
-        $('#productTable tfoot th').each(function () {
-            var title = $(this).text();
-            $(this).html('<input type="text" placeholder="Search ' + title + '" />');
-        });
-
-        // DataTable
-
-
-
-    });
 
     $(document).ready(function () {
 
-        $('#productTable').dataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                {
-                    extend: 'pdfHtml5',
-                    exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5]
-                    }
-                },
-            ],
+        table = $('#ajax_table').dataTable({
+            destroy: true,
             processing: true,
             ordering: true,
             paging: true,
-            searching: true,
-            ajax: "/Product_Details/TableView",
-            row: function (row, data) {
-                if ($.inArray(data.DT_RowId, selected) !== -1) {
-                    $(row).addClass('selected');
-                }
-            },
-            initComplete: function () {
-                // Apply the search
-                this.api().columns().every(function () {
-                    var that = this;
 
-                    $('input', this.footer()).on('keyup change clear', function () {
-                        if (that.search() !== this.value) {
-                            that
-                                .search(this.value)
-                                .draw();
-                        }
-                    });
-                });
-            },
-            success: function (row) {
-                id = row.id;
-
-            },
+            ajax: "/Registration/RoleView",
+           
             columns: [
 
-                { "data": "product_name" },
-                { "data": "unit_name" },
-                { "data": "category_name" },
-                { "data": "unit_in_stock" },
-                { "data": "unit_price" },
-                { "data": "recorder_level" },
-                /* EDIT */ {
-                    mRender: function (data, type, row) {
+                { "data": "role" }
+              
+         
 
-                        return '<a class="table-edit" data-id="' + row[0] + '" href="/Product_Details/Edit/' + row.id + '"><i class="fas fa-edit"></i></a>'
-                    }
-                }
             ]
 
 
 
-        });
+        })
     });
 
 
