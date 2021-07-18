@@ -23,17 +23,14 @@
 
                             <thead>
                                 <tr>
-
                                     <th>Name</th>
-                                 
-
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
-
                                     <th>Name</th>
-                                 
+                                    <th>Action</th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -68,14 +65,19 @@
             processing: true,
             ordering: true,
             paging: true,
-
             ajax: "/Registration/RoleView",
-           
-            columns: [
+            success: function (row) {
+                id = row.id;
 
-                { "data": "role" }
-              
-         
+            },
+            columns: [
+                { "data": "role" },
+                /* EDIT */ {
+                    mRender: function (data, type, row) {
+
+                        return '<a class="table-edit" data-id="' + row[0] + '" href="/Product_Details/Edit/' + row.id + '"><i class="fas fa-edit"></i></a> <a class="table-edit" data-id="' + row[0] + '" href="/Product_Details/Edit/' + row.id + '"><i class="fas fa-trash"></i></a>'
+                    }
+                }
 
             ]
 
