@@ -285,5 +285,11 @@ namespace MVCproject.Controllers
                 return ViewBag.error = ex.Message;
             }
         }
+
+
+        public ActionResult Role_Edit(tblroles role)
+        {
+            return View();
+        }
     }
 }

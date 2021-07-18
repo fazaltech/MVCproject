@@ -15,74 +15,74 @@
         {
             @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
+            <div class="form-horizontal">
 
 
-            <input type="hidden" id="prodptided" name="prodptided" >
+                <input type="hidden" id="prodptided" name="prodptided">
 
 
-            <div class="form-group">
-                <label class="col-form-label">Name</label>
-                <input type="text" name="prodprename" id="prodprename" class="form-control form-control-user" disabled />
+                <div class="form-group">
+                    <label class="col-form-label">Name</label>
+                    <input type="text" name="prodprename" id="prodprename" class="form-control form-control-user" disabled />
+                </div>
+                <div class="form-group">
+
+                    <input type="text" name="prodptnameed" id="prodptednameed" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-form-label">Product Unit</label>
+                    <input type="text" name="prodpreunt" id="prodpreunt" class="form-control form-control-user" value=" " disabled />
+                </div>
+                <div class="form-group">
+
+
+                    <select class="form-control" id="prodptunted" name="prodptunted"></select>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="col-form-label">Product Category</label>
+                    <input type="text" name="prodprecat" id="prodprecat" class="form-control form-control-user" value=" " disabled />
+                </div>
+                <div class="form-group">
+
+
+                    <select class="form-control" id="prodptcated" name="prodptcated"></select>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-form-label">Price</label>
+                    <input type="text" name="prodpreprc" id="prodpreprc" class="form-control form-control-user" value=" " disabled />
+                </div>
+                <div class="form-group">
+
+                    <input type="text" name="prodptprced" id="prodptprced" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-form-label">Discount Precentage</label>
+                    <input type="text" name="prodprepdis" id="prodprepdis" class="form-control form-control-user" value=" " disabled />
+                </div>
+                <div class="form-group">
+
+                    <input type="text" name="prodptdised" id="prodptdised" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
+                </div>
+
+
+                <div class="text-center">
+                    <input type="submit" value="Update" class="btn btn-primary btn-user btn-block" onclick="BtnClick()" />
+
+                    @*<p class="alert-danger">@ViewBag.chk</p>*@
+
+                </div>
+
+
             </div>
-            <div class="form-group">
-
-                <input type="text" name="prodptnameed" id="prodptednameed" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
-            </div>
-
-
-            <div class="form-group">
-                <label class="col-form-label">Product Unit</label>
-                <input type="text" name="prodpreunt" id="prodpreunt" class="form-control form-control-user" value=" " disabled />
-            </div>
-            <div class="form-group">
-
-
-                <select class="form-control" id="prodptunted" name="prodptunted"></select>
-            </div>
-
-
-
-            <div class="form-group">
-                <label class="col-form-label">Product Category</label>
-                <input type="text" name="prodprecat" id="prodprecat" class="form-control form-control-user" value=" " disabled />
-            </div>
-            <div class="form-group">
-
-
-                <select class="form-control" id="prodptcated" name="prodptcated"></select>
-            </div>
-
-
-            <div class="form-group">
-                <label class="col-form-label">Price</label>
-                <input type="text" name="prodpreprc" id="prodpreprc" class="form-control form-control-user" value=" " disabled />
-            </div>
-            <div class="form-group">
-
-                <input type="text" name="prodptprced" id="prodptprced" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
-            </div>
-
-
-            <div class="form-group">
-                <label class="col-form-label">Discount Precentage</label>
-                <input type="text" name="prodprepdis" id="prodprepdis" class="form-control form-control-user" value=" " disabled />
-            </div>
-            <div class="form-group">
-
-                <input type="text" name="prodptdised" id="prodptdised" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
-            </div>
-
-
-            <div class="text-center">
-                <input type="submit" value="Update" class="btn btn-primary btn-user btn-block" onclick="BtnClick()" />
-
-                @*<p class="alert-danger">@ViewBag.chk</p>*@
-
-            </div>
-
-
-        </div>
         }
     </div>
 </div>
@@ -95,18 +95,18 @@
     //var id = lastSeg;
 
 
-  
+
 
 
     $(document).ready(function () {
         $.ajax({
             type: "GET",
             url: "/Product_Details/producted/",
-        
+
             data: {},
-           
+
             success: function (data) {
-                
+
 
 
                 for (var i = 0; i < data.length; i++) {
@@ -116,11 +116,11 @@
                     $("#prodprecat").val(data[i].category_name);
                     $("#prodpreprc").val(data[i].unit_price);
                     $("#prodprepdis").val(data[i].discount_percentage);
-                   
+
                 }
             }
 
-          
+
         });
     });
 
@@ -156,54 +156,19 @@
             });
         });
 
-    var editvalue=
-    {
-        id: $("#prodptided").val(),
-        name: $("#prodprename").val(),
-        unit_name,
-        category_name,
-        unit_price,
-        discount_percentage
-    }
-    var prodpre=
-    {
-        name:$("#prodprename").val(),
-        unit_name : $("#prodpreunt").val(),
-        cat_name : $("#prodprecat").val(),
-        price : $("#prodpreprc").val(),
-        dist_pre : $("#prodprepdis").val()
-    }
 
 
-   
 
-    var prodpost=
-    {
-        name : $("#prodptnameed").val(),
-            unit_name : $("#prodptunted").val(),
-            category_name :$("#prodptcated").val(),
-            unit_price : $("#prodptprced").val(),
-            discount_percentage : $("#prodptdised").val()
-    }
-
-    function value()
-    {
-       
-        editvalue.name = $("#prodprename").val()
-
-      
-  
-
-    }
 
     function range() {
         var val_name = proded.name;
-        var val_unit = proded.unit_name;
-        var val_cat = proded.category_name;
         var val_price = proded.unit_price;
         var val_dis = proded.discount_percentage;
 
         var sl = val_name.length;
+
+
+        if (val_name != null) {
         if (sl <= 4) {
             alert("Please Enter More than 4 digits Name");
             return false;
@@ -212,25 +177,30 @@
         if (!val_name.match(/\S/)) {
             alert("Please Enter Product Name");
             return false;
+            }
         }
-        if (val_unit == "-1") {
-            alert("Please Select a Unit");
-            return false;
-        }
-        if (val_cat == "-1") {
-            alert("Please Select a Category");
-            return false;
-        }
+        //if (val_unit == "-1") {
+        //    alert("Please Select a Unit");
+        //    return false;
+        //}
+        //if (val_cat == "-1") {
+        //    alert("Please Select a Category");
+        //    return false;
+        //}
+        if (val_price != null) {
         if (val_price < 1 || val_price > 1000) {
             alert("Price Wrong");
             return false;
+            }
         }
+
+        if (val_dis != null) {
         if (val_dis < 1 || val_dis > 25) {
             alert("Discount Range Wrong");
             return false;
 
         }
-
+        }
 
         return true;
 
@@ -238,20 +208,27 @@
 
 
     function ajfun() {
-        
+
         var token = $('input[name="__RequestVerificationToken"]').val();
 
 
 
-        var prepric = $("#unit_price").val();
+        var prepric = $("#prodptprced").val();
         var tmpirce = prepric.replace(/_/g, 0);
 
 
-        var predis = $("#discount_percentage").val();
+        var predis = $("#prodptdised").val();
         var tmdis = predis.replace(/_/g, 0);
 
+        var prodpre=
+        {
+            name: $("#prodptednameed").val(),
+            unit_name: $("#prodptunted").val(),
+            cat_name: $("#prodptcated").val(),
+            price: tmpirce,
+            dist_pre: tmdis,
+        }
 
-       
         $.ajax({
             method: "POST",
             url: "/Product_Details/Edit",
@@ -279,9 +256,12 @@
     }
 
     function BtnClick() {
-        
-        value();
-        ajfun();
+
+
+        if (range()) {
+
+            ajfun();
+        }
 
 
     }

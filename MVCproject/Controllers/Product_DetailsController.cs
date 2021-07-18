@@ -171,8 +171,15 @@ namespace MVCproject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(productview product_views, int ? id)
+        public ActionResult Edit(productview product_views, tblproduct product, int ? id)
         {
+            if (product_views.name != null) 
+            {
+                product.product_name = product_views.name;
+
+            }
+
+
 
             //if (ModelState.IsValid)
             //{
