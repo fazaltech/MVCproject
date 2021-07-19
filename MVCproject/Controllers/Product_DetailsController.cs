@@ -56,7 +56,8 @@ namespace MVCproject.Controllers
             //Substring of product name for product code
             string name= product_views.name;
             string proc = name.Substring(0,4);
-            string procode = proc + prodprice;
+            string dt = DateTime.Now.ToString("MMdd");
+            string procode = proc + dt;
 
 
             //For generate product id
@@ -171,16 +172,64 @@ namespace MVCproject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(productview product_views, tblproduct product, int ? id)
+        public ActionResult Edit(productview product_views, tblproduct product, int ? id, productedit proded)
         {
-            if (product_views.name != null) 
-            {
-                product.product_name = product_views.name;
+            var pro = (from d in db.tblproducts
+                       where d.id == id
+                       select new
+                       {
+                           d.id,
+                           d.product_name,
+                           d.product_code,
+                           d.unit_id,
+                           d.category_id,
+                           d.unit_price,
+                           d.discount_percentage
+                           });
 
+
+
+
+            if (product_views.name != null)
+            {
+                //Substring of product name for product code
+                string name = product_views.name;
+                string proc = name.Substring(0, 4);
+                string dt = DateTime.Now.ToString("MMdd");
+                string procode = proc + dt;
+
+                proded.name = name;
+                proded.prodcode = procode;
+
+            }
+            else 
+            {
+                proded.name = pro.Select(x => x.product_name).Max();
+                proded.prodcode = pro.Select(x => x.product_code).Max();
+            }
+
+            if (product_views.unit_name != "-1")
+            {
+                var unitids = db.tblproductunits.Where(x => x.unit_name == product_views.unit_name).Select(x => x.unit_id).Max();
+                string unitid = unitids;
+                proded.unit_id = unitid;
+            }
+            else 
+            {
+                proded.unit_id = pro.Select(x => x.unit_id).Max();
             }
 
 
-
+            if (product_views.cat_name != "-1")
+            {
+                var catids = db.tblproductcategorys.Where(x => x.category_name == product_views.cat_name).Select(x => x.category_id).Max();
+                string catid = catids;
+                proded.cat_id = catid;
+            }
+            else
+            {
+                proded.cat_id = pro.Select(x => x.category_id).Max();
+            }
             //if (ModelState.IsValid)
             //{
             //    var prodtcat = db.tblproductcategorys.SingleOrDefault(b => b.id == id);
@@ -356,6 +405,20 @@ namespace MVCproject.Controllers
             public decimal unit_in_stock { get; set; }
             public decimal unit_price { get; set; }
             public decimal recorder_level{ get; set; }
+
+        }
+
+
+
+        public class productedit
+        {
+            public string name { get; set; }
+            public string prodcode { get; set; }
+            public string unit_id { get; set; }
+            public string cat_id { get; set; }
+            public string price { get; set; }
+            public string dist_pre { get; set; }
+
 
         }
     }
