@@ -53,7 +53,7 @@ namespace MVCproject.Controllers
             return View(prctv);
         }
 
-        // GET: Product_Categories/Details/5
+        // GET: Product_Categories/Details/2
         public ActionResult Details(int? id)
         {
             if (id == null)
