@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-group">
 
-                    <input type="text" name="prodptnameed" id="prodptednameed" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
+                    <input type="text" name="prodptednameed" id="prodptednameed" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
                 </div>
 
 
@@ -60,7 +60,7 @@
                 </div>
                 <div class="form-group">
 
-                    <input type="text" name="prodptprced" id="prodptprced" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
+                    <input type="text" name="prodptprced" id="prodptprced" maxlength="50" class="form-control form-control-user"   />
                 </div>
 
 
@@ -70,7 +70,7 @@
                 </div>
                 <div class="form-group">
 
-                    <input type="text" name="prodptdised" id="prodptdised" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
+                    <input type="text" name="prodptdised" id="prodptdised" maxlength="50" class="form-control form-control-user"  />
                 </div>
 
 
@@ -89,14 +89,10 @@
 <script src="~/asset/vendor/jsvaraiable.js"></script>
 <script>
 
-    //var url = window.location.href.replace(/\/$/, '');
-    //var lastSeg = url.substr(url.lastIndexOf('/') + 1);
+    
+    $("#prodptprced").inputmask({ "mask": "999.99" });
 
-    //var id = lastSeg;
-
-
-
-
+    $("#prodptdised").inputmask({ "mask": "99.99" });
 
     $(document).ready(function () {
         $.ajax({
@@ -161,23 +157,24 @@
 
 
     function range() {
-        var val_name = proded.name;
-        var val_price = proded.unit_price;
-        var val_dis = proded.discount_percentage;
+        var val_name = $("#prodptednameed").val();
+        var val_price = $("#prodptprced").val();
+        var val_dis = $("#prodptdised").val();
 
         var sl = val_name.length;
 
 
-        if (val_name != null) {
+        if (val_name !== null && val_name !== undefined) {
         if (sl <= 4) {
             alert("Please Enter More than 4 digits Name");
-            return false;
+      
         }
 
         if (!val_name.match(/\S/)) {
             alert("Please Enter Product Name");
-            return false;
+   
             }
+            return false;
         }
         //if (val_unit == "-1") {
         //    alert("Please Select a Unit");
@@ -187,19 +184,21 @@
         //    alert("Please Select a Category");
         //    return false;
         //}
-        if (val_price != null) {
+        if (val_price !== null && val_price !== undefined) {
         if (val_price < 1 || val_price > 1000) {
             alert("Price Wrong");
-            return false;
+          
             }
+            return false;
         }
 
-        if (val_dis != null) {
+        if (val_dis !== null && val_dis !== undefined) {
         if (val_dis < 1 || val_dis > 25) {
             alert("Discount Range Wrong");
-            return false;
+           
 
-        }
+            }
+            return false;
         }
 
         return true;
@@ -235,7 +234,7 @@
 
             data: {
                 __RequestVerificationToken: token,
-                id: editvalue.id,
+         
                 product_views: prodpre
 
             },

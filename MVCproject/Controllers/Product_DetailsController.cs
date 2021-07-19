@@ -174,6 +174,14 @@ namespace MVCproject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(productview product_views, tblproduct product, int ? id, productedit proded)
         {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            char[] charsToTrim = { '_', '0' };
+            
             var pro = (from d in db.tblproducts
                        where d.id == id
                        select new
@@ -230,25 +238,50 @@ namespace MVCproject.Controllers
             {
                 proded.cat_id = pro.Select(x => x.category_id).Max();
             }
-            //if (ModelState.IsValid)
-            //{
-            //    var prodtcat = db.tblproductcategorys.SingleOrDefault(b => b.id == id);
-            //    prodtcat.category_name = procated;
 
-            //    db.SaveChanges();
-            //    ViewBag.MessageED = "Product Category Update";
+            if (product_views.price != null)
+            {
+                string tmprice = product_views.price;
+               
+                string prodprice = tmprice.Trim(charsToTrim);
+                proded.price = Convert.ToDecimal(prodprice);
+            }
+            else
+            {
+                proded.price = pro.Select(x => x.unit_price).Max();
+            }
 
-            //}
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-            //if (tblproductcategory == null)
-            //{
-            //    return HttpNotFound();
-            //}
 
-            return View();
+
+            if (product_views.dist_pre != null)
+            {
+                string tmpdis = product_views.dist_pre;
+
+                string proddis = tmpdis.Trim(charsToTrim);
+                proded.dist_pre = Convert.ToDecimal(proddis);
+            }
+            else
+            {
+                proded.dist_pre = pro.Select(x => x.discount_percentage).Max();
+            }
+            if (ModelState.IsValid)
+            {
+                product.product_code = proded.prodcode;
+                product.product_name = proded.name;
+                product.unit_id = proded.unit_id;
+                product.category_id = proded.cat_id;
+                product.unit_price = proded.price;
+                product.discount_percentage = proded.dist_pre;
+
+                db.SaveChanges();
+                ViewBag.MessageED = "Product Category Update";
+
+                
+            }
+
+            return Json(new { success = true, responseText = "Product Update" }, JsonRequestBehavior.AllowGet);
+
+
         }
 
         //// GET: Product_Details/Delete/5
@@ -416,8 +449,8 @@ namespace MVCproject.Controllers
             public string prodcode { get; set; }
             public string unit_id { get; set; }
             public string cat_id { get; set; }
-            public string price { get; set; }
-            public string dist_pre { get; set; }
+            public Nullable<decimal> price { get; set; }
+            public Nullable<decimal> dist_pre { get; set; }
 
 
         }
