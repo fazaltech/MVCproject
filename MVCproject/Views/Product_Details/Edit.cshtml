@@ -75,7 +75,7 @@
 
 
                 <div class="text-center">
-                    <input type="submit" value="Update" class="btn btn-primary btn-user btn-block" onclick="BtnClick()" />
+                    <input  value="Update" class="btn btn-primary btn-user btn-block" onclick="BtnClick()" />
 
                     @*<p class="alert-danger">@ViewBag.chk</p>*@
 
@@ -162,9 +162,9 @@
         var val_dis = $("#prodptdised").val();
 
         var sl = val_name.length;
+        
 
-
-        if (val_name !== null && val_name !== undefined) {
+        if (val_name != "") {
         if (sl <= 4) {
             alert("Please Enter More than 4 digits Name");
       
@@ -184,7 +184,7 @@
         //    alert("Please Select a Category");
         //    return false;
         //}
-        if (val_price !== null && val_price !== undefined) {
+        if (val_price !="") {
         if (val_price < 1 || val_price > 1000) {
             alert("Price Wrong");
           
@@ -192,7 +192,7 @@
             return false;
         }
 
-        if (val_dis !== null && val_dis !== undefined) {
+        if (val_dis != "") {
         if (val_dis < 1 || val_dis > 25) {
             alert("Discount Range Wrong");
            
@@ -210,7 +210,7 @@
 
         var token = $('input[name="__RequestVerificationToken"]').val();
 
-
+        var edit = $("#prodptided").val();
 
         var prepric = $("#prodptprced").val();
         var tmpirce = prepric.replace(/_/g, 0);
@@ -218,8 +218,8 @@
 
         var predis = $("#prodptdised").val();
         var tmdis = predis.replace(/_/g, 0);
-
-        var prodpre=
+        var yz = "abc";
+        var product =
         {
             name: $("#prodptednameed").val(),
             unit_name: $("#prodptunted").val(),
@@ -234,9 +234,9 @@
 
             data: {
                 __RequestVerificationToken: token,
-         
-                product_views: prodpre
-
+                id: edit,
+                product_views: product,
+                abc:yz
             },
 
             success: function (response) {

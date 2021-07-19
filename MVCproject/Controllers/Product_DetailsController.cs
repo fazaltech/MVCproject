@@ -172,7 +172,7 @@ namespace MVCproject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(productview product_views, tblproduct product, int ? id, productedit proded)
+        public ActionResult Edit(productview product_views, tblproduct product, int ? id, productedit proded,string abc)
         {
 
             if (id == null)
@@ -274,12 +274,12 @@ namespace MVCproject.Controllers
                 product.discount_percentage = proded.dist_pre;
 
                 db.SaveChanges();
-                ViewBag.MessageED = "Product Category Update";
+                return Json(new { success = true, responseText = "Product Update" }, JsonRequestBehavior.AllowGet);
 
-                
+
             }
 
-            return Json(new { success = true, responseText = "Product Update" }, JsonRequestBehavior.AllowGet);
+            return Json(new { success = false, responseText = "Product Not Update" }, JsonRequestBehavior.AllowGet);
 
 
         }
