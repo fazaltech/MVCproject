@@ -167,14 +167,16 @@
         if (val_name != "") {
         if (sl <= 4) {
             alert("Please Enter More than 4 digits Name");
+            return false;
       
         }
 
         if (!val_name.match(/\S/)) {
             alert("Please Enter Product Name");
+            return false;
    
             }
-            return false;
+           
         }
         //if (val_unit == "-1") {
         //    alert("Please Select a Unit");
@@ -187,18 +189,18 @@
         if (val_price !="") {
         if (val_price < 1 || val_price > 1000) {
             alert("Price Wrong");
-          
-            }
             return false;
+            }
+            
         }
 
         if (val_dis != "") {
         if (val_dis < 1 || val_dis > 25) {
             alert("Discount Range Wrong");
            
-
-            }
             return false;
+            }
+           
         }
 
         return true;
