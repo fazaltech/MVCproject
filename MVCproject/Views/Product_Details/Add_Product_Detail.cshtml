@@ -22,21 +22,21 @@
         {
             @Html.AntiForgeryToken();
 
-            <div class="form-horizontal">
+        <div class="form-horizontal">
 
 
 
 
 
-                <div class="form-group">
+            <div class="form-group">
 
-                    <input type="text" name="proname" id="proname" class="form-control form-control-user" onkeypress="return /[a-z\s 0-9]/i.test(event.key)" maxlength="50" placeholder="Name" />
-                </div>
-                <div class="form-group">
-
-                    <select class="form-control" id="pro_unit" name="pro_unit"></select>
-                </div>
+                <input type="text" name="proname" id="proname" class="form-control form-control-user" onkeypress="return /[a-z\s 0-9]/i.test(event.key)" maxlength="50" placeholder="Name" />
             </div>
+            <div class="form-group">
+
+                <select class="form-control" id="pro_unit" name="pro_unit"></select>
+            </div>
+
             <div class="form-group">
                 <select class="form-control" id="pro_cat" name="pro_cat"></select>
             </div>
@@ -47,7 +47,7 @@
             <div class="form-group">
                 <input type="text" name="discount_percentage" id="discount_percentage" class="form-control form-control-user" data-mask="00.00" maxlength="50" placeholder="Discount Percentage" />
             </div>
-
+        </div>
 
 
 

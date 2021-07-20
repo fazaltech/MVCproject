@@ -286,24 +286,54 @@ namespace MVCproject.Controllers
 
         }
 
-        //// GET: Product_Details/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    tblproductcategory tblproductcategory = db.tblproductcategorys.Find(id);
-        //    var name = db.tblproductcategorys
-        //         .Where(x => x.id == id)
-        //         .Select(x => x.category_name).Max();
-        //    ViewBag.preprocatnamedt = name;
-        //    if (tblproductcategory == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(tblproductcategory);
-        //}
+        // GET: Product_Details/Delete/2
+        
+        public ActionResult Delete(int? id)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            tblproduct tblproducts = db.tblproducts.Find(id);
+
+            if (tblproducts == null)
+            {
+                return HttpNotFound();
+            }
+            try
+            {
+                var data = (from d in db.tblproducts
+                            where d.id == id
+                            where d.flag == "1"
+                            join u in db.tblproductunits on d.unit_id equals u.unit_id
+                            join c in db.tblproductcategorys on d.category_id equals c.category_id
+                            select new
+                            {
+                                d.id,
+                                d.product_name,
+                                u.unit_name,
+                                c.category_name,
+
+                                d.unit_price,
+                                d.discount_percentage
+
+                            }).ToList();
+
+
+
+                TempData["delvew"] = data;
+
+                return View();
+            }
+            catch (Exception ex)
+            {
+                return ViewBag.error = ex.Message;
+            }
+
+
+
+        }
 
         //// POST: Product_Details/Delete/5
         //[HttpPost, ActionName("Delete")]
@@ -414,6 +444,16 @@ namespace MVCproject.Controllers
         public JsonResult producted()
         {
           var data = TempData["data"];
+
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpGet]
+        public JsonResult productdel()
+        {
+            var data = TempData["delvew"];
 
 
             return Json(data, JsonRequestBehavior.AllowGet);
