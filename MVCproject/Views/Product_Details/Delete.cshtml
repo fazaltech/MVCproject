@@ -7,7 +7,7 @@
 
 <div class="card mb-4" style="width: 1002px;">
     <div class="card-header">
-        Delete Product 
+        Delete Product
     </div>
     <div class="card-body">
         @using (Html.BeginForm())
@@ -24,13 +24,13 @@
                     <label class="col-form-label">Name</label>
                     <input type="text" name="prodprename" id="prodprename" class="form-control form-control-user" disabled />
                 </div>
-               
+
 
                 <div class="form-group">
                     <label class="col-form-label">Product Unit</label>
                     <input type="text" name="prodpreunt" id="prodpreunt" class="form-control form-control-user" value=" " disabled />
                 </div>
-                
+
 
 
 
@@ -38,21 +38,21 @@
                     <label class="col-form-label">Product Category</label>
                     <input type="text" name="prodprecat" id="prodprecat" class="form-control form-control-user" value=" " disabled />
                 </div>
-                
+
 
 
                 <div class="form-group">
                     <label class="col-form-label">Price</label>
                     <input type="text" name="prodpreprc" id="prodpreprc" class="form-control form-control-user" value=" " disabled />
                 </div>
-                
+
 
 
                 <div class="form-group">
                     <label class="col-form-label">Discount Precentage</label>
                     <input type="text" name="prodprepdis" id="prodprepdis" class="form-control form-control-user" value=" " disabled />
                 </div>
-              
+
 
                 <div class="text-center">
                     <input value="Update" class="btn btn-primary btn-user btn-block" onclick="BtnClick()" />
@@ -66,3 +66,35 @@
         }
     </div>
 </div>
+
+
+<script src="~/asset/vendor/jsvaraiable.js"></script>
+<script>
+
+
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "/Product_Details/productdel/",
+
+            data: {},
+
+            success: function (data) {
+
+
+
+                for (var i = 0; i < data.length; i++) {
+                    $("#prodptided").val(data[i].id);
+                    $("#prodprename").val(data[i].product_name);
+                    $("#prodpreunt").val(data[i].unit_name);
+                    $("#prodprecat").val(data[i].category_name);
+                    $("#prodpreprc").val(data[i].unit_price);
+                    $("#prodprepdis").val(data[i].discount_percentage);
+
+                }
+            }
+
+
+        });
+    });
+</script>
