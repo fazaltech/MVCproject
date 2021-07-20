@@ -138,6 +138,7 @@ namespace MVCproject.Controllers
             {
                 var data = (from d in db.tblproducts
                             where d.id == id
+                            where d.flag == "1"
                             join u in db.tblproductunits on d.unit_id equals u.unit_id
                             join c in db.tblproductcategorys on d.category_id equals c.category_id
                             select new
