@@ -266,12 +266,13 @@ namespace MVCproject.Controllers
             }
             if (ModelState.IsValid)
             {
-                product.product_code = proded.prodcode;
-                product.product_name = proded.name;
-                product.unit_id = proded.unit_id;
-                product.category_id = proded.cat_id;
-                product.unit_price = proded.price;
-                product.discount_percentage = proded.dist_pre;
+                var prodtedt = db.tblproducts.SingleOrDefault(b => b.id == id);
+                prodtedt.product_code = proded.prodcode;
+                prodtedt.product_name = proded.name;
+                prodtedt.unit_id = proded.unit_id;
+                prodtedt.category_id = proded.cat_id;
+                prodtedt.unit_price = proded.price;
+                prodtedt.discount_percentage = proded.dist_pre;
 
                 db.SaveChanges();
                 return Json(new { success = true, responseText = "Product Update" }, JsonRequestBehavior.AllowGet);
