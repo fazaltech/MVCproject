@@ -55,7 +55,7 @@
 
 
                 <div class="text-center">
-                    <input value="Update" class="btn btn-primary btn-user btn-block" onclick="BtnClick()" />
+                    <input value="Delete" class="btn btn-primary btn-user btn-block" onclick="BtnClick()" />
 
 
 
@@ -97,4 +97,43 @@
 
         });
     });
+
+
+
+    function ajfun() {
+
+        var token = $('input[name="__RequestVerificationToken"]').val();
+        var del = $("#prodptided").val();
+        
+        $.ajax({
+            method: "POST",
+            url: "/Product_Details/Delete",
+
+            data: {
+                __RequestVerificationToken: token,
+                id: del
+            },
+
+            success: function (response) {
+
+                alert(response.responseText);
+              
+                location.href = "/Product_Details/Index"
+
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert("Contact Developer Team");
+            }
+        })
+    }
+
+
+    function BtnClick()
+    {
+
+        ajfun();
+    }
 </script>

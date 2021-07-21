@@ -335,31 +335,31 @@ namespace MVCproject.Controllers
 
         }
 
-        //// POST: Product_Details/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirm([Bind(Include = "id,category_id,category_name,flag")] tblproductcategory tblproductcategory, int? id)
-        //{
+        // POST: Product_Details/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirm(tblproduct product,  int? id)
+        {
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        var prodtcatdt = db.tblproductcategorys.SingleOrDefault(b => b.id == id);
-        //        prodtcatdt.flag = "0";
+            if (ModelState.IsValid)
+            {
+                var prodtcatdt = db.tblproducts.SingleOrDefault(b => b.id == id);
+                prodtcatdt.flag = "0";
 
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    if (tblproductcategory == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    ViewBag.MessageDT = "Product Category Delete";
-        //    return View(tblproductcategory);
-        //}
+                db.SaveChanges();
+                return Json(new { success = true, responseText = "Product Deleted" }, JsonRequestBehavior.AllowGet);
+            }
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.MessageDT = "Product Category Delete";
+            return View(product);
+        }
 
         //protected override void Dispose(bool disposing)
         //{
