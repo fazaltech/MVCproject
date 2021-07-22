@@ -19,7 +19,7 @@
         <div class="form-horizontal">
 
 
-            <input type="hidden" id="prodptided" name="prodptided">
+            <input type="hidden" id="userid" name="userid">
 
 
 
@@ -67,3 +67,34 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+<script src="~/asset/vendor/jsvaraiable.js"></script>
+
+<script>
+
+
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "/Product_Details/producted/",
+
+            data: {},
+
+            success: function (data) {
+
+
+
+                for (var i = 0; i < data.length; i++) {
+                    $("#userid").val(data[i].id);
+                    $("#username").val(data[i].product_name);
+                    $("#fullname").val(data[i].unit_name);
+                    $("#email").val(data[i].category_name);
+                    $("#degisnation").val(data[i].unit_price);
+                    $("#currentrole").val(data[i].discount_percentage);
+
+                }
+            }
+
+
+        });
+    });
+</script>
