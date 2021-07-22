@@ -9,72 +9,61 @@
 
 <div class="card mb-4" style="width: 1002px;">
     <div class="card-header">
-       Users Assign Role
+     Please Assisgn Role
     </div>
-    <div class="card-body"></div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-<div class="form-horizontal">
-
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.id)
+        <div class="form-horizontal">
 
 
-<div class="form-group">
-    @Html.DisplayNameFor(model => model.user_name)
-    @Html.DisplayFor(model => model.user_name)
-</div>
-    <div class="form-group">
-
-        <input type="text" name="prodptnameed" id="prodptednameed" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" />
-    </div>
-
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.user_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.user_name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.email_id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.email_id)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.role)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.role)
-        </dd>
-    </dl>
-
-    <div class="form-group">
-        <b>Change Roles</b>
-        <select name="Roles" id="Roles" class="form-control" style="width:20%;">
-            <option value="manager">Manager</option>
-            <option value="admin">Admin</option>
-
-        </select>
-    </div>
+            <input type="hidden" id="prodptided" name="prodptided">
 
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
+
+
+
+            <div class="form-group">
+                <label class="col-form-label">User's Name</label>
+                <input type="text" name="username" id="username" class="form-control form-control-user" value=" " disabled />
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Full Name</label>
+                <input type="text" name="fullname" id="fullname" class="form-control form-control-user" value=" " disabled />
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Email Address</label>
+                <input type="text" name="email" id="email" class="form-control form-control-user" value=" " disabled />
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Degisnation</label>
+                <input type="text" name="degisnation" id="degisnation" class="form-control form-control-user" value=" " disabled />
+            </div>
+
+            <div class="form-group">
+                <label class="col-form-label">Current Role</label>
+                <input type="text" name="currentrole" id="currentrole" class="form-control form-control-user" value=" " disabled />
+            </div>
+
+            <div class="form-group">
+                <label class="col-form-label">Assisgn Role</label>
+                <select class="form-control" id="pro_unit" name="pro_unit"></select>
+            </div>
+
+            <div class="text-center">
+                <input value="Insert" class="btn btn-primary btn-user btn-block" onclick="BtnClick()" />
+
+
+
+            </div>
+
+
         </div>
+        }
     </div>
 </div>
-    }
+<div>
+    @Html.ActionLink("Back to List", "Index")
 </div>
-        <div>
-            @Html.ActionLink("Back to List", "Index")
-        </div>
