@@ -198,8 +198,33 @@ namespace MVCproject.Controllers
             {
                 return HttpNotFound();
             }
+            try {
+                var data = (from d in db.tblusers
+                            where d.id == id
+                            where d.flag == "1"
+                 
+                            select new
+                            {
+                                d.id,
+                                d.user_name,
+                                d.fullname,
+                                d.email_id,
+                                d.designation,
+                                d.role
 
-            return View(urse);
+                            }).ToList();
+
+
+
+                TempData["emprole"] = data;
+                return View(urse);
+            }
+
+            catch (Exception ex)
+            {
+                return ViewBag.error = ex.Message;
+            }
+
         }
         [HttpPost, ActionName("AssignRole")]
        // [Authorize(Roles = "admin")]
