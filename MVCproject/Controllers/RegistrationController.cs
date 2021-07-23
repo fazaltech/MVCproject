@@ -227,14 +227,7 @@ namespace MVCproject.Controllers
 
         }
 
-        [HttpGet]
-        public JsonResult Emproleview()
-        {
-            var data = TempData["emprole"];
-
-
-            return Json(data, JsonRequestBehavior.AllowGet);
-        }
+      
 
         [HttpPost, ActionName("AssignRole")]
        // [Authorize(Roles = "admin")]
@@ -243,7 +236,7 @@ namespace MVCproject.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = db.tblusers.SingleOrDefault(b => b.user_id == id);
+                var result = db.tblusers.SingleOrDefault(b => b.id == id);
 
                 result.role = Roles;
                 db.SaveChanges();
@@ -262,7 +255,14 @@ namespace MVCproject.Controllers
 
             return View(urse);
         }
+        [HttpGet]
+        public JsonResult Emproleview()
+        {
+            var data = TempData["emprole"];
 
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult Add_Role()
         {
             return View();

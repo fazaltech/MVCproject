@@ -53,7 +53,7 @@
             </div>
 
             <div class="text-center">
-                <input value="Insert" class="btn btn-primary btn-user btn-block" onclick="BtnClick()" />
+                <input value="Assign Role" class="btn btn-secondary btn-user btn-block" onclick="BtnClick()" />
 
 
 
@@ -116,4 +116,72 @@
                 }
             });
         });
+
+
+
+
+    function ajfun() {
+
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+
+
+        var _id = $("#userid").val();
+
+
+        var _Role = $("#assgrole").val();
+
+        $.ajax({
+            method: "POST",
+            url: "/Registration/AssignRole",
+
+            data: {
+                __RequestVerificationToken: token,
+                id: _id,
+                Roles: _Role
+
+            },
+
+            success: function (response) {
+
+                alert(response.responseText);
+                location.reload(true);
+
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert("Contact Developer Team");
+            }
+        })
+    }
+
+
+
+    function BtnClick() {
+
+
+        if (validation()) {
+
+            ajfun();
+
+
+
+        }
+
+
+    }
+
+
+    function validation() {
+        var val_role = $("#assgrole").val();
+
+        if (val_role == "-1") {
+            alert("Please Select Role");
+            return false;
+        }
+
+        return true;
+    }
 </script>
