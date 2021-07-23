@@ -326,5 +326,25 @@ namespace MVCproject.Controllers
         {
             return View();
         }
+
+
+        [HttpGet]
+        public JsonResult Assg_Role()
+        {
+
+
+            try
+            {
+                return Json(db.tblrole.Where(x => x.flag == "1").Select(x => new
+                {
+                    Roleid = x.id,
+                    RoleName = x.role
+                }).ToList(), JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return ViewBag.error = ex.Message;
+            }
+        }
     }
 }

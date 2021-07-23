@@ -49,7 +49,7 @@
 
             <div class="form-group">
                 <label class="col-form-label">Assisgn Role</label>
-                <select class="form-control" id="pro_unit" name="pro_unit"></select>
+                <select class="form-control" id="assgrole" name="assgrole"></select>
             </div>
 
             <div class="text-center">
@@ -97,4 +97,23 @@
 
         });
     });
+
+
+
+
+    @* script for Unit view in Assign Role List *@
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "/Registration/Assg_Role",
+                data: "{}",
+                success: function (data) {
+                    var s = '<option value="-1">Please Select a Role</option>';
+                    for (var i = 0; i < data.length; i++) {
+                        s += '<option value="' + data[i].RoleName + '">' + data[i].RoleName + '</option>';
+                    }
+                    $("#assgrole").html(s);
+                }
+            });
+        });
 </script>
