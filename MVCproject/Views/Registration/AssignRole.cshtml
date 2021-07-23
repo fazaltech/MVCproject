@@ -75,7 +75,7 @@
     $(document).ready(function () {
         $.ajax({
             type: "GET",
-            url: "/Product_Details/producted/",
+            url: "/Registration/Emproleview/",
 
             data: {},
 
@@ -85,11 +85,11 @@
 
                 for (var i = 0; i < data.length; i++) {
                     $("#userid").val(data[i].id);
-                    $("#username").val(data[i].product_name);
-                    $("#fullname").val(data[i].unit_name);
-                    $("#email").val(data[i].category_name);
-                    $("#degisnation").val(data[i].unit_price);
-                    $("#currentrole").val(data[i].discount_percentage);
+                    $("#username").val(data[i].user_name);
+                    $("#fullname").val(data[i].fullname);
+                    $("#email").val(data[i].email_id);
+                    $("#degisnation").val(data[i].designation);
+                    $("#currentrole").val(data[i].role);
 
                 }
             }

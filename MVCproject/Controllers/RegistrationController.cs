@@ -226,6 +226,16 @@ namespace MVCproject.Controllers
             }
 
         }
+
+        [HttpGet]
+        public JsonResult Emproleview()
+        {
+            var data = TempData["emprole"];
+
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost, ActionName("AssignRole")]
        // [Authorize(Roles = "admin")]
         [ValidateAntiForgeryToken]
