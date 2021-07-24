@@ -18,10 +18,11 @@ namespace MVCproject.Controllers
 
         // GET: Registration
 
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public ActionResult Index(string user_name, string roles)
         {
-
+            var adms = TempData["adminalert"];
+         
             var Lst = new List<string>();
 
             var Qry = from d in db.tblusers
@@ -41,10 +42,10 @@ namespace MVCproject.Controllers
             {
                 urlt = urlt.Where(x => x.role == roles);
             }
-            
 
-
-
+            if(adms != null) { 
+            ViewBag.adminmeg = adms.ToString();
+            }
             return View(urlt);
 
         }
@@ -189,6 +190,18 @@ namespace MVCproject.Controllers
        // [Authorize(Roles = "admin")]
         public ActionResult AssignRole(int? id)
         {
+
+            var adminidchk = db.tblusers.Where(x => x.id == id).Select(x => x.user_name).Max();
+            string admin = adminidchk;
+
+            if (admin == "admin")
+            {
+                TempData["adminalert"] = "Admin User can not change";
+                return RedirectToAction("Index", "Registration");
+                
+            }
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
