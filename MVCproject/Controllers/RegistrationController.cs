@@ -402,7 +402,7 @@ namespace MVCproject.Controllers
 
 
 
-                TempData["emprole"] = data;
+                TempData["useredit"] = data;
                 return View(urse);
             }
 
@@ -411,6 +411,16 @@ namespace MVCproject.Controllers
                 return ViewBag.error = ex.Message;
             }
 
+        }
+
+
+        [HttpGet]
+        public JsonResult EditUser_View()
+        {
+            var data = TempData["useredit"];
+
+
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
 
     }
