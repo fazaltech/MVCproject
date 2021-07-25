@@ -1,7 +1,188 @@
 ﻿
+@model MVCproject.Models.tbluser
+
 @{
-    ViewBag.Title = "User_Edit";
+    ViewBag.Title = "Edit User";
 }
 
-<h2>User_Edit</h2>
+<h2>Assign Role</h2>
 
+
+<div class="card mb-4" style="width: 1002px;">
+    <div class="card-header">
+        Please Assisgn Role
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+
+                <input type="hidden" id="userid" name="userid">
+
+
+
+
+
+                <div class="form-group">
+                    <label class="col-form-label">User's Name</label>
+                    <input type="text" name="username" id="username" class="form-control form-control-user" value=" " disabled />
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label">Full Name</label>
+                    <input type="text" name="fullname" id="fullname" class="form-control form-control-user" value=" " disabled />
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label">Email Address</label>
+                    <input type="text" name="email" id="email" class="form-control form-control-user" value=" " disabled />
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label">Degisnation</label>
+                    <input type="text" name="degisnation" id="degisnation" class="form-control form-control-user" value=" " disabled />
+                </div>
+
+                <div class="form-group">
+                    <label class="col-form-label">Current Role</label>
+                    <input type="text" name="currentrole" id="currentrole" class="form-control form-control-user" value=" " disabled />
+                </div>
+
+                <div class="form-group">
+                    <label class="col-form-label">Assisgn Role</label>
+                    <select class="form-control" id="assgrole" name="assgrole"></select>
+                </div>
+
+                <div class="text-center">
+                    <input value="Assign Role" class="btn btn-secondary btn-user btn-block" onclick="BtnClick()" />
+
+
+
+                </div>
+
+
+            </div>
+        }
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<script src="~/asset/vendor/jsvaraiable.js"></script>
+
+<script>
+
+
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "/Registration/Emproleview/",
+
+            data: {},
+
+            success: function (data) {
+
+
+
+                for (var i = 0; i < data.length; i++) {
+                    $("#userid").val(data[i].id);
+                    $("#username").val(data[i].user_name);
+                    $("#fullname").val(data[i].fullname);
+                    $("#email").val(data[i].email_id);
+                    $("#degisnation").val(data[i].designation);
+                    $("#currentrole").val(data[i].role);
+
+                }
+            }
+
+
+        });
+    });
+
+
+
+
+    @* script for Unit view in Assign Role List *@
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "/Registration/Assg_Role",
+                data: "{}",
+                success: function (data) {
+                    var s = '<option value="-1">Please Select a Role</option>';
+                    for (var i = 0; i < data.length; i++) {
+                        s += '<option value="' + data[i].RoleName + '">' + data[i].RoleName + '</option>';
+                    }
+                    $("#assgrole").html(s);
+                }
+            });
+        });
+
+
+
+
+    function ajfun() {
+
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+
+
+        var _id = $("#userid").val();
+
+
+        var _Role = $("#assgrole").val();
+
+        $.ajax({
+            method: "POST",
+            url: "/Registration/AssignRole",
+
+            data: {
+                __RequestVerificationToken: token,
+                id: _id,
+                Roles: _Role
+
+            },
+
+            success: function (response) {
+
+                alert(response.responseText);
+                location.reload(true);
+
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert("Contact Developer Team");
+            }
+        })
+    }
+
+
+
+    function BtnClick() {
+
+
+        if (validation()) {
+
+            ajfun();
+
+
+
+        }
+
+
+    }
+
+
+    function validation() {
+        var val_role = $("#assgrole").val();
+
+        if (val_role == "-1") {
+            alert("Please Select Role");
+            return false;
+        }
+
+        return true;
+    }
+</script>
