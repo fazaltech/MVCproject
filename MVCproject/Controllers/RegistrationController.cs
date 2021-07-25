@@ -359,5 +359,59 @@ namespace MVCproject.Controllers
                 return ViewBag.error = ex.Message;
             }
         }
+
+        public ActionResult User_Edit(int? id)
+        {
+
+            var adminidchk = db.tblusers.Where(x => x.id == id).Select(x => x.user_name).Max();
+            string admin = adminidchk;
+
+            if (admin == "admin")
+            {
+                TempData["adminalert"] = "Admin User can not change";
+                return RedirectToAction("Index", "Registration");
+
+            }
+
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            tbluser urse = db.tblusers.Find(id);
+            if (urse == null)
+            {
+                return HttpNotFound();
+            }
+            try
+            {
+                var data = (from d in db.tblusers
+                            where d.id == id
+                            where d.flag == "1"
+
+                            select new
+                            {
+                                d.id,
+                                d.user_name,
+                                d.fullname,
+                                d.email_id,
+                                d.designation,
+                                d.role
+
+                            }).ToList();
+
+
+
+                TempData["emprole"] = data;
+                return View(urse);
+            }
+
+            catch (Exception ex)
+            {
+                return ViewBag.error = ex.Message;
+            }
+
+        }
+
     }
 }
