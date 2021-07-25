@@ -2100,6 +2100,7 @@
     <Content Include="Views\Registration\Add_Role.cshtml" />
     <Content Include="Views\Registration\Role_Index.cshtml" />
     <Content Include="Views\Product_Details\Delete.cshtml" />
+    <Content Include="Views\Registration\User_Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
