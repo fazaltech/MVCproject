@@ -22,7 +22,7 @@ namespace MVCproject.Controllers
         public ActionResult Index(string user_name, string roles)
         {
             var adms = TempData["adminalert"];
-         
+
             var Lst = new List<string>();
 
             var Qry = from d in db.tblusers
@@ -32,7 +32,7 @@ namespace MVCproject.Controllers
             Lst.AddRange(Qry.Distinct());
             ViewBag.roles = new SelectList(Lst);
 
-            var urlt = from m in db.tblusers where m.flag=="1"
+            var urlt = from m in db.tblusers where m.flag == "1"
                        select m;
             if (!String.IsNullOrEmpty(user_name))
             {
@@ -43,13 +43,13 @@ namespace MVCproject.Controllers
                 urlt = urlt.Where(x => x.role == roles);
             }
 
-            if(adms != null) { 
-            ViewBag.adminmeg = adms.ToString();
+            if (adms != null) {
+                ViewBag.adminmeg = adms.ToString();
             }
             return View(urlt);
 
         }
-        
+
 
 
 
@@ -62,7 +62,7 @@ namespace MVCproject.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Registration(tbluser use,string first_name,string last_name,string email_address,string user_password,string repeat_password)
+        public ActionResult Registration(tbluser use, string first_name, string last_name, string email_address, string user_password, string repeat_password)
         {
 
             use.user_name = first_name;
@@ -73,8 +73,8 @@ namespace MVCproject.Controllers
             var rdnum = new System.Random();
             int random = rdnum.Next(100);
 
-            string dd= DateTime.Now.ToString("yyMMddhhmmss");
-            decimal num = decimal.Parse(dd+random);
+            string dd = DateTime.Now.ToString("yyMMddhhmmss");
+            decimal num = decimal.Parse(dd + random);
 
 
             if (precheck != null)
@@ -88,7 +88,7 @@ namespace MVCproject.Controllers
                 use.user_name = first_name;
                 use.email_id = email_address;
                 use.fullname = first_name + last_name;
-                use.user_id =num;
+                use.user_id = num;
                 use.password = user_password;
 
                 use.role = "assign role";
@@ -116,7 +116,7 @@ namespace MVCproject.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(tbluser user,string Password, string Email)
+        public ActionResult Login(tbluser user, string Password, string Email)
         {
             user.email_id = Email;
             user.password = Password;
@@ -129,17 +129,17 @@ namespace MVCproject.Controllers
 
 
 
-            if (IsValid(user.email_id, user.password)&& flnum =="1")
-                {
-                   
-                 FormsAuthentication.SetAuthCookie(user.email_id, false);
+            if (IsValid(user.email_id, user.password) && flnum == "1")
+            {
+
+                FormsAuthentication.SetAuthCookie(user.email_id, false);
 
 
-                    return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home");
 
 
-                }
-            
+            }
+
             else
             {
 
@@ -171,13 +171,13 @@ namespace MVCproject.Controllers
             bool IsValid = false;
 
 
-            
+
             var user = db.tblusers.FirstOrDefault(u => u.email_id == email);
-           
-            
+
+
             if (user != null)
             {
-                if (user.password == passwords )
+                if (user.password == passwords)
                 {
                     IsValid = true;
                 }
@@ -187,7 +187,7 @@ namespace MVCproject.Controllers
         }
 
 
-       // [Authorize(Roles = "admin")]
+        // [Authorize(Roles = "admin")]
         public ActionResult AssignRole(int? id)
         {
 
@@ -198,7 +198,7 @@ namespace MVCproject.Controllers
             {
                 TempData["adminalert"] = "Admin User can not change";
                 return RedirectToAction("Index", "Registration");
-                
+
             }
 
 
@@ -212,11 +212,11 @@ namespace MVCproject.Controllers
                 return HttpNotFound();
             }
             try {
-                TempData["adminalert"] =null;
+                TempData["adminalert"] = null;
                 var data = (from d in db.tblusers
                             where d.id == id
                             where d.flag == "1"
-                 
+
                             select new
                             {
                                 d.id,
@@ -241,12 +241,12 @@ namespace MVCproject.Controllers
 
         }
 
-      
+
 
         [HttpPost, ActionName("AssignRole")]
-       // [Authorize(Roles = "admin")]
+        // [Authorize(Roles = "admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult AssignRole([Bind(Include = "Id,user_name,email_id,password,role")]Models.tbluser users, string Roles, int? id)
+        public ActionResult AssignRole([Bind(Include = "Id,user_name,email_id,password,role")] Models.tbluser users, string Roles, int? id)
         {
             if (ModelState.IsValid)
             {
@@ -284,11 +284,11 @@ namespace MVCproject.Controllers
         [HttpPost, ActionName("Add_Role")]
         // [Authorize(Roles = "admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult Add_Role(tblroles role,string vrole) 
+        public ActionResult Add_Role(tblroles role, string vrole)
         {
             role.role = vrole;
             var precheck = db.tblrole.Where(x => x.role == role.role).FirstOrDefault();
-            
+
             if (precheck != null)
             {
                 ViewBag.chk = "Role Already Exist";
@@ -308,13 +308,13 @@ namespace MVCproject.Controllers
         }
 
 
-        public ActionResult Role_Index() 
+        public ActionResult Role_Index()
         {
             return View();
         }
 
         [HttpGet]
-        public JsonResult RoleView() 
+        public JsonResult RoleView()
         {
             try
             {
@@ -324,7 +324,7 @@ namespace MVCproject.Controllers
                            {
                                d.id,
                                d.role,
-                             
+
 
                            }).ToList();
                 return Json(new { data = pro }, JsonRequestBehavior.AllowGet);
@@ -374,7 +374,7 @@ namespace MVCproject.Controllers
 
             }
 
-          
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -414,7 +414,12 @@ namespace MVCproject.Controllers
             }
 
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult User_Edit(int? id ,string abc) {
 
+            return View();
+        }
 
         [HttpGet]
         public JsonResult EditUser_View()
