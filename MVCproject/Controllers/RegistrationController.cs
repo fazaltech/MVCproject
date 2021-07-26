@@ -212,6 +212,7 @@ namespace MVCproject.Controllers
                 return HttpNotFound();
             }
             try {
+                TempData["adminalert"] =null;
                 var data = (from d in db.tblusers
                             where d.id == id
                             where d.flag == "1"
@@ -373,7 +374,7 @@ namespace MVCproject.Controllers
 
             }
 
-
+          
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -385,6 +386,7 @@ namespace MVCproject.Controllers
             }
             try
             {
+                TempData["adminalert"] = null;
                 var data = (from d in db.tblusers
                             where d.id == id
                             where d.flag == "1"
