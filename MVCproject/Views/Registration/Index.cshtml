@@ -97,7 +97,7 @@
                                                 <td>@Html.DisplayFor(model => item.email_id)</td>
                                                 <td>@Html.ActionLink("Assign Role", "AssignRole", new { id = item.id })</td>
                                                 <td>
-                                                    <a href="@Url.Action("AssignRole", "Registration", new { id = item.id })"><i class="fas fa-edit"></i></a>
+                                                    <a href="@Url.Action("User_Edit", "Registration", new { id = item.id })"><i class="fas fa-edit"></i></a>
                                                     <a href="@Url.Action("AssignRole", "Registration", new { id = item.id })"><i class="fas fa-trash"></i></a>
                                                 </td>
 
