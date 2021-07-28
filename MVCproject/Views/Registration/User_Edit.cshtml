@@ -111,21 +111,6 @@
 
 
 
-    @* script for Unit view in Assign Role List *@
-        $(document).ready(function () {
-            $.ajax({
-                type: "GET",
-                url: "/Registration/Assg_Role",
-                data: "{}",
-                success: function (data) {
-                    var s = '<option value="-1">Please Select a Role</option>';
-                    for (var i = 0; i < data.length; i++) {
-                        s += '<option value="' + data[i].RoleName + '">' + data[i].RoleName + '</option>';
-                    }
-                    $("#assgrole").html(s);
-                }
-            });
-        });
 
 
 
