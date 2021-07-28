@@ -248,6 +248,16 @@ namespace MVCproject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AssignRole([Bind(Include = "Id,user_name,email_id,password,role")] Models.tbluser users, string Roles, int? id)
         {
+
+
+
+            if (Roles == null)
+            {
+
+                return Json(new { success = false, responseText = "Select Role Correctly" }, JsonRequestBehavior.AllowGet);
+
+
+            }
             if (ModelState.IsValid)
             {
                 var result = db.tblusers.SingleOrDefault(b => b.id == id);

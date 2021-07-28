@@ -28,7 +28,7 @@
 
             <div class="form-group">
                 <label class="col-form-label">User's Name</label>
-                <input type="text" name="username" id="username" class="form-control form-control-user" value=" " disabled />
+                <input type="text" name="username" id="username" class="form-control form-control-user"  value=" " disabled />
             </div>
             <div class="form-group">
                 <input type="text" name="username_ed" id="username_ed" class="form-control form-control-user" onkeypress="return /[a-z\s]/i.test(event.key)" maxlength="50" autocomplete="off" />
@@ -128,7 +128,7 @@
 
         $.ajax({
             method: "POST",
-            url: "/Registration/AssignRole",
+            url: "/Registration/User_Edit",
 
             data: {
                 __RequestVerificationToken: token,
