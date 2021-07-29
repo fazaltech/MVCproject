@@ -441,4 +441,14 @@ namespace MVCproject.Controllers
         }
 
     }
+
+
+    public class user_ed 
+    {
+
+        public string username_ed { get; set; }
+        public string fullname_ed { get; set; }
+        public string email_ed { get; set; }
+        public string degisnation_ed { get; set; }
+    }
 }
