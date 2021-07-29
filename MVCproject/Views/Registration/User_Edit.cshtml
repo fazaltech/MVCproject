@@ -124,7 +124,16 @@
         var _id = $("#userid").val();
 
 
-        var _Role = $("#assgrole").val();
+  
+        var eduser = {
+
+            username_ed : $("#username_ed").val(),
+            fullname_ed: $("#fullname_ed").val(),
+            email_ed: $("#email_ed").val(),
+            degisnation_ed: $("#degisnation_ed").val()
+
+        }
+
 
         $.ajax({
             method: "POST",
@@ -133,7 +142,7 @@
             data: {
                 __RequestVerificationToken: token,
                 id: _id,
-                Roles: _Role
+                userview: eduser
 
             },
 
@@ -170,7 +179,10 @@
 
 
     function validation() {
-        var val_role = $("#assgrole").val();
+        var val_name = $("#username_ed").val();
+        var val_fullname = $("#fullname_ed").val();
+        var val_email = $("#email_ed").val();
+        var val_name = $("#degisnation_ed").val();
 
         if (val_role == "-1") {
             alert("Please Select Role");

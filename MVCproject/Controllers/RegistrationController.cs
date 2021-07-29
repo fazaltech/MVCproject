@@ -426,7 +426,7 @@ namespace MVCproject.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult User_Edit(int? id ,string abc) {
+        public ActionResult User_Edit(int? id , user_ed userview) {
 
             return View();
         }
