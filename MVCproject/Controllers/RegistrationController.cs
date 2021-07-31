@@ -426,7 +426,7 @@ namespace MVCproject.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult User_Edit(int? id , user_ed userview ) {
+        public ActionResult User_Edit(int? id , user_view userview ) {
 
             if (id == null)
             {
@@ -481,12 +481,22 @@ namespace MVCproject.Controllers
     }
 
 
-    public class user_ed 
+    public class user_view
     {
 
         public string username_ed { get; set; }
         public string fullname_ed { get; set; }
         public string email_ed { get; set; }
         public string degisnation_ed { get; set; }
+    }
+
+
+    public class user_ed
+    {
+
+        public string username_ud { get; set; }
+        public string fullname_ud { get; set; }
+        public string email_ud { get; set; }
+        public string degisnation_ud { get; set; }
     }
 }
