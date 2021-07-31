@@ -426,9 +426,47 @@ namespace MVCproject.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult User_Edit(int? id , user_ed userview) {
+        public ActionResult User_Edit(int? id , user_ed userview ) {
 
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var usr = (from d in db.tblusers
+                       where d.id == id
+                       select new
+                       {
+                           d.id,
+                           d.user_name,
+                           d.fullname,
+                           d.designation,
+                           d.email_id
+                          
+                       });
+
+            if (ModelState.IsValid)
+            {
+                var userupd = db.tblusers.SingleOrDefault(b => b.id == id);
+
+                userupd.user_name = userview.username_ed;
+                userupd.fullname = userview.fullname_ed;
+                userupd.email_id = userview.email_ed;
+                userupd.designation = userview.degisnation_ed;
+                db.SaveChanges();
+
+
+                return Json(new { success = true, responseText = "Record Update" }, JsonRequestBehavior.AllowGet);
+            }
+
+           
+            tbluser urse = db.tblusers.Find(id);
+            if (urse == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(urse);
         }
 
         [HttpGet]
