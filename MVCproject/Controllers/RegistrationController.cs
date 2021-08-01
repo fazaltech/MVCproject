@@ -518,7 +518,14 @@ namespace MVCproject.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult Del_User(int? id)
+        {
+            return View();
+        }
+
+
     }
+
 
 
     public class user_view
