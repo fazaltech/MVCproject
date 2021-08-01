@@ -489,10 +489,10 @@ namespace MVCproject.Controllers
             {
                 var userupd = db.tblusers.SingleOrDefault(b => b.id == id);
 
-                userupd.user_name = userview.username_ed;
-                userupd.fullname = userview.fullname_ed;
-                userupd.email_id = userview.email_ed;
-                userupd.designation = userview.degisnation_ed;
+                userupd.user_name = useud.username_ud;
+                userupd.fullname = useud.fullname_ud;
+                userupd.email_id = useud.email_ud;
+                userupd.designation = useud.degisnation_ud;
                 db.SaveChanges();
 
 
