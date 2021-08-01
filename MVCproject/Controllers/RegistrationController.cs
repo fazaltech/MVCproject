@@ -426,7 +426,7 @@ namespace MVCproject.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult User_Edit(int? id , user_view userview ) {
+        public ActionResult User_Edit(int? id , user_view userview , user_ed useud) {
 
             if (id == null)
             {
@@ -444,6 +444,46 @@ namespace MVCproject.Controllers
                            d.email_id
                           
                        });
+
+
+            if (userview.username_ed != null)
+            {
+                useud.username_ud = userview.username_ed;
+            }
+            else 
+            {
+                useud.username_ud = usr.Select(x => x.user_name).Max();
+            }
+
+
+            if (userview.fullname_ed != null)
+            {
+                useud.fullname_ud = userview.fullname_ed;
+            }
+            else
+            {
+                useud.fullname_ud = usr.Select(x => x.fullname).Max();
+            }
+
+
+            if (userview.email_ed != null)
+            {
+                useud.email_ud = userview.email_ed;
+            }
+            else
+            {
+                useud.email_ud = usr.Select(x => x.email_id).Max();
+            }
+
+            if (userview.degisnation_ed != null)
+            {
+                useud.degisnation_ud = userview.degisnation_ed;
+            }
+            else
+            {
+                useud.degisnation_ud = usr.Select(x => x.designation).Max();
+            }
+
 
             if (ModelState.IsValid)
             {
